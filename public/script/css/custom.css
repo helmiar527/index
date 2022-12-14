@@ -1,0 +1,41 @@
+.vr {
+  border: 2px black solid;
+  height: 170px;
+  width: 0px;
+}
+
+.pt-6 {
+  padding-top: 100px;
+}
+
+.pb-6 {
+  padding-bottom: 100px;
+}
+
+.pt-7 {
+  padding-top: 200px;
+}
+
+.pb-7 {
+  padding-bottom: 200px;
+}
+
+.pt-8 {
+  padding-top: 300px;
+}
+
+.pb-8 {
+  padding-bottom: 300px;
+}
+
+.bg-orange-500 {
+  background-color: #ffd3ad;
+}
+
+.bg-yellow-500 {
+  background-color: #7e8201;
+}
+
+.bg-img-1 {
+  background-image: url("");
+}
