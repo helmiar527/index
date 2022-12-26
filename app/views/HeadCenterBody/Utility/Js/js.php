@@ -1,1 +1,1 @@
-<script src="<?= USERURL ?>/script/js/bootstrap.bundle.min.js" ></script>
+<script src="<?= USERURL ?>/script/js/bootstrap.bundle.min.js"></script>

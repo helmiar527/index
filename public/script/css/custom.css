@@ -1,31 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+
+body {
+  font-family: 'Josefin+Sans:wght@500', sans-serif;
+}
+
+/*body, html {
+  height: 100%;
+}*/
+
+.p-all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+}
+
+.p-all-1 {
+/*  padding: 50%;*/
+  padding-top: 46.5vh;
+  padding-bottom: 46.5vh;
+  margin: auto;
+}
+
+/*@media (min-width: 480px) {
+  .p-all {
+    padding-top: 97px;
+    padding-bottom: 97px;
+  }
+}*/
+
+/*@media (min-width: 600px) {
+  .p-all {
+    padding-top: 234px;
+    padding-bottom: 234px;
+  }
+}
+
+@media (min-width: 768px) {
+  .p-all {
+    padding-top: 343px;
+    padding-bottom: 343px;
+  }
+}
+
+@media (min-width: 720px) {
+  .p-all {
+    padding-top: 472px;
+    padding-bottom: 472px;
+  }
+}
+
+@media (min-width: 768px) {
+  .p-all {
+    padding-top: 515px;
+    padding-bottom: 515px;
+  }
+}
+
+@media (min-width: 900px) {
+  .p-all {
+    padding-top: 1000px;
+    padding-bottom: 1000px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .p-all {
+    padding-top: 1100px;
+    padding-bottom: 1100px;
+  }
+}*/
+
 .vr {
   border: 2px black solid;
   height: 170px;
   width: 0px;
-}
-
-.pt-6 {
-  padding-top: 100px;
-}
-
-.pb-6 {
-  padding-bottom: 100px;
-}
-
-.pt-7 {
-  padding-top: 200px;
-}
-
-.pb-7 {
-  padding-bottom: 200px;
-}
-
-.pt-8 {
-  padding-top: 300px;
-}
-
-.pb-8 {
-  padding-bottom: 300px;
 }
 
 .bg-orange-500 {
@@ -39,3 +88,43 @@
 .bg-img-1 {
   background-image: url("");
 }
+
+.bg-orange-600 {
+  background-color: #de8d23;
+}
+
+.landing-page {
+  background-image: url('https://helmiar527.my.id/private/index/public/img/bg/landing-page.png');
+height: 100%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.bg-pg-1 {
+  background: rgb(226,190,131);
+background: linear-gradient(90deg, rgba(226,190,131,1) 0%, rgba(255,68,0,1) 80%);
+}
+
+.bg-pg-2 {
+  background: rgb(255,68,0);
+background: linear-gradient(90deg, rgba(255,68,0,1) 20%, rgba(226,190,131,1) 100%);
+}
+
+.hr-4 {
+  margin: auto;
+  width:  400px;
+}
+
+.m-l {
+  margin-left: -10px;
+}
+
+.m-r {
+  margin-right: -10px;
+}
+
+/*.row {
+  padding: 0;
+  margin: 0;
+}*/

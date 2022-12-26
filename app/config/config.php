@@ -1,10 +1,10 @@
 <?php
 // URL Default
-$protocol = 'http://'; //keamanan website
+$protocol = 'https://'; //keamanan website
 $host = ($_SERVER["HTTP_HOST"]); //get url
-$path = '/index'; //filebpatch
+$path = '/private/index'; //filebpatch
 
-define('BASEURL', $protocol . $host . $path);
+define('BASEURL', $protocol . $host);
 define('USERURL', $protocol . $host . $path . '/public');
 
 // Opsi
