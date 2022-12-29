@@ -12,16 +12,18 @@ class App {
     if($url == NULL){
     $url =[$this->controller];
     }
-    // controller
+
+    // Check controller
     if (file_exists('app/controllers/' . $url[0] . '.php')) {
       $this->controller = $url[0];
       unset($url[0]);
     }
 
+    // New controller
     require_once 'app/controllers/' . $this->controller . '.php';
     $this->controller = new $this->controller;
 
-    // method
+    // Method
     if (isset($url[1])) {
       if (method_exists($this->controller, $url[1])) {
         $this->method = $url[1];
@@ -29,7 +31,7 @@ class App {
       }
     }
 
-    // Params
+    // Parameter
     if (!empty($url)) {
       $this->params = array_values($url);
     }
@@ -38,7 +40,7 @@ class App {
     call_user_func_array([$this->controller, $this->method], $this->params);
   }
 
-
+    // Mengambil, filter, memecah url
   public function parseURL() {
     if (isset($_GET['url'])) {
       $url = rtrim($_GET['url'], '/');

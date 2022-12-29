@@ -4,7 +4,7 @@ $protocol = 'https://'; //keamanan website
 $host = ($_SERVER["HTTP_HOST"]); //get url
 $path = '/private/index'; //filebpatch
 
-define('BASEURL', $protocol . $host);
+define('BASEURL', $protocol . $host . $path);
 define('USERURL', $protocol . $host . $path . '/public');
 
 // Opsi

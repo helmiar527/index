@@ -1,0 +1,1 @@
+<section class="landing-page-all bg-black bg-opacity-50">
