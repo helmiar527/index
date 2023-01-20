@@ -1,17 +1,14 @@
 <?php
+
 // URL Default
-$protocol = 'https://'; //keamanan website
-$host = ($_SERVER["HTTP_HOST"]); //get url
-$path = '/private/index'; //filebpatch
+$protocol = 'http://'; // Keamanan website
+$host = ($_SERVER["HTTP_HOST"]); // Get host url
+$path = '/private/index'; // Filebpatch
+$rootuser = '/public';
 
+define('ROOTURL', $protocol . $host);
 define('BASEURL', $protocol . $host . $path);
-define('USERURL', $protocol . $host . $path . '/public');
-
-// Opsi
-// jaringan local
-// HTTP_HOST
-// jaringan internet
-// HTTP_REFERER
+define('USERURL', $protocol . $host . $path . $rootuser);
 
 // Method dan Index Default
 $method = 'Index'; //method

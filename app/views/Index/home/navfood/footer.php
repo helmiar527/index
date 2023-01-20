@@ -1,5 +1,3 @@
-<footer class="bg-black p-all-1">
-	<div class="container-fluid">		
-		hello world
-	</div>
-</footer>
+<footer class="bg-light py-5">
+            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2023 - HelmiAR527</div></div>
+        </footer>
