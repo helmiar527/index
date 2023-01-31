@@ -16,10 +16,12 @@
   });
 })();
 
-const inputMessage = document.querySelector("#message");
-const feedback = document.querySelector("#feedback");
-inputMessage.addEventListener("input", function() {
-  if (this.value < 5) {
-    feedback.classList.remove('d-none');
-  } else if (this.value > 10) {}
-});
+const repass1 = document.querySelector(".repass");
+const password = document.querySelector("#pass");
+password.addEventListener(
+  "click",
+  function () {
+    repass1.classList.remove("d-none");
+  },
+  false
+);

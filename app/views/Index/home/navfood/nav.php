@@ -14,11 +14,11 @@
         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="hover" role="button"
-          data-bs-toggle="dropdown" aria-expanded="false">SignIn
+          data-bs-toggle="dropdown" aria-expanded="false">Sign Up
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<?= BASEURL ?>/index/register">Register</a>
-            <a class="dropdown-item" href="<?= BASEURL ?>/index/login">Login</a>
+            <a class="dropdown-item" href="<?= BASEURL ?>/register">Register</a>
+            <a class="dropdown-item" href="<?= BASEURL ?>/login">Login</a>
           </div>
         </li>
       </ul>

@@ -27,7 +27,7 @@
           </p>
         </div>
       </div>
-      <!--       <div class="col-lg-3 col-md-6 text-center">
+      <!-- <div class="col-lg-3 col-md-6 text-center">
         <div class="mt-5">
           <div class="mb-2">
             <i class="bi-globe fs-1 text-primary"></i>
@@ -37,8 +37,8 @@
             You can use this design as is, or you can make changes!
           </p>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-6 text-center">
+      </div> -->
+      <!-- <div class="col-lg-3 col-md-6 text-center">
         <div class="mt-5">
           <div class="mb-2">
             <i class="bi-heart fs-1 text-primary"></i>

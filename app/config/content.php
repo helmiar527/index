@@ -19,6 +19,7 @@ $fontm = 'https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic
 $simplelbcss = 'https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css';
 
 // Link css source
+$cssboot = USERURL . $css . '/bootstrap.min.css';
 $cssindex = USERURL . $css . $rootindex . '/styles.css';
 $csscorona = USERURL . $vendor . '/mdi/css/materialdesignicons.min.css';
 $csscorona1 = USERURL . $vendor . '/css/vendor.bundle.base.css';
@@ -36,7 +37,8 @@ $form = 'https://cdn.startbootstrap.com/sb-forms-latest.js';
 // Link js source
 $bootstrapjs = USERURL . $js . $rootindex . '/bootstrap.bundle.min.js';
 $jsindex = USERURL . $js . $rootindex . '/scripts.js';
-$jsdom = USERURL . $js . $rootindex . '/dompage.js';
+$jsdomindex = USERURL . $js . $rootindex . '/dompage.js';
+$jsdomlog = USERURL . $js . $rootlogin . '/dompage.js';
 $jscorona = USERURL . $vendor . '/js/vendor.bundle.base.js';
 $jscorona1 = USERURL . '/assets/js/off-canvas.js';
 $jscorona2 = USERURL . '/assets/js/hoverable-collapse.js';
@@ -71,6 +73,7 @@ define('ICON', $icon);
 
 
 // Define css
+define('CSSBOOT', $cssboot);
 define('BOOTICON', $bootstrapicon1103);
 define('FONTGMS', $fontms);
 define('FONTGM', $fontm);
@@ -90,7 +93,8 @@ define('BOOTJS', $bootstrapjs);
 define('JSINDEX', $jsindex);
 define('SIMPLELBJS', $simplelbjs);
 define('FORM', $form);
-define('DOMPAGE', $jsdom);
+define('DOMLOG', $jsdomlog);
+define('DOMINDEX', $jsdomindex);
 define('JSCORONA', $jscorona);
 define('JSCORONA1', $jscorona1);
 define('JSCORONA2', $jscorona2);
