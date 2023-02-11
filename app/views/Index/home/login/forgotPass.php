@@ -6,12 +6,13 @@
           <div class="card-body px-5 py-5">
             <?php Flasher::flash(); ?>
             <h3 class="card-title text-left mb-3">Forgot Password</h3>
-            <form class="needs-validation" name="loginform" action="<?= BASEURL; ?>/login/login" method="post" novalidate>
+            <p>Masukkan email untuk mengirim kode verifikasi untuk reset password</p>
+            <form class="needs-validation" name="forgotpassform" action="<?= BASEURL; ?>/forgotpassword/forgot" method="post" novalidate>
               <div class="form-group">
-                <label>Username or email *</label>
-                <input type="text" class="form-control p_input" name="username" required>
+                <label>Email *</label>
+                <input type="text" class="form-control p_input" name="email" placeholder="Input email......" required>
                 <div class="invalid-feedback">
-                  A username or email is required.
+                  Input email.
                 </div>
               </div>
               <div class="text-center">

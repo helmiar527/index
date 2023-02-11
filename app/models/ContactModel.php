@@ -1,13 +1,16 @@
 <?php
 
-class ContactModel {
+class ContactModel
+{
   private $table = 'contact';
   private $db;
 
-  public function __construct() {
+  public function __construct()
+  {
     $this->db = new Database;
   }
-  public function insertContact($data) {
+  public function insertContact($data)
+  {
     $query = "INSERT INTO " . $this->table . " (id, time, date, name, email, message) VALUES(NULL, :time, :date, :name, :email, :message)";
     $this->db->query($query);
     $this->db->bind('time', $data['time']);

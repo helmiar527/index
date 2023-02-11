@@ -3,6 +3,8 @@
 $css = '/assets/script/css';
 $js = '/assets/script/js';
 $img = '/assets/img';
+$img1 = '/assets/images';
+$prodash = '/project/dashboard';
 $vendor = '/assets/vendors';
 $rootindex = '/index/home';
 $rootlogin = '/index/login';
@@ -10,7 +12,7 @@ $full = '/portfolio/fullsize';
 $thumb = '/portfolio/thumbnails';
 
 // Icon
-$icon = 'https://helmiar527.my.id/private/index/public/assets/img/logo/profile.png';
+$icon = 'https://helmiar527.my.id/private/index/public/assets/img/logo/Profile.png';
 
 // Link css cdn
 $bootstrapicon1103 = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css';
@@ -54,18 +56,19 @@ $jscorona11 = USERURL . '/assets/js/dashboard.js';
 
 
 // Link img
-$thumb1 = USERURL . $img . $rootindex . $thumb . '/1.jpg';
-$thumb2 = USERURL . $img . $rootindex . $thumb . '/2.jpg';
-$thumb3 = USERURL . $img . $rootindex . $thumb . '/3.jpg';
-$thumb4 = USERURL . $img . $rootindex . $thumb . '/4.jpg';
-$thumb5 = USERURL . $img . $rootindex . $thumb . '/5.jpg';
-$thumb6 = USERURL . $img . $rootindex . $thumb . '/6.jpg';
-$full1 = USERURL . $img . $rootindex . $full . '/1.jpg';
-$full2 = USERURL . $img . $rootindex . $full . '/2.jpg';
-$full3 = USERURL . $img . $rootindex . $full . '/3.jpg';
-$full4 = USERURL . $img . $rootindex . $full . '/4.jpg';
-$full5 = USERURL . $img . $rootindex . $full . '/5.jpg';
-$full6 = USERURL . $img . $rootindex . $full . '/6.jpg';
+$thumb1 = USERURL . $img1 . $prodash . '/register.png';
+$thumb2 = USERURL . $img1 . $prodash . '/login.png';
+$thumb3 = USERURL . $img1 . $prodash . '/dashboard.png';
+$thumb4 = USERURL . $img1 . $prodash . '/setting.png';
+$thumb5 = USERURL . $img1 . $prodash . '/5.jpg';
+$thumb6 = USERURL . $img1 . $prodash . '/6.jpg';
+$full1 = USERURL . $img1 . $prodash . '/register.png';
+$full2 = USERURL . $img1 . $prodash . '/login.png';
+$full3 = USERURL . $img1 . $prodash . '/dashboard.png';
+$full4 = USERURL . $img1 . $prodash . '/setting.png';
+$full5 = USERURL . $img1 . $prodash . '/5.jpg';
+$full6 = USERURL . $img1 . $prodash . '/6.jpg';
+$noProfile = USERURL . $img1 . '/no-profile.png';
 
 
 // Icon Company
@@ -122,3 +125,4 @@ define('FULL3', $full3);
 define('FULL4', $full4);
 define('FULL5', $full5);
 define('FULL6', $full6);
+define('NOPROFILE', $noProfile);

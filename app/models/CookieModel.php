@@ -1,14 +1,17 @@
 <?php
 
-class CookieModel {
+class CookieModel
+{
     private $table = 'cookie';
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = new Database;
     }
-    
-    public function addCookie($data) {
+
+    public function addCookie($data)
+    {
         $query = "INSERT INTO " . $this->table . " (idCookie, unameCookie, cookie) VALUES(NULL, :uname, :cookie)";
         $this->db->query($query);
         $this->db->bind('uname', $data['nameuser']);
@@ -17,7 +20,8 @@ class CookieModel {
         return $this->db->rowCount();
     }
 
-    public function cekCookie($data) {
+    public function cekCookie($data)
+    {
         $query = "SELECT * FROM " . $this->table . " WHERE unameCookie = :username";
         $this->db->query($query);
         $this->db->bind('username', $data['nameuser']);

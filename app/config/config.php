@@ -5,10 +5,12 @@ $protocol = 'https://'; // Keamanan website
 $host = ($_SERVER["HTTP_HOST"]); // Get host url
 $path = '/private/index'; // Filebpatch
 $rootuser = '/public';
+$rootdoc = '/sdcard/www';
 
 define('ROOTURL', $protocol . $host);
 define('BASEURL', $protocol . $host . $path);
 define('USERURL', $protocol . $host . $path . $rootuser);
+define('ROOT', $rootdoc);
 
 // Method dan Index Default
 $method = 'Index'; //method
