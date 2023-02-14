@@ -12,7 +12,7 @@ $full = '/portfolio/fullsize';
 $thumb = '/portfolio/thumbnails';
 
 // Icon
-$icon = 'https://helmiar527.my.id/private/index/public/assets/img/logo/Profile.png';
+$icon = USERURL . $img . '/logo/Profile.png';
 
 // Link css cdn
 $bootstrapicon1103 = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css';

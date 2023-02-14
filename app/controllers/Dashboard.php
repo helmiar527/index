@@ -2,8 +2,7 @@
 
 class Dashboard extends controller
 {
-  public function __construct()
-  {
+  public function __construct() {
     if (!isset($_SESSION['status']) || $_SESSION['status'] !== "logged") {
       Flasher::setFlash('danger', 'Sesi login ', 'Tidak dapat ditemukan! ', 'Silahkan login.');
       header('Location: ' . BASEURL . '/login');
@@ -11,8 +10,7 @@ class Dashboard extends controller
     }
   }
 
-  public function index()
-  {
+  public function index() {
     $row = $this->model('AccModel')->updateAcc($_SESSION);
     $data['title'] = 'Dashboard';
     $data['years1'] = '2022';
@@ -43,13 +41,12 @@ class Dashboard extends controller
     $this->view('headcenterbody/utility/fakebody/index/dashboard/bodyclose2');
     $this->view('headcenterbody/utility/fakebody/index/dashboard/bodyclose1');
     $this->view('headcenterbody/utility/fakebody/index/dashboard/bodyclose');
-    $this->view('headcenterbody/utility/js/index/dashboard/js');
-    $this->view('index/all/coming');
+    //$this->view('headcenterbody/utility/js/index/dashboard/js');
+    //$this->view('index/all/coming');
     $this->view('headcenterbody/body');
   }
 
-  public function settings()
-  {
+  public function settings() {
     $row = $this->model('AccModel')->updateAcc($_SESSION);
     $data['title'] = 'Setting';
     $data['years1'] = '2022';
@@ -116,8 +113,7 @@ class Dashboard extends controller
     $this->view('headcenterbody/body');
   }
 
-  public function pictureProfilUpdate()
-  {
+  public function pictureProfilUpdate() {
     $file = $_FILES['file'];
     $file_name = $file['name'];
     $file_tmp = $file['tmp_name'];
@@ -171,8 +167,7 @@ class Dashboard extends controller
     }
   }
 
-  public function deleteFotoProfil()
-  {
+  public function deleteFotoProfil() {
     $row = $this->model('AccModel')->updateAcc($_SESSION);
     $_POST['uname'] = $_SESSION['unameUser'];
     $_POST['fileName'] = '';
@@ -191,8 +186,7 @@ class Dashboard extends controller
     }
   }
 
-  public function profilUpdate()
-  {
+  public function profilUpdate() {
     $row = $this->model('AccModel')->updateAcc($_SESSION);
     $_POST['unameUser'] = $_SESSION['unameUser'];
     if ($row['changeEmailUser'] == 1) {
@@ -234,7 +228,5 @@ class Dashboard extends controller
     }
   }
 
-  public function calculator()
-  {
-  }
+  public function calculator() {}
 }

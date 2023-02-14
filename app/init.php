@@ -1,11 +1,8 @@
 <?php
-// Auto Load semua class yang ada di core
+// Auto load semua class yang ada di core
 spl_autoload_register(function ($class) {
   require_once 'core/' . $class . '.php';
 });
-
-// Load config
-require_once 'config/' . 'config.php';
-
-// Load content
-require_once 'config/' . 'content.php';
+// Load semua class yang ada di config
+require_once 'config/config.php';
+require_once 'config/content.php';

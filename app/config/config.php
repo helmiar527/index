@@ -1,9 +1,9 @@
 <?php
-
 // URL Default
 $protocol = 'https://'; // Keamanan website
 $host = ($_SERVER["HTTP_HOST"]); // Get host url
-$path = '/private/index'; // Filebpatch
+// Untuk domain silahkan kosongkan
+$path = '/dev/index'; // Filebpatch
 $rootuser = '/public';
 $rootdoc = '/sdcard/www';
 

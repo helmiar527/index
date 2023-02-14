@@ -1,0 +1,4 @@
+Catatan
+
+1. Ubah konfigurasi di config
+2. Ubah alamat di css
