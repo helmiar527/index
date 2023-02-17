@@ -5,39 +5,30 @@ class Index extends Controller
 
   public function index()
   {
-    $data['title'] = 'Welcome To HELMIAR527';
-    $data['years1'] = '2022';
-    $data['years'] = date('Y');
-    if (!isset($_SESSION['status']) || $_SESSION['status'] !== "logged") {
-      $data['navlog'] = '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="hover" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sign Up</a><div class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item" href="' . BASEURL . '/register">Register</a><a class="dropdown-item" href="' . BASEURL . '/login">Login</a></div></li>';
-    } else {
-      $data['navlog'] = '<li class="nav-item"><a class="nav-link" href="' . BASEURL . '/dashboard">Dashboard</a></li>';
-    }
-    $this->view('headcenterbody/head', $data);
-    $this->view('headcenterbody/utility/cdn/css/index/home/cdn');
-    $this->view('headcenterbody/utility/css/index/home/css');
-    $this->view('headcenterbody/center');
-    $this->view('headcenterbody/utility/fakebody/index/home/bodyopen');
-    $this->view('index/home/navfood/nav', $data);
-    $this->view('index/home/index/index');
-    $this->view('index/home/index/about');
-    $this->view('index/home/index/service');
-    $this->view('index/home/index/portfolio');
-    $this->view('index/home/index/index1');
-    $this->view('index/home/index/contact');
-    $this->view('index/home/navfood/footer', $data);
-    $this->view('headcenterbody/utility/cdn/js/index/home/cdn');
-    $this->view('headcenterbody/utility/js/index/home/js');
-    $this->view('headcenterbody/utility/fakebody/index/home/bodyclose');
+    $data = $this->process('IndexProcess')->index();
+    $this->view('hcb/head', $data);
+    $this->view('hcb/index/index/utility/cdn/css/cdn');
+    $this->view('hcb/index/index/utility/css/css');
+    $this->view('hcb/center');
+    $this->view('hcb/index/index/body/bodyopen');
+    $this->view('index/index/navfood/nav', $data);
+    $this->view('index/index/index');
+    $this->view('index/index/about');
+    $this->view('index/index/service');
+    $this->view('index/index/portfolio');
+    $this->view('index/index/index1');
+    $this->view('index/index/contact');
+    $this->view('index/index/navfood/footer', $data);
+    $this->view('hcb/index/index/body/bodyclose');
+    $this->view('hcb/index/index/utility/cdn/js/cdn');
+    $this->view('hcb/index/index/utility/js/js');
     $this->view('index/all/coming');
-    $this->view('headcenterbody/body');
+    $this->view('hcb/body');
   }
 
   public function TermsAndConditions()
   {
-    $data['title'] = 'Welcome To HELMIAR527';
-    $data['years1'] = '2022';
-    $data['years'] = date('Y');
+    $data = $this->process('IndexProcess')->TermsAndConditions();
     $this->view('headcenterbody/head', $data);
     $this->view('headcenterbody/utility/css/css');
     $this->view('headcenterbody/center');

@@ -1,4 +1,10 @@
+Update
+
+1. Rekonstruksi ulang folder
+2. Fix BUG
+3. New Page Admin
+
 Catatan
 
 1. Ubah konfigurasi di config
-2. Ubah alamat di css
+2. Ubah alamat di mdi css vendor dashboard

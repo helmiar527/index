@@ -8,14 +8,14 @@
         <div class="mb-3">
           <label class="form-label">Nama</label>
           <input type="text" class="form-control" name="name" value="<?= $data['nama']; ?>">
-          <div class="form-text">
+          <div class="form-text text-light">
             Nama ini akan di tampilkan saat pengiriman email, pesan ataupun nama utama di profil.
           </div>
         </div>
         <div class="mb-3">
           <label class="form-label">Username</label>
           <input type="text" class="form-control text-dark" value="<?= $data['username']; ?>" readonly>
-          <div class="form-text">
+          <div class="form-text text-light">
             Username sebagai identitas utama akun.
           </div>
         </div>
@@ -23,7 +23,7 @@
           <label class="form-label">Email</label>
           <div class="row">
             <div class="col-9">
-              <input type="text" class="form-control <?= $data['readonly1']; ?>" name="email" value="<?= $data['email']; ?>" <?= $data['readonly']; ?>>
+              <input type="text" class="form-control <?= $data['text-dark']; ?>" name="email" value="<?= $data['email']; ?>" <?= $data['readonly']; ?>>
             </div>
             <div class="col-3">
               <button type="button" class="btn btn-md <?= $data['color']; ?> btn-icon-text" data-bs-toggle="modal" data-bs-target="#comingModal">Verifikasi
@@ -31,7 +31,7 @@
               </button>
             </div>
           </div>
-          <div class="form-text">
+          <div class="form-text text-light">
             Email hanya dapat di ganti 1 kali, pastikan email aktif agar dapat di verifikasi.
           </div>
         </div>
@@ -51,7 +51,7 @@
         <div class="mb-3">
           <label class="form-label">Ranks</label>
           <input type="text" class="form-control text-dark" value="<?= $data['role']; ?>" readonly>
-          <div class="form-text">
+          <div class="form-text text-light">
             Verifikasi email dan no telfone untuk mendapatkan rank yang lebih tinggi dan dapatkan akses yang lebih luas.
           </div>
         </div>

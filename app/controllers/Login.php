@@ -13,17 +13,15 @@ class Login extends Controller
 
   public function index()
   {
-    $data['title'] = 'Login';
-    $data['years1'] = '2022';
-    $data['years'] = date('Y');
-    $this->view('headcenterbody/head', $data);
-    $this->view('headcenterbody/utility/css/index/login/css');
-    $this->view('headcenterbody/center');
-    $this->view('index/home/login/login');
-    $this->view('index/home/navfood/footer', $data);
-    $this->view('headcenterbody/utility/js/index/login/js');
+    $data = $this->process('IndexProcess')->login();
+    $this->view('hcb/head', $data);
+    $this->view('hcb/index/login/utility/css/css');
+    $this->view('hcb/center');
+    $this->view('index/login/login');
+    $this->view('index/index/navfood/footer', $data);
+    $this->view('hcb/index/login/utility/js/js');
     $this->view('index/all/coming');
-    $this->view('headcenterbody/body');
+    $this->view('hcb/body');
   }
 
   public function login()

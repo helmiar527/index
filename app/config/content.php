@@ -1,74 +1,74 @@
 <?php
 // Path
-$css = '/assets/script/css';
-$js = '/assets/script/js';
-$img = '/assets/img';
-$img1 = '/assets/images';
-$prodash = '/project/dashboard';
+$index = '/index/index';
+$dashboard = '/index/dashboard';
+$css = '/assets/css';
+$cssv = '/assets/vendors/css';
+$mdiv = '/assets/vendors/mdi';
+$js = '/assets/js';
+$jsv = '/assets/vendors/js';
+$prodash = '/assets/project/dashboard';
 $vendor = '/assets/vendors';
-$rootindex = '/index/home';
-$rootlogin = '/index/login';
-$full = '/portfolio/fullsize';
-$thumb = '/portfolio/thumbnails';
+// $img = '/assets/img';
+// $img1 = '/assets/images';
+// $rootindex = '/index/home';
+// $rootlogin = '/index/login';
+// $full = '/portfolio/fullsize';
+// $thumb = '/portfolio/thumbnails';
+
 
 // Icon
-$icon = USERURL . $img . '/logo/Profile.png';
+$icon = USERURL . $index . '/assets/Profile.png';
 
 // Link css cdn
 $bootstrapicon1103 = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css';
 $fontms = 'https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet';
 $fontm = 'https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic';
-$simplelbcss = 'https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css';
+// $simplelbcss = 'https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css';
 
 // Link css source
-$cssboot = USERURL . $css . '/bootstrap.min.css';
-$cssindex = USERURL . $css . $rootindex . '/styles.css';
-$csscorona = USERURL . $vendor . '/mdi/css/materialdesignicons.min.css';
-$csscorona1 = USERURL . $vendor . '/css/vendor.bundle.base.css';
-$csscorona2 = USERURL . '/assets/css/style.css';
-$csscorona3 = USERURL . $vendor . '/jvectormap/jquery-jvectormap.css';
-$csscorona4 = USERURL . $vendor . '/flag-icon-css/css/flag-icon.min.css';
-$csscorona5 = USERURL . $vendor . '/owl-carousel-2/owl.carousel.min.css';
-$csscorona6 = USERURL . $vendor . '/owl-carousel-2/owl.theme.default.min.css';
+$cssboot = USERURL . $index . $cssv . '/bootstrap.min.css';
+$cssindex = USERURL . $index . $css . '/styles.css';
+$csscorona = USERURL . $dashboard . $mdiv . '/css/materialdesignicons.min.css';
+$csscorona0 = USERURL . $dashboard . $cssv . '/bootstrap.min.css';
+$csscorona1 = USERURL . $dashboard . $cssv . '/vendor.bundle.base.css';
+$csscorona2 = USERURL . $dashboard . $css . '/style.css';
+$csscorona3 = USERURL . $dashboard . $vendor . '/jvectormap/css/jquery-jvectormap.css';
+$csscorona4 = USERURL . $dashboard . $vendor . '/flag-icon-css/css/flag-icon.min.css';
+$csscorona5 = USERURL . $dashboard . $vendor . '/owl-carousel-2/css/owl.carousel.min.css';
+$csscorona6 = USERURL . $dashboard . $vendor . '/owl-carousel-2/css/owl.theme.default.min.css';
 
 
 // Link js cdn
 $simplelbjs = 'https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js';
-$form = 'https://cdn.startbootstrap.com/sb-forms-latest.js';
+// $form = 'https://cdn.startbootstrap.com/sb-forms-latest.js';
 
 // Link js source
-$bootstrapjs = USERURL . $js . $rootindex . '/bootstrap.bundle.min.js';
-$jsindex = USERURL . $js . $rootindex . '/scripts.js';
-$jsdomindex = USERURL . $js . $rootindex . '/dompage.js';
-$jsdomlog = USERURL . $js . $rootlogin . '/dompage.js';
-$jscorona = USERURL . $vendor . '/js/vendor.bundle.base.js';
-$jscorona1 = USERURL . '/assets/js/off-canvas.js';
-$jscorona2 = USERURL . '/assets/js/hoverable-collapse.js';
-$jscorona3 = USERURL . '/assets/js/misc.js';
-$jscorona4 = USERURL . '/assets/js/settings.js';
-$jscorona5 = USERURL . '/assets/js/todolist.js';
-$jscorona6 = USERURL . $vendor . '/chart.js/Chart.min.js';
-$jscorona7 = USERURL . $vendor . '/progressbar.js/progressbar.min.js';
-$jscorona8 = USERURL . $vendor . '/jvectormap/jquery-jvectormap.min.js';
-$jscorona9 = USERURL . $vendor . '/jvectormap/jquery-jvectormap-world-mill-en.js';
-$jscorona10 = USERURL . $vendor . '/owl-carousel-2/owl.carousel.min.js';
-$jscorona11 = USERURL . '/assets/js/dashboard.js';
+$bootjs = USERURL . $index . $jsv . '/bootstrap.bundle.min.js';
+$jsindex = USERURL . $index . $js . '/scripts.js';
+$validation = USERURL . $index . $jsv . '/validation.js';
+$jsvalidation = USERURL . $dashboard . $jsv . '/validation.js';
+$jscorona = USERURL . $dashboard . $jsv . '/vendor.bundle.base.js';
+$jscorona0 = USERURL . $dashboard . $jsv . '/bootstrap.bundle.min.js';
+$jscorona1 = USERURL . $dashboard . $js . '/off-canvas.js';
+$jscorona2 = USERURL . $dashboard . $js . '/hoverable-collapse.js';
+$jscorona3 = USERURL . $dashboard . $js . '/misc.js';
+$jscorona4 = USERURL . $dashboard . $js . '/settings.js';
+$jscorona5 = USERURL . $dashboard . $js . '/todolist.js';
+$jscorona6 = USERURL . $dashboard . $vendor . '/chart.js/Chart.min.js';
+$jscorona7 = USERURL . $dashboard . $vendor . '/progressbar.js/progressbar.min.js';
+$jscorona8 = USERURL . $dashboard . $vendor . '/jvectormap/js/jquery-jvectormap.min.js';
+$jscorona9 = USERURL . $dashboard . $vendor . '/jvectormap/js/jquery-jvectormap-world-mill-en.js';
+$jscorona10 = USERURL . $dashboard . $vendor . '/owl-carousel-2/js/owl.carousel.min.js';
+$jscorona11 = USERURL . $dashboard . $js . '/dashboard.js';
 
 
 // Link img
-$thumb1 = USERURL . $img1 . $prodash . '/register.png';
-$thumb2 = USERURL . $img1 . $prodash . '/login.png';
-$thumb3 = USERURL . $img1 . $prodash . '/dashboard.png';
-$thumb4 = USERURL . $img1 . $prodash . '/setting.png';
-$thumb5 = USERURL . $img1 . $prodash . '/5.jpg';
-$thumb6 = USERURL . $img1 . $prodash . '/6.jpg';
-$full1 = USERURL . $img1 . $prodash . '/register.png';
-$full2 = USERURL . $img1 . $prodash . '/login.png';
-$full3 = USERURL . $img1 . $prodash . '/dashboard.png';
-$full4 = USERURL . $img1 . $prodash . '/setting.png';
-$full5 = USERURL . $img1 . $prodash . '/5.jpg';
-$full6 = USERURL . $img1 . $prodash . '/6.jpg';
-$noProfile = USERURL . $img1 . '/no-profile.png';
+$dashboard1 = USERURL . $index . $prodash . '/register.png';
+$dashboard2 = USERURL . $index . $prodash . '/login.png';
+$dashboard3 = USERURL . $index . $prodash . '/dashboard.png';
+$dashboard4 = USERURL . $index . $prodash . '/setting.png';
+// $noProfile = USERURL . $index . '/no-profile.png';
 
 
 // Icon Company
@@ -80,9 +80,10 @@ define('CSSBOOT', $cssboot);
 define('BOOTICON', $bootstrapicon1103);
 define('FONTGMS', $fontms);
 define('FONTGM', $fontm);
-define('SIMPLELBCSS', $simplelbcss);
+// define('SIMPLELBCSS', $simplelbcss);
 define('CSSINDEX', $cssindex);
 define('CSSCORONA', $csscorona);
+define('CSSCORONA0', $csscorona0);
 define('CSSCORONA1', $csscorona1);
 define('CSSCORONA2', $csscorona2);
 define('CSSCORONA3', $csscorona3);
@@ -92,13 +93,14 @@ define('CSSCORONA6', $csscorona6);
 
 
 // Define js
-define('BOOTJS', $bootstrapjs);
+define('BOOTJS', $bootjs);
 define('JSINDEX', $jsindex);
 define('SIMPLELBJS', $simplelbjs);
-define('FORM', $form);
-define('DOMLOG', $jsdomlog);
-define('DOMINDEX', $jsdomindex);
+// define('FORM', $form);
+define('JSVALIDATION', $jsvalidation);
+define('VALIDATION', $validation);
 define('JSCORONA', $jscorona);
+define('JSCORONA0', $jscorona0);
 define('JSCORONA1', $jscorona1);
 define('JSCORONA2', $jscorona2);
 define('JSCORONA3', $jscorona3);
@@ -113,16 +115,8 @@ define('JSCORONA11', $jscorona11);
 
 
 // Define img
-define('THUMB1', $thumb1);
-define('THUMB2', $thumb2);
-define('THUMB3', $thumb3);
-define('THUMB4', $thumb4);
-define('THUMB5', $thumb5);
-define('THUMB6', $thumb6);
-define('FULL1', $full1);
-define('FULL2', $full2);
-define('FULL3', $full3);
-define('FULL4', $full4);
-define('FULL5', $full5);
-define('FULL6', $full6);
-define('NOPROFILE', $noProfile);
+define('DASHBOARD1', $dashboard1);
+define('DASHBOARD2', $dashboard2);
+define('DASHBOARD3', $dashboard3);
+define('DASHBOARD4', $dashboard4);
+// define('NOPROFILE', $noProfile);

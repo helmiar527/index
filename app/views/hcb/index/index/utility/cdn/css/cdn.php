@@ -1,4 +1,3 @@
-<link href="<?= BOOTICON ?>" rel="stylesheet">
-<link href="<?= FONTGMS ?>">
-<link href="<?= FONTGM ?>" rel="stylesheet" type="text/css">
-<link href="<?= SIMPLELBCSS ?>" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="<?= BOOTICON; ?>">
+<link rel="stylesheet" type="text/css" href="<?= FONTGMS; ?>">
+<link rel="stylesheet" type="text/css" href="<?= FONTGM; ?>">

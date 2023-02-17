@@ -1,2 +1,2 @@
-<link rel="stylesheet" href="<?= CSSBOOT; ?>">
-<link rel="stylesheet" href="<?= CSSINDEX; ?>">
+<link rel="stylesheet" type="text/css" href="<?= CSSBOOT; ?>">
+<link rel="stylesheet" type="text/css" href="<?= CSSINDEX; ?>">

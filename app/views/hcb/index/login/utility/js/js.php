@@ -1,5 +1,5 @@
-<script type="text/javascript" src="<?= BOOTJS; ?>"></script>
-<script type="text/javascript" src="<?= DOMLOG; ?>"></script>
+<script type="text/javascript" src="<?= JSCORONA0; ?>"></script>
+<script type="text/javascript" src="<?= JSVALIDATION; ?>"></script>
 <script type="text/javascript" src="<?= JSCORONA; ?>"></script>
 <script type="text/javascript" src="<?= JSCORONA1; ?>"></script>
 <script type="text/javascript" src="<?= JSCORONA2; ?>"></script>

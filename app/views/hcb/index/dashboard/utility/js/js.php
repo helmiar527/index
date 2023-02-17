@@ -1,4 +1,4 @@
-<script type="text/javascript" src="<?= BOOTJS; ?>"></script>
+<script type="text/javascript" src="<?= JSCORONA0; ?>"></script>
 <script type="text/javascript" src="<?= JSCORONA; ?>"></script>
 <script type="text/javascript" src="<?= JSCORONA6; ?>"></script>
 <script type="text/javascript" src="<?= JSCORONA7; ?>"></script>

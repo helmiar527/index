@@ -1,2 +1,1 @@
-<script src="<?= SIMPLELBJS ?>"></script>
-<script src="<?= FORM ?>"></script>
+<script type="text/javascript" src="<?= SIMPLELBJS; ?>"></script>
