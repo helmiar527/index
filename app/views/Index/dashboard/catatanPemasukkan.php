@@ -35,7 +35,26 @@
                                 <td><?= $pemasukkan['nominal']; ?></td>
                                 <td><label class="badge badge-<?= $color; ?>"><?= $pemasukkan['status']; ?></label></td>
                                 <td></td>
-                                <td><button type="button" class="btn btn-danger btn-icon-text" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="mdi mdi-backspace btn-icon-prepend"></i></button></td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-icon-text" data-bs-toggle="modal" data-bs-target="#delete<?= $pemasukkan['id']; ?>Modal"><i class="mdi mdi-backspace btn-icon-prepend"></i></button>
+                                    <div class="modal fade" id="delete<?= $pemasukkan['id']; ?>Modal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5 text-warning" id="deleteModalLabel">Peringatan!</h1>
+                                                    <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body text-white">
+                                                    Apakah anda yakin ingin menghapusnya?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                    <a href="<?= BASEURL ?>/dashboard/deletePemasukkan/<?= $pemasukkan['id']; ?>/<?= $pemasukkan['pemasukkan']; ?>"><button type="button" class="btn btn-danger">Hapus</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -99,23 +118,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5 text-warning" id="deleteModalLabel">Peringatan!</h1>
-                <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Apakah anda yakin ingin menghapusnya?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <a href="<?= BASEURL ?>/dashboard/deletePemasukkan/<?= $pemasukkan['id']; ?>"><button type="button" class="btn btn-danger">Hapus</button></a>
             </div>
         </div>
     </div>

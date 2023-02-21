@@ -262,15 +262,16 @@ class Dashboard extends controller
     }
   }
 
-  public function deletePemasukkan($id)
+  public function deletePemasukkan($id = '', $pemasukkan = '')
   {
-    $row['pemasukkan'] = 'kirim';
-    if ($this->model('CatatanKeuanganPemasukkanModel')->deletePemasukkan($id) > 0) {
-      Flasher::setFlash('success', 'Pemasukkan ' . $row['pemasukkan'], ' Berhasil dihapus! ', '.');
+    $data['id'] = $id;
+    $data['username'] = $_SESSION['unameUser'];
+    if ($this->model('CatatanKeuanganPemasukkanModel')->deletePemasukkan($data) > 0) {
+      Flasher::setFlash('success', 'Pemasukkan ' . $pemasukkan, ' Berhasil dihapus! ', '.');
       header('Location: ' . BASEURL . '/dashboard/catatanPemasukkan');
       exit;
     } else {
-      Flasher::setFlash('danger', 'Pemasukkan ' . $row['pemasukkan'], ' Gagal dihapus! ', '.');
+      Flasher::setFlash('danger', 'Pemasukkan ' . $pemasukkan, ' Gagal dihapus! ', '.');
       header('Location: ' . BASEURL . '/dashboard/catatanPemasukkan');
       exit;
     }
@@ -290,15 +291,16 @@ class Dashboard extends controller
     }
   }
 
-  public function deletePengeluaran($id)
+  public function deletePengeluaran($id = '', $pemasukkan = '')
   {
-    $row['pengeluaran'] = 'kirim';
-    if ($this->model('CatatanKeuanganPengeluaranModel')->deletePengeluaran($id) > 0) {
-      Flasher::setFlash('success', 'Pengeluaran ' . $row['pengeluaran'], ' Berhasil dihapus! ', '.');
+    $data['id'] = $id;
+    $data['username'] = $_SESSION['unameUser'];
+    if ($this->model('CatatanKeuanganPengeluaranModel')->deletePengeluaran($data) > 0) {
+      Flasher::setFlash('success', 'Pengeluaran ' . $pemasukkan, ' Berhasil dihapus! ', '.');
       header('Location: ' . BASEURL . '/dashboard/catatanPengeluaran');
       exit;
     } else {
-      Flasher::setFlash('danger', 'Pengeluaran ' . $row['pengeluaran'], ' Gagal dihapus! ', '.');
+      Flasher::setFlash('danger', 'Pengeluaran ' . $pemasukkan, ' Gagal dihapus! ', '.');
       header('Location: ' . BASEURL . '/dashboard/catatanPengeluaran');
       exit;
     }
