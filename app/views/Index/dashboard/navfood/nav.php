@@ -78,10 +78,26 @@
     <li class="nav-item menu-items">
       <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#comingModal">
         <span class="menu-icon">
-          <i class="mdi mdi-deskphone"></i>
+          <i class="mdi mdi-calculator"></i>
         </span>
         <span class="menu-title">Calculator</span>
       </a>
+    </li>
+    <li class="nav-item menu-items">
+      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <span class="menu-icon">
+          <i class="mdi mdi-book"></i>
+        </span>
+        <span class="menu-title">Catatan Keuangan</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/dashboard/catatanPemasukkan">Pemasukkan</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/dashboard/catatanPengeluaran">Pengeluaran</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/dashboard/catatanTabungan">Tabungan</a></li>
+        </ul>
+      </div>
     </li>
   </ul>
 </nav>

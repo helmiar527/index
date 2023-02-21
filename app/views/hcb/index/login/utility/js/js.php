@@ -1,5 +1,6 @@
 <script type="text/javascript" src="<?= JSCORONA0; ?>"></script>
-<script type="text/javascript" src="<?= JSVALIDATION; ?>"></script>
+<script type="text/javascript" src="<?= JSFORMVALIDATION; ?>"></script>
+<script type="text/javascript" src="<?= JSPASSVALIDATION; ?>"></script>
 <script type="text/javascript" src="<?= JSCORONA; ?>"></script>
 <script type="text/javascript" src="<?= JSCORONA1; ?>"></script>
 <script type="text/javascript" src="<?= JSCORONA2; ?>"></script>

@@ -3,8 +3,8 @@ Update
 1. Rekonstruksi ulang folder
 2. Fix BUG
 3. New Page Admin
+4. Management keuangan
 
 Catatan
 
 1. Ubah konfigurasi di config
-2. Ubah alamat di mdi css vendor dashboard

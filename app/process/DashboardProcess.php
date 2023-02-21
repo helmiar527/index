@@ -21,6 +21,69 @@ class DashboardProcess extends Controller
         return $data;
     }
 
+    public function catatanPemasukkan()
+    {
+        $row = $this->model('AccModel')->updateAcc($_SESSION);
+        $data['title'] = 'Catatan Pemasukkan';
+        $data['years1'] = '2022';
+        $data['years'] = date('Y');
+        $data['nama'] = $row['nameUser'];
+        $data['username'] = $row['unameUser'];
+        $data['email'] = $row['emailUser'];
+        $data['rank'] = $row['roleUser'];
+
+        if ($row['fileName'] == NULL) {
+            $data['profile'] = ROOTURL . '/datasource/profile/no-profile.png';
+        } else {
+            $data['profile'] = ROOTURL . '/datasource/profile/' . $row['fileName'];
+        }
+
+        $row1 = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkan($_SESSION);
+        $data['pemasukkan'] = $row1;
+        return $data;
+    }
+
+    public function catatanPengeluaran()
+    {
+        $row = $this->model('AccModel')->updateAcc($_SESSION);
+        $data['title'] = 'Catatan Pengeluaran';
+        $data['years1'] = '2022';
+        $data['years'] = date('Y');
+        $data['nama'] = $row['nameUser'];
+        $data['username'] = $row['unameUser'];
+        $data['email'] = $row['emailUser'];
+        $data['rank'] = $row['roleUser'];
+
+        if ($row['fileName'] == NULL) {
+            $data['profile'] = ROOTURL . '/datasource/profile/no-profile.png';
+        } else {
+            $data['profile'] = ROOTURL . '/datasource/profile/' . $row['fileName'];
+        }
+
+        $row1 = $this->model('CatatanKeuanganPengeluaranModel')->getAllPengeluaran($_SESSION);
+        $data['pengeluaran'] = $row1;
+        return $data;
+    }
+
+    public function catatanTabungan()
+    {
+        $row = $this->model('AccModel')->updateAcc($_SESSION);
+        $data['title'] = 'Catatan Tabungan';
+        $data['years1'] = '2022';
+        $data['years'] = date('Y');
+        $data['nama'] = $row['nameUser'];
+        $data['username'] = $row['unameUser'];
+        $data['email'] = $row['emailUser'];
+        $data['rank'] = $row['roleUser'];
+
+        if ($row['fileName'] == NULL) {
+            $data['profile'] = ROOTURL . '/datasource/profile/no-profile.png';
+        } else {
+            $data['profile'] = ROOTURL . '/datasource/profile/' . $row['fileName'];
+        }
+        return $data;
+    }
+
     public function settings()
     {
         $row = $this->model('AccModel')->updateAcc($_SESSION);
