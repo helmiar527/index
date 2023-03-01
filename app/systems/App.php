@@ -6,8 +6,7 @@ class App
   protected $method = index;
   protected $params = [];
 
-  public function __construct()
-  {
+  public function __construct() {
     $url = $this->parseURL();
 
     // Remove error
@@ -18,6 +17,9 @@ class App
     // Check controller
     if (file_exists('app/controllers/' . $url[0] . '.php')) {
       $this->controller = $url[0];
+      unset($url[0]);
+    } else {
+      $this->controller = 'err';
       unset($url[0]);
     }
 
@@ -43,8 +45,7 @@ class App
   }
 
   // Mengambil, filter, memecah url
-  public function parseURL()
-  {
+  public function parseURL() {
     if (isset($_GET['url'])) {
       $url = rtrim($_GET['url'], '/');
       $url = filter_var($url, FILTER_SANITIZE_URL);

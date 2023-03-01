@@ -1,3 +1,4 @@
-<link rel="stylesheet" type="text/css" href="<?= BOOTICON; ?>">
-<link rel="stylesheet" type="text/css" href="<?= FONTGMS; ?>">
-<link rel="stylesheet" type="text/css" href="<?= FONTGM; ?>">
+<link rel="stylesheet" type="text/css" href="<?= CDNCSSINDEX; ?>">
+<link rel="stylesheet" type="text/css" href="<?= CDNCSSINDEX0; ?>">
+<link rel="stylesheet" type="text/css" href="<?= CDNCSSINDEX1; ?>">
+<link rel="stylesheet" type="text/css" href="<?= CDNCSSINDEX2; ?>">

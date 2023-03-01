@@ -1,1 +1,1 @@
-<script type="text/javascript" src="<?= SIMPLELBJS; ?>"></script>
+<script type="text/javascript" src="<?= CDNJSINDEX; ?>"></script>

@@ -1,8 +1,8 @@
 <?php
 
-class CatatanKeuanganPemasukkanModel
+class CatatanKeuanganTabunganModel
 {
-  private $table = 'catatanPemasukkan';
+  private $table = 'catatanTabungan';
   private $db;
 
   public function __construct()
@@ -10,13 +10,13 @@ class CatatanKeuanganPemasukkanModel
     $this->db = new Database;
   }
 
-  public function insertPemasukkan($data)
+  public function insertTabungan($data)
   {
-    $query = "INSERT INTO " . $this->table . " (id, hari, tanggal, pemasukkan, nominal, status, username) VALUES(NULL, :hari, :tanggal, :pemasukkan, :nominal, :status, :username)";
+    $query = "INSERT INTO " . $this->table . " (id, hari, tanggal, tabungan, nominal, status, username) VALUES(NULL, :hari, :tanggal, :tabungan, :nominal, :status, :username)";
     $this->db->query($query);
     $this->db->bind('hari', $data['hari']);
     $this->db->bind('tanggal', $data['tanggal']);
-    $this->db->bind('pemasukkan', $data['pemasukkan']);
+    $this->db->bind('tabungan', $data['tabungan']);
     $this->db->bind('nominal', $data['nominal']);
     $this->db->bind('status', $data['status']);
     $this->db->bind('username', $data['username']);
@@ -24,13 +24,13 @@ class CatatanKeuanganPemasukkanModel
     return $this->db->rowCount();
   }
 
-  public function changePemasukkan($data)
+  public function changeTabungan($data)
   {
-    $query = "UPDATE " . $this->table . " SET hari = :hari, tanggal = :tanggal, pemasukkan = :pemasukkan, nominal = :nominal, status = :status WHERE id = :id AND username = :username";
+    $query = "UPDATE " . $this->table . " SET hari = :hari, tanggal = :tanggal, tabungan = :tabungan, nominal = :nominal, status = :status WHERE id = :id AND username = :username";
     $this->db->query($query);
     $this->db->bind('hari', $data['hari']);
     $this->db->bind('tanggal', $data['tanggal']);
-    $this->db->bind('pemasukkan', $data['pemasukkan']);
+    $this->db->bind('tabungan', $data['tabungan']);
     $this->db->bind('nominal', $data['nominal']);
     $this->db->bind('status', $data['status']);
     $this->db->bind('id', $data['id']);
@@ -39,7 +39,7 @@ class CatatanKeuanganPemasukkanModel
     return $this->db->rowCount();
   }
 
-  public function deletePemasukkan($data)
+  public function deleteTabungan($data)
   {
     $query = "DELETE FROM " . $this->table . " WHERE id = :id AND username = :username";
     $this->db->query($query);
@@ -49,16 +49,16 @@ class CatatanKeuanganPemasukkanModel
     return $this->db->rowCount();
   }
 
-  public function getAllPemasukkan($data)
+  public function getAllTabungan($data)
   {
     $searching = $data['searching'];
     $urutan = $data['urutan'];
-    $query = "SELECT * FROM " . $this->table . " WHERE username = :username AND hari LIKE :hari OR username = :username AND tanggal LIKE :tanggal OR username = :username AND pemasukkan LIKE :pemasukkan OR username = :username AND nominal LIKE :nominal $urutan";
+    $query = "SELECT * FROM " . $this->table . " WHERE username = :username AND hari LIKE :hari OR username = :username AND tanggal LIKE :tanggal OR username = :username AND tabungan LIKE :tabungan OR username = :username AND nominal LIKE :nominal $urutan";
     $this->db->query($query);
     $this->db->bind('username', $data['unameUser']);
     $this->db->bind('hari', "%$searching%");
     $this->db->bind('tanggal', "%$searching%");
-    $this->db->bind('pemasukkan', "%$searching%");
+    $this->db->bind('tabungan', "%$searching%");
     $this->db->bind('nominal', "%$searching%");
     $this->db->bind('status', "%$searching%");
     return $this->db->resultSet();

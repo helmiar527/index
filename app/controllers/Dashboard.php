@@ -15,7 +15,7 @@ class Dashboard extends controller
   {
     $data = $this->process('DashboardProcess')->index();
     $this->view('hcb/head', $data);
-    $this->view('hcb/index/dashboard/utility/css/css');
+    $this->view('hcb/index/dashboard/utility/css/cssindex');
     $this->view('hcb/center');
     $this->view('hcb/index/dashboard/body/bodyopen');
     $this->view('index/dashboard/navfood/nav', $data);
@@ -23,13 +23,13 @@ class Dashboard extends controller
     $this->view('index/dashboard/navfood/nav1', $data);
     $this->view('hcb/index/dashboard/body/bodyopen2');
     $this->view('hcb/index/dashboard/body/bodyopen3');
-    // $this->view('index/dashboard/index');
+    $this->view('index/dashboard/index');
     $this->view('index/dashboard/navfood/footer', $data);
     $this->view('hcb/index/dashboard/body/bodyclose3');
     $this->view('hcb/index/dashboard/body/bodyclose2');
     $this->view('hcb/index/dashboard/body/bodyclose1');
     $this->view('hcb/index/dashboard/body/bodyclose');
-    $this->view('hcb/index/dashboard/utility/js/js');
+    $this->view('hcb/index/dashboard/utility/js/jsindex');
     $this->view('index/all/coming');
     $this->view('hcb/body');
   }
@@ -38,7 +38,7 @@ class Dashboard extends controller
   {
     $data = $this->process('DashboardProcess')->catatanPemasukkan();
     $this->view('hcb/head', $data);
-    $this->view('hcb/index/dashboard/utility/css/css');
+    $this->view('hcb/index/dashboard/utility/css/cssmkeuangan');
     $this->view('hcb/center');
     $this->view('hcb/index/dashboard/body/bodyopen');
     $this->view('index/dashboard/navfood/nav', $data);
@@ -52,16 +52,59 @@ class Dashboard extends controller
     $this->view('hcb/index/dashboard/body/bodyclose2');
     $this->view('hcb/index/dashboard/body/bodyclose1');
     $this->view('hcb/index/dashboard/body/bodyclose');
-    $this->view('hcb/index/dashboard/utility/js/js');
+    $this->view('hcb/index/dashboard/utility/js/jsmkeuangan');
     $this->view('index/all/coming');
     $this->view('hcb/body');
+  }
+
+  public function tambahPemasukkan()
+  {
+    $_POST['username'] = $_SESSION['unameUser'];
+    if ($this->model('CatatanKeuanganPemasukkanModel')->insertPemasukkan($_POST) > 0) {
+      Flasher::setFlash('success', 'Pemasukkan ' . $_POST['pemasukkan'], ' Berhasil ditambahkan! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanPemasukkan');
+      exit;
+    } else {
+      Flasher::setFlash('danger', 'Pemasukkan ' . $_POST['pemasukkan'], ' Gagal ditambahkan! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanPemasukkan');
+      exit;
+    }
+  }
+
+  public function ubahPemasukkan()
+  {
+    $_POST['username'] = $_SESSION['unameUser'];
+    if ($this->model('CatatanKeuanganPemasukkanModel')->changePemasukkan($_POST) > 0) {
+      Flasher::setFlash('success', 'Pemasukkan ' . $_POST['pemasukkan'], ' Berhasil diubah! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanPemasukkan');
+      exit;
+    } else {
+      Flasher::setFlash('danger', 'Pemasukkan ' . $_POST['pemasukkan'], ' Gagal diubah! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanPemasukkan');
+      exit;
+    }
+  }
+
+  public function deletePemasukkan($id = '', $pemasukkan = '')
+  {
+    $data['id'] = $id;
+    $data['username'] = $_SESSION['unameUser'];
+    if ($this->model('CatatanKeuanganPemasukkanModel')->deletePemasukkan($data) > 0) {
+      Flasher::setFlash('success', 'Pemasukkan ' . $pemasukkan, ' Berhasil dihapus! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanPemasukkan');
+      exit;
+    } else {
+      Flasher::setFlash('danger', 'Pemasukkan ' . $pemasukkan, ' Gagal dihapus! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanPemasukkan');
+      exit;
+    }
   }
 
   public function catatanPengeluaran()
   {
     $data = $this->process('DashboardProcess')->catatanPengeluaran();
     $this->view('hcb/head', $data);
-    $this->view('hcb/index/dashboard/utility/css/css');
+    $this->view('hcb/index/dashboard/utility/css/cssmkeuangan');
     $this->view('hcb/center');
     $this->view('hcb/index/dashboard/body/bodyopen');
     $this->view('index/dashboard/navfood/nav', $data);
@@ -75,16 +118,59 @@ class Dashboard extends controller
     $this->view('hcb/index/dashboard/body/bodyclose2');
     $this->view('hcb/index/dashboard/body/bodyclose1');
     $this->view('hcb/index/dashboard/body/bodyclose');
-    $this->view('hcb/index/dashboard/utility/js/js');
+    $this->view('hcb/index/dashboard/utility/js/jsmkeuangan');
     $this->view('index/all/coming');
     $this->view('hcb/body');
+  }
+
+  public function tambahPengeluaran()
+  {
+    $_POST['username'] = $_SESSION['unameUser'];
+    if ($this->model('CatatanKeuanganPengeluaranModel')->insertPengeluaran($_POST) > 0) {
+      Flasher::setFlash('success', 'Pengeluaran ' . $_POST['pengeluaran'], ' Berhasil ditambahkan! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanPengeluaran');
+      exit;
+    } else {
+      Flasher::setFlash('danger', 'Pengeluaran ' . $_POST['pengeluaran'], ' Gagal ditambahkan! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanPengeluaran');
+      exit;
+    }
+  }
+
+  public function ubahPengeluaran()
+  {
+    $_POST['username'] = $_SESSION['unameUser'];
+    if ($this->model('CatatanKeuanganPengeluaranModel')->changePengeluaran($_POST) > 0) {
+      Flasher::setFlash('success', 'Pengeluaran ' . $_POST['pengeluaran'], ' Berhasil diubah! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanPengeluaran');
+      exit;
+    } else {
+      Flasher::setFlash('danger', 'Pengeluaran ' . $_POST['pengeluaran'], ' Gagal diubah! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanPengeluaran');
+      exit;
+    }
+  }
+
+  public function deletePengeluaran($id = '', $pemasukkan = '')
+  {
+    $data['id'] = $id;
+    $data['username'] = $_SESSION['unameUser'];
+    if ($this->model('CatatanKeuanganPengeluaranModel')->deletePengeluaran($data) > 0) {
+      Flasher::setFlash('success', 'Pengeluaran ' . $pemasukkan, ' Berhasil dihapus! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanPengeluaran');
+      exit;
+    } else {
+      Flasher::setFlash('danger', 'Pengeluaran ' . $pemasukkan, ' Gagal dihapus! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanPengeluaran');
+      exit;
+    }
   }
 
   public function catatanTabungan()
   {
     $data = $this->process('DashboardProcess')->catatanTabungan();
     $this->view('hcb/head', $data);
-    $this->view('hcb/index/dashboard/utility/css/css');
+    $this->view('hcb/index/dashboard/utility/css/cssmkeuangan');
     $this->view('hcb/center');
     $this->view('hcb/index/dashboard/body/bodyopen');
     $this->view('index/dashboard/navfood/nav', $data);
@@ -92,22 +178,65 @@ class Dashboard extends controller
     $this->view('index/dashboard/navfood/nav1', $data);
     $this->view('hcb/index/dashboard/body/bodyopen2');
     $this->view('hcb/index/dashboard/body/bodyopen3');
-    $this->view('index/dashboard/catatanTabungan');
+    $this->view('index/dashboard/catatanTabungan', $data);
     $this->view('index/dashboard/navfood/footer', $data);
     $this->view('hcb/index/dashboard/body/bodyclose3');
     $this->view('hcb/index/dashboard/body/bodyclose2');
     $this->view('hcb/index/dashboard/body/bodyclose1');
     $this->view('hcb/index/dashboard/body/bodyclose');
-    $this->view('hcb/index/dashboard/utility/js/js');
+    $this->view('hcb/index/dashboard/utility/js/jsmkeuangan');
     $this->view('index/all/coming');
     $this->view('hcb/body');
+  }
+
+  public function tambahTabungan()
+  {
+    $_POST['username'] = $_SESSION['unameUser'];
+    if ($this->model('CatatanKeuanganTabunganModel')->insertTabungan($_POST) > 0) {
+      Flasher::setFlash('success', 'Tabungan ' . $_POST['tabungan'], ' Berhasil ditambahkan! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanTabungan');
+      exit;
+    } else {
+      Flasher::setFlash('danger', 'Tabungan ' . $_POST['tabungan'], ' Gagal ditambahkan! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanTabungan');
+      exit;
+    }
+  }
+
+  public function ubahTabungan()
+  {
+    $_POST['username'] = $_SESSION['unameUser'];
+    if ($this->model('CatatanKeuanganTabunganModel')->changeTabungan($_POST) > 0) {
+      Flasher::setFlash('success', 'Tabungan ' . $_POST['tabungan'], ' Berhasil diubah! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanTabungan');
+      exit;
+    } else {
+      Flasher::setFlash('danger', 'Tabungan ' . $_POST['tabungan'], ' Gagal diubah! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanTabungan');
+      exit;
+    }
+  }
+
+  public function deleteTabungan($id = '', $tabungan = '')
+  {
+    $data['id'] = $id;
+    $data['username'] = $_SESSION['unameUser'];
+    if ($this->model('CatatanKeuanganTabunganModel')->deleteTabungan($data) > 0) {
+      Flasher::setFlash('success', 'Tabungan ' . $tabungan, ' Berhasil dihapus! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanTabungan');
+      exit;
+    } else {
+      Flasher::setFlash('danger', 'Tabungan ' . $tabungan, ' Gagal dihapus! ', '.');
+      header('Location: ' . BASEURL . '/dashboard/catatanTabungan');
+      exit;
+    }
   }
 
   public function settings()
   {
     $data = $this->process('DashboardProcess')->settings();
     $this->view('hcb/head', $data);
-    $this->view('hcb/index/dashboard/utility/css/css');
+    $this->view('hcb/index/dashboard/utility/css/csssettings');
     $this->view('hcb/center');
     $this->view('hcb/index/dashboard/body/bodyopen');
     $this->view('index/dashboard/navfood/navSetting', $data);
@@ -121,7 +250,7 @@ class Dashboard extends controller
     $this->view('hcb/index/dashboard/body/bodyclose2');
     $this->view('hcb/index/dashboard/body/bodyclose1');
     $this->view('hcb/index/dashboard/body/bodyclose');
-    $this->view('hcb/index/dashboard/utility/js/js');
+    $this->view('hcb/index/dashboard/utility/js/jssettings');
     $this->view('index/all/coming');
     $this->view('hcb/body');
   }
@@ -246,63 +375,5 @@ class Dashboard extends controller
 
   public function calculator()
   {
-  }
-
-  public function tambahPemasukkan()
-  {
-    $_POST['username'] = $_SESSION['unameUser'];
-    if ($this->model('CatatanKeuanganPemasukkanModel')->insertPemasukkan($_POST) > 0) {
-      Flasher::setFlash('success', 'Pemasukkan ' . $_POST['pemasukkan'], ' Berhasil ditambahkan! ', '.');
-      header('Location: ' . BASEURL . '/dashboard/catatanPemasukkan');
-      exit;
-    } else {
-      Flasher::setFlash('danger', 'Pemasukkan ' . $_POST['pemasukkan'], ' Gagal ditambahkan! ', '.');
-      header('Location: ' . BASEURL . '/dashboard/catatanPemasukkan');
-      exit;
-    }
-  }
-
-  public function deletePemasukkan($id = '', $pemasukkan = '')
-  {
-    $data['id'] = $id;
-    $data['username'] = $_SESSION['unameUser'];
-    if ($this->model('CatatanKeuanganPemasukkanModel')->deletePemasukkan($data) > 0) {
-      Flasher::setFlash('success', 'Pemasukkan ' . $pemasukkan, ' Berhasil dihapus! ', '.');
-      header('Location: ' . BASEURL . '/dashboard/catatanPemasukkan');
-      exit;
-    } else {
-      Flasher::setFlash('danger', 'Pemasukkan ' . $pemasukkan, ' Gagal dihapus! ', '.');
-      header('Location: ' . BASEURL . '/dashboard/catatanPemasukkan');
-      exit;
-    }
-  }
-
-  public function tambahPengeluaran()
-  {
-    $_POST['username'] = $_SESSION['unameUser'];
-    if ($this->model('CatatanKeuanganPengeluaranModel')->insertPengeluaran($_POST) > 0) {
-      Flasher::setFlash('success', 'Pengeluaran ' . $_POST['pengeluaran'], ' Berhasil ditambahkan! ', '.');
-      header('Location: ' . BASEURL . '/dashboard/catatanPengeluaran');
-      exit;
-    } else {
-      Flasher::setFlash('danger', 'Pengeluaran ' . $_POST['pengeluaran'], ' Gagal ditambahkan! ', '.');
-      header('Location: ' . BASEURL . '/dashboard/catatanPengeluaran');
-      exit;
-    }
-  }
-
-  public function deletePengeluaran($id = '', $pemasukkan = '')
-  {
-    $data['id'] = $id;
-    $data['username'] = $_SESSION['unameUser'];
-    if ($this->model('CatatanKeuanganPengeluaranModel')->deletePengeluaran($data) > 0) {
-      Flasher::setFlash('success', 'Pengeluaran ' . $pemasukkan, ' Berhasil dihapus! ', '.');
-      header('Location: ' . BASEURL . '/dashboard/catatanPengeluaran');
-      exit;
-    } else {
-      Flasher::setFlash('danger', 'Pengeluaran ' . $pemasukkan, ' Gagal dihapus! ', '.');
-      header('Location: ' . BASEURL . '/dashboard/catatanPengeluaran');
-      exit;
-    }
   }
 }
