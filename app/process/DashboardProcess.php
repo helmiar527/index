@@ -18,6 +18,59 @@ class DashboardProcess extends Controller
         } else {
             $data['profile'] = ROOTURL . '/datasource/profile/' . $row['fileName'];
         }
+
+        // No Repeat
+        $_POST['unameUser'] = $_SESSION['unameUser'];
+
+        // Pemasukkan
+        // Total bulan ini
+        $_POST['tanggal'] = date('Y-m');
+        $row1a = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkanIndex($_POST);
+        if ($row1a == NULL) {
+            $data['pemasukkan'] = 'Kosong';
+        } else {
+            foreach ($row1a as $row1a) {
+                $pemasukkan1a[] = $row1a["nominal"];
+            }
+            $kata1a = implode('+', $pemasukkan1a);
+            $arr1a = explode("+", $kata1a);
+            $total1a = 0;
+            foreach ($arr1a as $val1a) {
+                $total1a += intval($val1a);
+            }
+            $data['pemasukkan'] = number_format($total1a, 0, ',', '.');
+        }
+        // Total bulan kemarin
+        $_POST['tanggal'] = date("Y-m", strtotime("-1 month", strtotime(date('Y-m'))));
+        $row1b = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkanIndex($_POST);
+        if ($row1b == NULL) {
+            $data['pemasukkan'] = 'Kosong';
+        } else {
+            foreach ($row1b as $row1b) {
+                $pemasukkan1b[] = $row1b["nominal"];
+            }
+            $kata1b = implode('+', $pemasukkan1b);
+            $arr1b = explode("+", $kata1b);
+            $total1b = 0;
+            foreach ($arr1b as $val1b) {
+                $total1b += intval($val1b);
+            }
+        }
+        // Persentase
+        $data['persentase1a'] = (($total1a - $total1b) / $total1b) * 100;
+
+        // Pengeluaran
+        // $row2 = $this->model('CatatanKeuanganPengeluaranModel')->getAllPengeluaranIndex($_POST);
+        // foreach ($row2 as $row2a) {
+        //     $pengeluaran[] = $row2a["nominal"];
+        // }
+        // $kata = implode('+', $pengeluaran);
+        // $arr = explode("+", $kata);
+        // $total = 0;
+        // foreach ($arr as $val) {
+        //     $total += intval($val);
+        // }
+        // $data['pengeluaran'] = number_format($total, 0, ',', '.');
         return $data;
     }
 

@@ -167,6 +167,10 @@
                                                                         <input type="text" class="form-control" value="<?= $pengeluaran['pengeluaran']; ?>" id="pengeluaran" name="pengeluaran" placeholder="Pengeluaran" required>
                                                                     </div>
                                                                     <div class="form-group">
+                                                                        <label for="pengeluaran">Jumlah</label>
+                                                                        <input type="text" class="form-control" value="<?= $pengeluaran['jumlah']; ?>" id="jumlah" name="jumlah" placeholder="Jumlah" required>
+                                                                    </div>
+                                                                    <div class="form-group">
                                                                         <label for="nominal">Nominal</label>
                                                                         <input type="text" class="form-control" value="<?= $pengeluaran['nominal']; ?>" id="nominal" name="nominal" placeholder="Nominal" required>
                                                                     </div>
@@ -267,11 +271,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="pengeluaran">Pengeluaran</label>
-                                    <input type="text" class="form-control" id="pengeluaran" name="pengeluaran" placeholder="pengeluaran" required>
+                                    <input type="text" class="form-control" id="pengeluaran" name="pengeluaran" placeholder="Pengeluaran" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="jumlah">Jumlah</label>
-                                    <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="jumlah" required>
+                                    <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="Jumlah" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nominal">Nominal</label>

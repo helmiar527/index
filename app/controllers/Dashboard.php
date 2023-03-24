@@ -23,7 +23,7 @@ class Dashboard extends controller
     $this->view('index/dashboard/navfood/nav1', $data);
     $this->view('hcb/index/dashboard/body/bodyopen2');
     $this->view('hcb/index/dashboard/body/bodyopen3');
-    $this->view('index/dashboard/index');
+    $this->view('index/dashboard/index', $data);
     $this->view('index/dashboard/navfood/footer', $data);
     $this->view('hcb/index/dashboard/body/bodyclose3');
     $this->view('hcb/index/dashboard/body/bodyclose2');
@@ -32,6 +32,8 @@ class Dashboard extends controller
     $this->view('hcb/index/dashboard/utility/js/jsindex');
     $this->view('index/all/coming');
     $this->view('hcb/body');
+    var_dump($data['persentase1a']);
+    // echo (date('m-Y'));
   }
 
   public function catatanPemasukkan()

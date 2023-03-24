@@ -25,6 +25,16 @@ class CatatanKeuanganPengeluaranModel
         return $this->db->resultSet();
     }
 
+    public function getAllPengeluaranIndex($data)
+    {
+        $tanggal = $data['tanggal'];
+        $query = "SELECT * FROM " . $this->table . " WHERE username = :username AND tanggal LIKE :tanggal";
+        $this->db->query($query);
+        $this->db->bind('username', $data['unameUser']);
+        $this->db->bind('tanggal', "%$tanggal%");
+        return $this->db->resultSet();
+    }
+
     public function insertPengeluaran($data)
     {
         $query = "INSERT INTO " . $this->table . " (id, hari, tanggal, pengeluaran, jumlah, nominal, status, username) VALUES(NULL, :hari, :tanggal, :pengeluaran, :jumlah, :nominal, :status, :username)";
