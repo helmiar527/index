@@ -57,7 +57,8 @@ class DashboardProcess extends Controller
             }
         }
         // Persentase
-        $data['persentase1a'] = (($total1a - $total1b) / $total1b) * 100;
+        $persentase = (($total1a - $total1b) / $total1b) * 100;
+        $data['persentase1a'] = substr($persentase, 0, 5);
 
         // Pengeluaran
         // $row2 = $this->model('CatatanKeuanganPengeluaranModel')->getAllPengeluaranIndex($_POST);

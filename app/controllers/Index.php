@@ -39,13 +39,16 @@ class Index extends Controller
 
   public function incontact()
   {
-    if ($this->model('ContactModel')->insertContact($_POST) > 0) {
-      Flasher::setFlash('success', 'Terima kasih ', 'Pesan berhasil terkirim!', 'Semoga harimu menyenangkan.');
-      header('Location: ' . BASEURL . '/#contact');
-      exit;
+    if ($_POST == !NULL) {
+      if ($this->model('ContactModel')->insertContact($_POST) > 0) {
+        header('HTTP/1.1 200');
+        exit;
+      } else {
+        header('HTTP/1.1 500');
+        exit;
+      }
     } else {
-      Flasher::setFlash('danger', 'Mohon maaf ', 'Pesan gagal terkirim!', 'Semoga harimu menyenangkan.');
-      header('Location: ' . BASEURL . '/#contact');
+      header('HTTP/1.1 400');
       exit;
     }
   }
