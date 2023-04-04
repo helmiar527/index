@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
@@ -18,8 +18,8 @@
         <h6 class="text-muted font-weight-normal">Pemasukkan bulan ini</h6>
       </div>
     </div>
-  </div>
-  <!-- <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
+  </div> -->
+<!-- <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
         <div class="row">
@@ -39,7 +39,7 @@
       </div>
     </div>
   </div> -->
-  <!-- <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
+<!-- <div class="col-xl-4 col-sm-6 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
         <div class="row">
@@ -59,7 +59,7 @@
       </div>
     </div>
   </div> -->
-  <!-- <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+<!-- <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
         <div class="row">

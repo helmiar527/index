@@ -55,7 +55,7 @@ class CatatanKeuanganTabunganModel
     $urutan = $data['urutan'];
     $query = "SELECT * FROM " . $this->table . " WHERE username = :username AND hari LIKE :hari OR username = :username AND tanggal LIKE :tanggal OR username = :username AND tabungan LIKE :tabungan OR username = :username AND nominal LIKE :nominal $urutan";
     $this->db->query($query);
-    $this->db->bind('username', $data['unameUser']);
+    $this->db->bind('username', $data['username']);
     $this->db->bind('hari', "%$searching%");
     $this->db->bind('tanggal', "%$searching%");
     $this->db->bind('tabungan', "%$searching%");

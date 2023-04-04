@@ -5,6 +5,10 @@ class Register extends Controller
   public function __construct()
   {
     if (!isset($_SESSION['status']) || $_SESSION['status'] !== "logged") {
+      if (isset($_COOKIE['user-login'])) {
+        header('Location: ' . BASEURL . '/login');
+        exit;
+      }
     } else {
       header('Location: ' . BASEURL . '/dashboard');
       exit;
@@ -19,45 +23,56 @@ class Register extends Controller
     $this->view('hcb/center');
     $this->view('index/login/register');
     $this->view('index/index/navfood/footer', $data);
-    $this->view('hcb/index/login/utility/js/js');
+    $this->view('hcb/index/login/utility/js/js-register');
     $this->view('index/all/coming');
     $this->view('hcb/body');
   }
 
   public function register()
   {
-    if ($_POST['pass'] == $_POST['repass']) {
-      $row = $this->model('AccModel')->cekAcc($_POST);
-      if ($row == false) {
-        $_POST['file'] = '';
-        $_POST['role'] = 'User';
-        $_POST['isChange'] = '0';
-        if ($this->model('AccModel')->addAccUser($_POST) > 0) {
-          Flasher::setFlash('success', 'Akun ', 'Berhasil didaftarkan! ', 'Silahkan <a href="' . BASEURL . '/login">login</a>.');
-          header('Location: ' . BASEURL . '/register');
-          exit;
-        } else {
-          Flasher::setFlash('danger', 'Akun ', 'Gagal didaftarkan! ', 'Silahkan coba lagi nanti.');
-          header('Location: ' . BASEURL . '/register');
-          exit;
-        }
+    if ($_POST == !NULL) {
+      if (empty($_POST['name']) || empty($_POST['username']) || empty($_POST['email']) || empty($_POST['password'])) {
+        Flasher::setFlash('warning', 'Data yang dikirimkan ', 'Tidak lengkap/terjadi kesalahan di user! ', 'silahkan isi data dengan benar.');
+        http_response_code(400);
+        echo (Flasher::flash());
       } else {
-        if ($row['unameUser'] == $_POST['uname']) {
-          Flasher::setFlash('danger', 'Akun ', 'Gagal didaftarkan! ', 'Username yang anda masukkan tidak tersedia/pernah digunakan.');
-          header('Location: ' . BASEURL . '/register');
-          exit;
+        $row = $this->model('AccModel')->cekAcc($_POST);
+        if ($row == false) {
+          $_POST['file'] = '';
+          $_POST['role'] = 'User';
+          $_POST['isChange'] = '0';
+          if ($this->model('AccModel')->addAccUser($_POST) > 0) {
+            Flasher::setFlash('success', 'Akun ', 'berhasil didaftarkan! ', 'silahkan <a href="' . BASEURL . '/login">login</a>.');
+            http_response_code(200);
+            echo (Flasher::flash());
+          } else {
+            Flasher::setFlash('danger', 'Akun ', 'gagal didaftarkan! ', 'silahkan coba lagi nanti.');
+            http_response_code(503);
+            echo (Flasher::flash());
+          }
         } else {
-          if ($row['emailUser'] == $_POST['email']) {
-            Flasher::setFlash('danger', 'Akun ', 'Gagal didaftarkan! ', 'Email yang anda masukkan tidak tersedia/pernah digunakan.');
-            header('Location: ' . BASEURL . '/register');
-            exit;
+          if ($row['unameUser'] == $_POST['uname'] || $row['emailUser'] == $_POST['email']) {
+            Flasher::setFlash('warning', 'Username/Email ', 'Tidak tersedia/pernah digunakan! ', 'gunakan Username/Email yang lain.');
+            http_response_code(402);
+            echo (Flasher::flash());
           }
         }
       }
     } else {
-      Flasher::setFlash('warning', 'Retype password ', 'Tidak sama! ', 'Silahkan coba lagi.');
-      header('location: ' . BASEURL . '/register');
-      exit;
+      Flasher::setFlash('warning', 'Data yang dikirimkan ', 'Tidak lengkap/terjadi kesalahan di user! ', 'silahkan isi data dengan benar.');
+      http_response_code(400);
+      echo (Flasher::flash());
     }
+  }
+
+  public function alertPass()
+  {
+    Flasher::setFlash('warning', 'Password dan RetypePassword ', 'Tidak sama! ', 'silahkan cek dengan benar.');
+    echo (Flasher::flash());
+  }
+
+  public function flasherAlert()
+  {
+    echo (Flasher::flash());
   }
 }

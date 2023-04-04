@@ -12,7 +12,7 @@ img.forEach((img, i) => {
   img.dataset.aosDuration = 1000;
 });
 AOS.init({
-  once: false,
+  once: true,
   duration: 1500,
 });
 

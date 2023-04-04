@@ -53,10 +53,12 @@
           <tbody>
             <?php $i = 1; ?>
             <?php foreach ($data['pemasukkan'] as $pemasukkan) : ?>
-              <?php if ($pemasukkan['status'] == 'confirm') {
+              <?php if ($pemasukkan['status'] == true) {
                 $color = 'success';
+                $status = 'confirm';
               } else {
                 $color = 'warning';
+                $status = 'unconfirm';
               } ?>
               <tr>
                 <td><?= $i; ?></td>
@@ -65,7 +67,7 @@
                 <td><?= $pemasukkan['tanggal']; ?></td>
                 <td><?= $pemasukkan['pemasukkan']; ?></td>
                 <td><?= $pemasukkan['nominal']; ?></td>
-                <td><label class="badge badge-<?= $color; ?>"><?= $pemasukkan['status']; ?></label></td>
+                <td><label class="badge badge-<?= $color; ?>"><?= $status; ?></label></td>
                 <td class="d-flex justify-content-center">
                   <button type="button" class="btn btn-info btn-icon-text" data-bs-toggle="modal" data-bs-target="#edit<?= $pemasukkan['id']; ?>Modal"><i class="mdi mdi-border-color btn-icon-prepend"></i></button>
                   <div class="modal fade text-light" id="edit<?= $pemasukkan['id']; ?>Modal" tabindex="-1" aria-labelledby="edit<?= $pemasukkan['id']; ?>ModalLabel" aria-hidden="true">
@@ -170,16 +172,16 @@
                                     <select class="form-control" id="status" name="status" required>
                                       <?php
                                       $data['status'] = $pemasukkan['status'];
-                                      if ($data['status'] == 'confirm') {
+                                      if ($data['status'] == true) {
                                         $data['sStatus1'] = 'selected';
                                         $data['sStatus2'] = '';
-                                      } elseif ($data['status'] == 'unconfirm') {
+                                      } elseif ($data['status'] == false) {
                                         $data['sStatus2'] = 'selected';
                                         $data['sStatus1'] = '';
                                       }
                                       ?>
-                                      <option value="unconfirm" <?= $data['sStatus2'] ?>>Unconfirm</option>
-                                      <option value="confirm" <?= $data['sStatus1'] ?>>Confirm</option>
+                                      <option value="0" <?= $data['sStatus2'] ?>>Unconfirm</option>
+                                      <option value="1" <?= $data['sStatus1'] ?>>Confirm</option>
                                     </select>
                                     <p class="mt-3">
                                       Status <span class="text-danger">Unconfirm</span> adalah pemasukkan yang nominalnya</p>
@@ -272,8 +274,8 @@
                   <label for="status">Status</label>
                   <select class="form-control" id="status" name="status" required>
                     <option value="" selected disabled>Pilih...</option>
-                    <option value="unconfirm">Unconfirm</option>
-                    <option value="confirm">Confirm</option>
+                    <option value="0">Unconfirm</option>
+                    <option value="1">Confirm</option>
                   </select>
                   <p class="mt-3">
                     Status <span class="text-danger">Unconfirm</span> adalah pemasukkan yang nominalnya belum masuk tetapi di catat dulu.

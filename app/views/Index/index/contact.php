@@ -13,15 +13,9 @@
       <div class="col-lg-6">
         <div>
         </div>
-        <div class="alert alert-success alert-dismissible fade show d-none" role="alert" data-aos="fade-in">
-          <strong>Terima Kasih!</strong> Pesan anda berhasil dikirim.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="alert-push">
         </div>
-        <div class="alert alert-danger alert-dismissible fade show d-none" role="alert" data-aos="fade-in">
-          <strong>Maaf!</strong> Pesan anda gagal dikirim.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        <form class="needs-validation" name="submit-to-db" novalidate>
+        <form class="needs-validation" name="sendtoadmin" novalidate>
           <input type="hidden" id="time" name="time" value="<?= date("H:i:s"); ?>" required>
           <input type="hidden" id="date" name="date" value="<?= date("Y-m-d"); ?>" required>
           <div class="form-floating mb-3" data-aos="fade-right">

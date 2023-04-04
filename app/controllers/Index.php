@@ -37,19 +37,28 @@ class Index extends Controller
     $this->view('headcenterbody/body');
   }
 
-  public function incontact()
+  public function inContact()
   {
     if ($_POST == !NULL) {
-      if ($this->model('ContactModel')->insertContact($_POST) > 0) {
-        header('HTTP/1.1 200');
-        exit;
+      if (empty($_POST['time']) || empty($_POST['date']) || empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message'])) {
+        Flasher::setFlash('warning', 'Data yang dikirm ', 'tidak lengkap/tidak sesuai! ', 'silahkan masukkan data dengan benar.');
+        http_response_code(400);
+        echo (Flasher::flash());
       } else {
-        header('HTTP/1.1 500');
-        exit;
+        if ($this->model('ContactModel')->insertContact($_POST) > 0) {
+          Flasher::setFlash('success', 'Pesan ', 'berhasil terkirim! ', 'Terima kasih.');
+          http_response_code(200);
+          echo (Flasher::flash());
+        } else {
+          Flasher::setFlash('danger', 'Pesan ', 'gagal terkirim! ', 'Maaf, silahkan coba lagi beberapa saat.');
+          http_response_code(503);
+          echo (Flasher::flash());
+        }
       }
     } else {
-      header('HTTP/1.1 400');
-      exit;
+      Flasher::setFlash('warning', 'Data yang dikirm ', 'tidak lengkap/tidak sesuai! ', 'silahkan masukkan data dengan benar.');
+      http_response_code(400);
+      echo (Flasher::flash());
     }
   }
 }

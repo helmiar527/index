@@ -16,7 +16,7 @@ class CatatanKeuanganPengeluaranModel
         $urutan = $data['urutan'];
         $query = "SELECT * FROM " . $this->table . " WHERE username = :username AND hari LIKE :hari OR username = :username AND tanggal LIKE :tanggal OR username = :username AND pengeluaran LIKE :pengeluaran OR username = :username AND nominal LIKE :nominal $urutan";
         $this->db->query($query);
-        $this->db->bind('username', $data['unameUser']);
+        $this->db->bind('username', $data['username']);
         $this->db->bind('hari', "%$searching%");
         $this->db->bind('tanggal', "%$searching%");
         $this->db->bind('pengeluaran', "%$searching%");
@@ -30,7 +30,7 @@ class CatatanKeuanganPengeluaranModel
         $tanggal = $data['tanggal'];
         $query = "SELECT * FROM " . $this->table . " WHERE username = :username AND tanggal LIKE :tanggal";
         $this->db->query($query);
-        $this->db->bind('username', $data['unameUser']);
+        $this->db->bind('username', $data['username']);
         $this->db->bind('tanggal', "%$tanggal%");
         return $this->db->resultSet();
     }

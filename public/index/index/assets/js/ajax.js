@@ -1,37 +1,38 @@
-const formss = document.querySelector(".needs-validation");
-const form = document.forms["submit-to-db"];
-const scriptURL =
-  window.location.protocol +
-  "//" +
-  window.location.hostname +
-  window.location.pathname +
-  "index/incontact";
-const btnLoad = document.querySelector("#loadButton");
-const btnSend = document.querySelector("#submitButton");
-const alertS = document.querySelector(".alert-success");
-const alertD = document.querySelector(".alert-danger");
-formss.addEventListener("submit", (e) => {
-  if (formss.checkValidity()) {
+$(function () {
+  const form = document.forms["sendtoadmin"];
+  const scriptURL =
+    window.location.origin + window.location.pathname + "index/incontact";
+  const btnLoad = $("#loadButton");
+  const btnSend = $("#submitButton");
+  $(".needs-validation").submit((e) => {
     e.preventDefault();
     e.stopPropagation();
-    btnSend.classList.toggle("d-none");
-    btnLoad.classList.toggle("d-none");
-    fetch(scriptURL, {
-      method: "POST",
-      body: new FormData(form),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          alertD.classList.toggle("d-none");
-        }
-        btnSend.classList.toggle("d-none");
-        btnLoad.classList.toggle("d-none");
-        alertS.classList.toggle("d-none");
-        form.reset();
-        formss.classList.remove("was-validated");
+    if (form.checkValidity()) {
+      btnSend.toggleClass("d-none");
+      btnLoad.toggleClass("d-none");
+      $.ajax({
+        url: scriptURL,
+        type: "POST",
+        data: new FormData(form),
+        processData: false,
+        contentType: false,
       })
-      .catch((error) => {
-        alertD.classList.toggle("d-none");
-      });
-  }
+        .done((response) => {
+          $(".alert-push").html(response);
+          form.reset();
+          form.classList.remove("was-validated");
+          btnLoad.toggleClass("d-none");
+          btnSend.toggleClass("d-none");
+        })
+        .fail((error) => {
+          if (error.status === 400) {
+            $(".alert-push").html(error.responseText);
+          } else if (error.status == 503) {
+            $(".alert-push").html(error.responseText);
+          }
+          btnSend.toggleClass("d-none");
+          btnLoad.toggleClass("d-none");
+        });
+    }
+  });
 });

@@ -12,41 +12,41 @@ class AccModel
 
   public function cekAcc($data)
   {
-    $query = "SELECT * FROM " . $this->table . " WHERE unameUser = :username OR emailUser = :email";
+    $query = "SELECT * FROM " . $this->table . " WHERE username = :username OR email = :email";
     $this->db->query($query);
-    $this->db->bind('username', $data['uname']);
+    $this->db->bind('username', $data['username']);
     $this->db->bind('email', $data['email']);
     return $this->db->single();
   }
 
   public function updateAcc($data)
   {
-    $query = "SELECT * FROM " . $this->table . " WHERE unameUser = :username OR emailUser = :email";
+    $query = "SELECT * FROM " . $this->table . " WHERE username = :username OR email = :email";
     $this->db->query($query);
-    $this->db->bind('username', $data['unameUser']);
-    $this->db->bind('email', $data['emailUser']);
+    $this->db->bind('username', $data['username']);
+    $this->db->bind('email', $data['email']);
     return $this->db->single();
   }
 
   public function cekAccLog($data)
   {
-    $query = "SELECT * FROM " . $this->table . " WHERE unameUser = :username OR emailUser = :email";
+    $query = "SELECT * FROM " . $this->table . " WHERE username = :username OR email = :email";
     $this->db->query($query);
-    $this->db->bind('username', $data['uname1']);
-    $this->db->bind('email', $data['uname2']);
+    $this->db->bind('username', $data['username']);
+    $this->db->bind('email', $data['username']);
     return $this->db->single();
   }
 
   public function addAccUser($data)
   {
-    $query = "INSERT INTO " . $this->table . " (idAccUser, nameUser, unameUser, emailUser, numberUser, passUser, roleUser, fileName, fileSize, emailVeryUser, changeEmailUser, numberVeryUser) VALUES(NULL, :name, :uname, :email, :number, :pass, :role, :filen, :files, :change, :change, :change)";
-    $pass = password_hash($data['pass'] . SALTPASS, PASSWORD_DEFAULT);
+    $query = "INSERT INTO " . $this->table . " (id, name, username, email, number, password, role, fileName, fileSize, emailVery, changeEmail, numberVery) VALUES(NULL, :name, :username, :email, :number, :password, :role, :filen, :files, :change, :change, :change)";
+    $pass = password_hash($data['password'] . SALTPASS, PASSWORD_DEFAULT);
     $this->db->query($query);
     $this->db->bind('name', $data['name']);
-    $this->db->bind('uname', $data['uname']);
+    $this->db->bind('username', $data['username']);
     $this->db->bind('email', $data['email']);
     $this->db->bind('number', $data['file']);
-    $this->db->bind('pass', $pass);
+    $this->db->bind('password', $pass);
     $this->db->bind('role', $data['role']);
     $this->db->bind('filen', $data['file']);
     $this->db->bind('files', $data['file']);

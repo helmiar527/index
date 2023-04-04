@@ -12,19 +12,30 @@ class CookieModel
 
     public function addCookie($data)
     {
-        $query = "INSERT INTO " . $this->table . " (idCookie, unameCookie, cookie) VALUES(NULL, :uname, :cookie)";
+        $query = "INSERT INTO " . $this->table . " (id, nameCookie, cookie, device, username) VALUES(NULL, :nameCookie, :cookie, :device, :username)";
         $this->db->query($query);
-        $this->db->bind('uname', $data['nameuser']);
-        $this->db->bind('cookie', md5(SALT));
+        $this->db->bind('nameCookie', $data['nameCookie']);
+        $this->db->bind('cookie', $data['cookie']);
+        $this->db->bind('device', $data['device']);
+        $this->db->bind('username', $data['username']);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function delCookie($data)
+    {
+        $query = "DELETE FROM " . $this->table . " WHERE username = :username";
+        $this->db->query($query);
+        $this->db->bind('username', $data['username']);
         $this->db->execute();
         return $this->db->rowCount();
     }
 
     public function cekCookie($data)
     {
-        $query = "SELECT * FROM " . $this->table . " WHERE unameCookie = :username";
+        $query = "SELECT * FROM " . $this->table . " WHERE device = :device";
         $this->db->query($query);
-        $this->db->bind('username', $data['nameuser']);
+        $this->db->bind('device', $data['device']);
         return $this->db->single();
     }
 }

@@ -5,5 +5,7 @@
 <script type="text/javascript" src="<?= JSCORONA3; ?>"></script>
 <script type="text/javascript" src="<?= JSCORONA4; ?>"></script>
 <script type="text/javascript" src="<?= JSCORONA5; ?>"></script>
-<script type="text/javascript" src="<?= JSFORMVALIDATION; ?>"></script>
-<script type="text/javascript" src="<?= JSPASSVALIDATION; ?>"></script>
+<script type="text/javascript" src="<?= JSVALIDATIONREGISTER; ?>"></script>
+<script type="text/javascript" src="<?= JSREGISTERAJAX; ?>"></script>
+<script type="text/javascript" src="<?= CDNJSGSAP; ?>"></script>
+<script type="text/javascript" src="<?= JSANIMATEDREGISTER; ?>"></script>

@@ -8,10 +8,10 @@ class DashboardProcess extends Controller
         $data['title'] = 'Dashboard';
         $data['years1'] = '2022';
         $data['years'] = date('Y');
-        $data['nama'] = $row['nameUser'];
-        $data['username'] = $row['unameUser'];
-        $data['email'] = $row['emailUser'];
-        $data['rank'] = $row['roleUser'];
+        $data['nama'] = $row['name'];
+        $data['username'] = $row['username'];
+        $data['email'] = $row['email'];
+        $data['rank'] = $row['role'];
 
         if ($row['fileName'] == NULL) {
             $data['profile'] = ROOTURL . '/datasource/profile/no-profile.png';
@@ -20,7 +20,7 @@ class DashboardProcess extends Controller
         }
 
         // No Repeat
-        $_POST['unameUser'] = $_SESSION['unameUser'];
+        $_POST['username'] = $_SESSION['username'];
 
         // Pemasukkan
         // Total bulan ini
@@ -57,8 +57,8 @@ class DashboardProcess extends Controller
             }
         }
         // Persentase
-        $persentase = (($total1a - $total1b) / $total1b) * 100;
-        $data['persentase1a'] = substr($persentase, 0, 5);
+        // $persentase = (($total1a - $total1b) / $total1b) * 100;
+        // $data['persentase1a'] = substr($persentase, 0, 5);
 
         // Pengeluaran
         // $row2 = $this->model('CatatanKeuanganPengeluaranModel')->getAllPengeluaranIndex($_POST);
@@ -110,10 +110,10 @@ class DashboardProcess extends Controller
         }
         $data['years1'] = '2022';
         $data['years'] = date('Y');
-        $data['nama'] = $row['nameUser'];
-        $data['username'] = $row['unameUser'];
-        $data['email'] = $row['emailUser'];
-        $data['rank'] = $row['roleUser'];
+        $data['nama'] = $row['name'];
+        $data['username'] = $row['username'];
+        $data['email'] = $row['email'];
+        $data['rank'] = $row['role'];
         if ($row['fileName'] == NULL) {
             $data['profile'] = ROOTURL . '/datasource/profile/no-profile.png';
         } else {
@@ -132,7 +132,7 @@ class DashboardProcess extends Controller
         } elseif ($_POST['urutan'] == 'suncon') {
             $_POST['urutan'] = 'ORDER BY status DESC';
         }
-        $_POST['unameUser'] = $_SESSION['unameUser'];
+        $_POST['username'] = $_SESSION['username'];
         $row1 = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkan($_POST);
         $data['pemasukkan'] = $row1;
         return $data;
@@ -173,10 +173,10 @@ class DashboardProcess extends Controller
         }
         $data['years1'] = '2022';
         $data['years'] = date('Y');
-        $data['nama'] = $row['nameUser'];
-        $data['username'] = $row['unameUser'];
-        $data['email'] = $row['emailUser'];
-        $data['rank'] = $row['roleUser'];
+        $data['nama'] = $row['name'];
+        $data['username'] = $row['username'];
+        $data['email'] = $row['email'];
+        $data['rank'] = $row['role'];
         if ($row['fileName'] == NULL) {
             $data['profile'] = ROOTURL . '/datasource/profile/no-profile.png';
         } else {
@@ -195,7 +195,7 @@ class DashboardProcess extends Controller
         } elseif ($_POST['urutan'] == 'suncon') {
             $_POST['urutan'] = 'ORDER BY status DESC';
         }
-        $_POST['unameUser'] = $_SESSION['unameUser'];
+        $_POST['username'] = $_SESSION['username'];
         $row1 = $this->model('CatatanKeuanganPengeluaranModel')->getAllPengeluaran($_POST);
         $data['pengeluaran'] = $row1;
         return $data;
@@ -203,21 +203,6 @@ class DashboardProcess extends Controller
 
     public function catatanTabungan()
     {
-        // $row = $this->model('AccModel')->updateAcc($_SESSION);
-        // $data['title'] = 'Catatan Tabungan';
-        // $data['years1'] = '2022';
-        // $data['years'] = date('Y');
-        // $data['nama'] = $row['nameUser'];
-        // $data['username'] = $row['unameUser'];
-        // $data['email'] = $row['emailUser'];
-        // $data['rank'] = $row['roleUser'];
-
-        // if ($row['fileName'] == NULL) {
-        //     $data['profile'] = ROOTURL . '/datasource/profile/no-profile.png';
-        // } else {
-        //     $data['profile'] = ROOTURL . '/datasource/profile/' . $row['fileName'];
-        // }
-        // return $data;
         $row = $this->model('AccModel')->updateAcc($_SESSION);
         if ($_POST == NULL) {
             $data['title'] = 'Catatan Tabungan';
@@ -251,10 +236,10 @@ class DashboardProcess extends Controller
         }
         $data['years1'] = '2022';
         $data['years'] = date('Y');
-        $data['nama'] = $row['nameUser'];
-        $data['username'] = $row['unameUser'];
-        $data['email'] = $row['emailUser'];
-        $data['rank'] = $row['roleUser'];
+        $data['nama'] = $row['name'];
+        $data['username'] = $row['username'];
+        $data['email'] = $row['email'];
+        $data['rank'] = $row['role'];
         if ($row['fileName'] == NULL) {
             $data['profile'] = ROOTURL . '/datasource/profile/no-profile.png';
         } else {
@@ -273,7 +258,7 @@ class DashboardProcess extends Controller
         } elseif ($_POST['urutan'] == 'suncon') {
             $_POST['urutan'] = 'ORDER BY status DESC';
         }
-        $_POST['unameUser'] = $_SESSION['unameUser'];
+        $_POST['username'] = $_SESSION['username'];
         $row1 = $this->model('CatatanKeuanganTabunganModel')->getAllTabungan($_POST);
         $data['tabungan'] = $row1;
         return $data;
@@ -285,13 +270,13 @@ class DashboardProcess extends Controller
         $data['title'] = 'Settings';
         $data['years1'] = '2022';
         $data['years'] = date('Y');
-        $data['nama'] = $row['nameUser'];
-        $data['username'] = $row['unameUser'];
-        $data['email'] = $row['emailUser'];
-        $data['number'] = $row['numberUser'];
+        $data['nama'] = $row['name'];
+        $data['username'] = $row['username'];
+        $data['email'] = $row['email'];
+        $data['number'] = $row['number'];
         $data['readonly'] = '';
         $data['text-dark'] = '';
-        $data['role'] = $row['roleUser'];
+        $data['role'] = $row['role'];
         $data['telfone'] = '';
 
         if ($row['fileName'] == NULL) {
@@ -300,7 +285,7 @@ class DashboardProcess extends Controller
             $data['profile'] = ROOTURL . '/datasource/profile/' . $row['fileName'];
         }
 
-        if ($row['emailVeryUser'] == 1) {
+        if ($row['emailVery'] == 1) {
             $data['color'] = 'btn-success';
             $data['icon'] = '<i class="mdi mdi-check btn-icon-append"></i>';
         } else {
@@ -308,7 +293,7 @@ class DashboardProcess extends Controller
             $data['icon'] = '';
         }
 
-        if ($row['numberVeryUser'] == 1) {
+        if ($row['numberVery'] == 1) {
             $data['color'] = 'btn-success';
             $data['icon'] = '<i class="mdi mdi-check btn-icon-append"></i>';
         } else {
@@ -316,7 +301,7 @@ class DashboardProcess extends Controller
             $data['icon'] = '';
         }
 
-        if ($row['changeEmailUser'] == 1) {
+        if ($row['changeEmail'] == 1) {
             $data['readonly'] = 'readonly';
             $data['text-dark'] = 'text-dark';
         }

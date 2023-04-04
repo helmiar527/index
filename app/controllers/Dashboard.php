@@ -61,7 +61,7 @@ class Dashboard extends controller
 
   public function tambahPemasukkan()
   {
-    $_POST['username'] = $_SESSION['unameUser'];
+    $_POST['username'] = $_SESSION['username'];
     if ($this->model('CatatanKeuanganPemasukkanModel')->insertPemasukkan($_POST) > 0) {
       Flasher::setFlash('success', 'Pemasukkan ' . $_POST['pemasukkan'], ' Berhasil ditambahkan! ', '.');
       header('Location: ' . BASEURL . '/dashboard/catatanPemasukkan');
@@ -75,7 +75,7 @@ class Dashboard extends controller
 
   public function ubahPemasukkan()
   {
-    $_POST['username'] = $_SESSION['unameUser'];
+    $_POST['username'] = $_SESSION['username'];
     if ($this->model('CatatanKeuanganPemasukkanModel')->changePemasukkan($_POST) > 0) {
       Flasher::setFlash('success', 'Pemasukkan ' . $_POST['pemasukkan'], ' Berhasil diubah! ', '.');
       header('Location: ' . BASEURL . '/dashboard/catatanPemasukkan');
@@ -90,7 +90,7 @@ class Dashboard extends controller
   public function deletePemasukkan($id = '', $pemasukkan = '')
   {
     $data['id'] = $id;
-    $data['username'] = $_SESSION['unameUser'];
+    $data['username'] = $_SESSION['username'];
     if ($this->model('CatatanKeuanganPemasukkanModel')->deletePemasukkan($data) > 0) {
       Flasher::setFlash('success', 'Pemasukkan ' . $pemasukkan, ' Berhasil dihapus! ', '.');
       header('Location: ' . BASEURL . '/dashboard/catatanPemasukkan');
@@ -127,7 +127,7 @@ class Dashboard extends controller
 
   public function tambahPengeluaran()
   {
-    $_POST['username'] = $_SESSION['unameUser'];
+    $_POST['username'] = $_SESSION['username'];
     if ($this->model('CatatanKeuanganPengeluaranModel')->insertPengeluaran($_POST) > 0) {
       Flasher::setFlash('success', 'Pengeluaran ' . $_POST['pengeluaran'], ' Berhasil ditambahkan! ', '.');
       header('Location: ' . BASEURL . '/dashboard/catatanPengeluaran');
@@ -141,7 +141,7 @@ class Dashboard extends controller
 
   public function ubahPengeluaran()
   {
-    $_POST['username'] = $_SESSION['unameUser'];
+    $_POST['username'] = $_SESSION['username'];
     if ($this->model('CatatanKeuanganPengeluaranModel')->changePengeluaran($_POST) > 0) {
       Flasher::setFlash('success', 'Pengeluaran ' . $_POST['pengeluaran'], ' Berhasil diubah! ', '.');
       header('Location: ' . BASEURL . '/dashboard/catatanPengeluaran');
@@ -156,7 +156,7 @@ class Dashboard extends controller
   public function deletePengeluaran($id = '', $pemasukkan = '')
   {
     $data['id'] = $id;
-    $data['username'] = $_SESSION['unameUser'];
+    $data['username'] = $_SESSION['username'];
     if ($this->model('CatatanKeuanganPengeluaranModel')->deletePengeluaran($data) > 0) {
       Flasher::setFlash('success', 'Pengeluaran ' . $pemasukkan, ' Berhasil dihapus! ', '.');
       header('Location: ' . BASEURL . '/dashboard/catatanPengeluaran');
@@ -193,7 +193,7 @@ class Dashboard extends controller
 
   public function tambahTabungan()
   {
-    $_POST['username'] = $_SESSION['unameUser'];
+    $_POST['username'] = $_SESSION['username'];
     if ($this->model('CatatanKeuanganTabunganModel')->insertTabungan($_POST) > 0) {
       Flasher::setFlash('success', 'Tabungan ' . $_POST['tabungan'], ' Berhasil ditambahkan! ', '.');
       header('Location: ' . BASEURL . '/dashboard/catatanTabungan');
@@ -207,7 +207,7 @@ class Dashboard extends controller
 
   public function ubahTabungan()
   {
-    $_POST['username'] = $_SESSION['unameUser'];
+    $_POST['username'] = $_SESSION['username'];
     if ($this->model('CatatanKeuanganTabunganModel')->changeTabungan($_POST) > 0) {
       Flasher::setFlash('success', 'Tabungan ' . $_POST['tabungan'], ' Berhasil diubah! ', '.');
       header('Location: ' . BASEURL . '/dashboard/catatanTabungan');
@@ -222,7 +222,7 @@ class Dashboard extends controller
   public function deleteTabungan($id = '', $tabungan = '')
   {
     $data['id'] = $id;
-    $data['username'] = $_SESSION['unameUser'];
+    $data['username'] = $_SESSION['username'];
     if ($this->model('CatatanKeuanganTabunganModel')->deleteTabungan($data) > 0) {
       Flasher::setFlash('success', 'Tabungan ' . $tabungan, ' Berhasil dihapus! ', '.');
       header('Location: ' . BASEURL . '/dashboard/catatanTabungan');
@@ -269,12 +269,12 @@ class Dashboard extends controller
       'image/png'
     ];
     $fileName = str_replace(' ', '', $file_name);
-    $_POST['uname'] = $_SESSION['unameUser'];
-    $_POST['fileName'] = $_SESSION['unameUser'] . '-' . $fileName;
+    $_POST['uname'] = $_SESSION['username'];
+    $_POST['fileName'] = $_SESSION['username'] . '-' . $fileName;
     $_POST['fileSize'] = $file_size;
 
     if (in_array($file_type, $allowed_types)) {
-      $file_destination = ROOT . '/datasource/profile/' . $_SESSION['unameUser'] . '-' . $fileName;
+      $file_destination = ROOT . '/datasource/profile/' . $_SESSION['username'] . '-' . $fileName;
       if ($file_size > 2097152) {
         Flasher::setFlash('warning', 'Foto profil ', 'Tidak boleh lebih dari 2 MB', '.');
         header('Location: ' . BASEURL . '/dashboard/settings');
@@ -315,7 +315,7 @@ class Dashboard extends controller
   public function deleteFotoProfil()
   {
     $row = $this->model('AccModel')->updateAcc($_SESSION);
-    $_POST['uname'] = $_SESSION['unameUser'];
+    $_POST['uname'] = $_SESSION['username'];
     $_POST['fileName'] = '';
     $_POST['fileSize'] = '';
 
@@ -335,7 +335,7 @@ class Dashboard extends controller
   public function profilUpdate()
   {
     $row = $this->model('AccModel')->updateAcc($_SESSION);
-    $_POST['unameUser'] = $_SESSION['unameUser'];
+    $_POST['username'] = $_SESSION['username'];
     if ($row['changeEmailUser'] == 1) {
       $_POST['email'] = $row['emailUser'];
       $_POST['changeEmail'] = $row['changeEmailUser'];

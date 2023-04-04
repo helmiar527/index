@@ -3,7 +3,7 @@
 $protocol = 'https://'; // Keamanan website
 $host = ($_SERVER["HTTP_HOST"]); // Get host url
 // Untuk domain silahkan kosongkan
-$path = ''; // Filebpatch dev = '/dev/index' publish = ''
+$path = '/dev/index'; // Filebpatch dev = '/dev/index' publish = ''
 $rootuser = '/public';
 $rootdoc = '/sdcard/www';
 
@@ -33,7 +33,9 @@ define('DB_NAME', $namedb);
 // Salt
 
 $saltcookie = 'super|123456789009876543211029384756`-=[]\;.,/~!@#$%^&*()_+{}:">?<|encrypt';
+$saltcookie1 = 'super123456789009876543211029384756qwertyuiopasdfghjklzxcvbnmencrypt';
 $saltpass = 'superencryptpassword|qwertyuiopasdfghjklzxcvbnm|ASDFGHJKLZXCVBNMQWERTYUIOP|123456789009876543211029384756`-=[]\;.,/~!@#$%^&*()_+{}:">?<|encrypt';
 
-define('SALT', $saltcookie);
+define('SALTCOOKIE', $saltcookie);
+define('SALTCOOKIE1', $saltcookie1);
 define('SALTPASS', $saltpass);

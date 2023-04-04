@@ -74,8 +74,12 @@ $jscorona13 = USERURL . $dashboard . $vendor . '/typeahead.js/typeahead.bundle.m
 $jscorona14 = USERURL . $dashboard . $js . '/file-upload.js';
 $jscorona15 = USERURL . $dashboard . $js . '/typeahead.js';
 $jscorona16 = USERURL . $dashboard . $js . '/select2.js';
-$jsformvalidation = USERURL . $dashboard . $jsv . '/validation.js';
-$jspassvalidation = USERURL . $dashboard . $jsv . '/validation.pass.js';
+$jsvalidationregister = USERURL . $dashboard . $js . '/validation-register.js';
+$jsregisterajax = USERURL . $dashboard . $js . '/register-ajax.js';
+$jsanimatedregister = USERURL . $dashboard . $js . '/animated-register.js';
+$jsvalidationlogin = USERURL . $dashboard . $js . '/validation-login.js';
+$jsloginajax = USERURL . $dashboard . $js . '/login-ajax.js';
+$jsanimatedlogin = USERURL . $dashboard . $js . '/animated-login.js';
 
 
 // Link img
@@ -97,7 +101,7 @@ define('CDNCSSINDEX', $cdncssindex);
 define('CDNCSSINDEX0', $cdncssindex0);
 define('CDNCSSINDEX1', $cdncssindex1);
 define('CDNCSSINDEX2', $cdncssindex2);
-define('CDNCSSAOSINDEX', $cdncssaosindex);
+define('CDNCSSAOS', $cdncssaosindex);
 define('CSSCORONA', $csscorona);
 define('CSSCORONA0', $csscorona0);
 define('CSSCORONA1', $csscorona1);
@@ -115,14 +119,12 @@ define('JSINDEX', $jsindex);
 define('JSINDEX0', $jsindex0);
 define('CDNJSINDEX', $cdnjsindex);
 define('VALIDATIONINDEX', $validationindex);
-define('JSFORMVALIDATION', $jsformvalidation);
-define('JSPASSVALIDATION', $jspassvalidation);
 define('JSAJAXINDEX', $jsajaxindex);
 define('JSJQUERYINDEX', $jsjqueryindex);
-define('CDNJSAOSINDEX', $cdnjsaosindex);
-define('CDNJSGSAPINDEX', $cdnjsgsapindex);
-define('CDNJSGSAPINDEX0', $cdnjsgsapindex0);
-define('CDNJSGSAPINDEX1', $cdnjsgsapindex1);
+define('CDNJSAOS', $cdnjsaosindex);
+define('CDNJSGSAP', $cdnjsgsapindex);
+define('CDNJSGSAP0', $cdnjsgsapindex0);
+define('CDNJSGSAP1', $cdnjsgsapindex1);
 define('JSANIMATEDINDEX', $jsanimatedindex);
 define('JSCORONA', $jscorona);
 define('JSCORONA0', $jscorona0);
@@ -139,6 +141,12 @@ define('JSCORONA10', $jscorona10);
 define('JSCORONA11', $jscorona11);
 define('JSCORONA12', $jscorona12);
 define('JSCORONA13', $jscorona13);
+define('JSVALIDATIONREGISTER', $jsvalidationregister);
+define('JSREGISTERAJAX', $jsregisterajax);
+define('JSANIMATEDREGISTER', $jsanimatedregister);
+define('JSVALIDATIONLOGIN', $jsvalidationlogin);
+define('JSLOGINAJAX', $jsloginajax);
+define('JSANIMATEDLOGIN', $jsanimatedlogin);
 
 
 // Define img
