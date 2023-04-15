@@ -57,21 +57,30 @@ class DashboardProcess extends Controller
             }
         }
         // Persentase
-        // $persentase = (($total1a - $total1b) / $total1b) * 100;
-        // $data['persentase1a'] = substr($persentase, 0, 5);
-
+        if (isset($total1a) || isset($total1b)) {
+            var_dump($total1a);
+            var_dump($total1b);
+            $persentase = (($total1a - $total1b) / $total1b) * 100;
+            $data['persentase1a'] = substr($persentase, 0, 5);
+        } else {
+            $data['persentase1a'] = '';
+        }
         // Pengeluaran
-        // $row2 = $this->model('CatatanKeuanganPengeluaranModel')->getAllPengeluaranIndex($_POST);
-        // foreach ($row2 as $row2a) {
-        //     $pengeluaran[] = $row2a["nominal"];
-        // }
-        // $kata = implode('+', $pengeluaran);
-        // $arr = explode("+", $kata);
-        // $total = 0;
-        // foreach ($arr as $val) {
-        //     $total += intval($val);
-        // }
-        // $data['pengeluaran'] = number_format($total, 0, ',', '.');
+        $row2 = $this->model('CatatanKeuanganPengeluaranModel')->getAllPengeluaranIndex($_POST);
+        if ($row2 == !NULL) {
+            foreach ($row2 as $row2a) {
+                $pengeluaran[] = $row2a["nominal"];
+            }
+            $kata = implode('+', $pengeluaran);
+            $arr = explode("+", $kata);
+            $total = 0;
+            foreach ($arr as $val) {
+                $total += intval($val);
+            }
+            $data['pengeluaran'] = number_format($total, 0, ',', '.');
+        } else {
+            $data['pengeluaran'] = '';
+        }
         return $data;
     }
 

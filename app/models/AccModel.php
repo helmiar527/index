@@ -40,7 +40,7 @@ class AccModel
   public function addAccUser($data)
   {
     $query = "INSERT INTO " . $this->table . " (id, name, username, email, number, password, role, fileName, fileSize, emailVery, changeEmail, numberVery) VALUES(NULL, :name, :username, :email, :number, :password, :role, :filen, :files, :change, :change, :change)";
-    $pass = password_hash($data['password'] . SALTPASS, PASSWORD_DEFAULT);
+    $pass = password_hash($data['password'] . SALT_PASS, PASSWORD_DEFAULT);
     $this->db->query($query);
     $this->db->bind('name', $data['name']);
     $this->db->bind('username', $data['username']);

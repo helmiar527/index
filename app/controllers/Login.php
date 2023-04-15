@@ -73,21 +73,21 @@ class Login extends Controller
         $row = $this->model('AccModel')->cekAccLog($_POST);
         $passcheck = $_POST['password'];
         $passhash = $row['password'];
-        if (password_verify($passcheck . SALTPASS, $passhash)) {
+        if (password_verify($passcheck . SALT_PASS, $passhash)) {
           $_SESSION['username'] = $row['username'];
           $_SESSION['email'] = $row['email'];
           $_SESSION['status'] = 'logged';
           if (isset($_POST['remember'])) {
-            $random_chars = str_split(SALTCOOKIE);
+            $random_chars = str_split(SALT_COOKIE);
             shuffle($random_chars);
             $random_string = "";
             for ($i = 0; $i < strlen($_POST['username']); $i++) {
               $random_string .= $random_chars[$i];
             }
             $_POST['nameCookie'] = 'user-login';
-            $_POST['cookie'] = $random_string . SALTCOOKIE;
+            $_POST['cookie'] = $random_string . SALT_COOKIE;
             $_POST['device'] = $_SERVER['HTTP_USER_AGENT'];
-            $cookieuser = password_hash($random_string . SALTCOOKIE, PASSWORD_DEFAULT);
+            $cookieuser = password_hash($random_string . SALT_COOKIE, PASSWORD_DEFAULT);
             if ($this->model('CookieModel')->addCookie($_POST)) {
               header('Set-Cookie: ' . $_POST['nameCookie'] . '=' . $cookieuser . '; expires=' . gmdate('D, d M Y H:i:s \G\M\T', time() + 7 * 24 * 3600) . '; path=/');
             }
@@ -119,9 +119,7 @@ class Login extends Controller
           if ($this->model('CookieModel')->delCookie($_POST)) {
             http_response_code(200);
           } else {
-            Flasher::setFlash('warning', 'Verifikasi cookie ', 'gagal dihapus! ', 'mungkin sudah di hapus sebelumnya.');
             http_response_code(200);
-            echo (Flasher::flash());
           }
         }
       }

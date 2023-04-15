@@ -7,4 +7,4 @@ Update
 
 Catatan
 
-1. Ubah konfigurasi di config
+1. Ubah konfigurasi di .env
