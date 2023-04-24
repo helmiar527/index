@@ -25,9 +25,10 @@ class DashboardProcess extends Controller
         // Pemasukkan
         // Total bulan ini
         $_POST['tanggal'] = date('Y-m');
+        $_POST['status'] = 1;
         $row1a = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkanIndex($_POST);
         if ($row1a == NULL) {
-            $data['pemasukkan'] = 'Kosong';
+            $data['pemasukkanindex'] = '0';
         } else {
             foreach ($row1a as $row1a) {
                 $pemasukkan1a[] = $row1a["nominal"];
@@ -38,14 +39,13 @@ class DashboardProcess extends Controller
             foreach ($arr1a as $val1a) {
                 $total1a += intval($val1a);
             }
-            $data['pemasukkan'] = number_format($total1a, 0, ',', '.');
+            $data['pemasukkanindex'] = number_format($total1a, 0, ',', '.');
         }
         // Total bulan kemarin
         $_POST['tanggal'] = date("Y-m", strtotime("-1 month", strtotime(date('Y-m'))));
+        $_POST['status'] = 1;
         $row1b = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkanIndex($_POST);
-        if ($row1b == NULL) {
-            $data['pemasukkan'] = 'Kosong';
-        } else {
+        if ($row1b == !NULL) {
             foreach ($row1b as $row1b) {
                 $pemasukkan1b[] = $row1b["nominal"];
             }
@@ -57,29 +57,78 @@ class DashboardProcess extends Controller
             }
         }
         // Persentase
-        if (isset($total1a) || isset($total1b)) {
-            var_dump($total1a);
-            var_dump($total1b);
-            $persentase = (($total1a - $total1b) / $total1b) * 100;
-            $data['persentase1a'] = substr($persentase, 0, 5);
+        if (empty($total1a) || empty($total1b)) {
+            $data['pemasukkanindexpersen'] = '0';
+            $data['colorpemasukkanindex'] = 'danger';
+            $data['iconpemasukkanindex'] = 'mdi-minus';
         } else {
-            $data['persentase1a'] = '';
+            $persentase = (($total1a - $total1b) / $total1b) * 100;
+            $persentaseraw = substr($persentase, 0, 5);
+            if ($persentaseraw < 0) {
+                $data['pemasukkanindexpersen'] = $persentaseraw;
+                $data['colorpemasukkanindex'] = 'danger';
+                $data['iconpemasukkanindex'] = 'mdi-arrow-bottom-right';
+            } else {
+                $data['pemasukkanindexpersen'] = '+' . $persentaseraw;
+                $data['colorpemasukkanindex'] = 'success';
+                $data['iconpemasukkanindex'] = 'mdi-arrow-top-right';
+            }
         }
         // Pengeluaran
-        $row2 = $this->model('CatatanKeuanganPengeluaranModel')->getAllPengeluaranIndex($_POST);
-        if ($row2 == !NULL) {
-            foreach ($row2 as $row2a) {
-                $pengeluaran[] = $row2a["nominal"];
-            }
-            $kata = implode('+', $pengeluaran);
-            $arr = explode("+", $kata);
-            $total = 0;
-            foreach ($arr as $val) {
-                $total += intval($val);
-            }
-            $data['pengeluaran'] = number_format($total, 0, ',', '.');
+        // Total bulan ini
+        $_POST['tanggal'] = date('Y-m');
+        $_POST['status'] = 1;
+        $row2a = $this->model('CatatanKeuanganPengeluaranModel')->getAllPengeluaranIndex($_POST);
+        foreach ($row2a as &$item) {
+            $item['total'] = $item['jumlah'] * $item['nominal'];
+        }
+        unset($item);
+        if ($row2a == NULL) {
+            $data['pengeluaranindex'] = '0';
         } else {
-            $data['pengeluaran'] = '';
+            foreach ($row2a as $row2a) {
+                $pengeluaran2a[] = $row2a["total"];
+            }
+            $kata2a = implode('+', $pengeluaran2a);
+            $arr2a = explode("+", $kata2a);
+            $total2a = 0;
+            foreach ($arr2a as $val2a) {
+                $total2a += intval($val2a);
+            }
+            $data['pengeluaranindex'] = number_format($total2a, 0, ',', '.');
+        }
+        // Total bulan kemarin
+        $_POST['tanggal'] = date("Y-m", strtotime("-1 month", strtotime(date('Y-m'))));
+        $_POST['status'] = 1;
+        $row2b = $this->model('CatatanKeuanganPengeluaranModel')->getAllPengeluaranIndex($_POST);
+        if ($row2b == !NULL) {
+            foreach ($row2b as $row2b) {
+                $pengeluaran2b[] = $row2b["nominal"];
+            }
+            $kata2b = implode('+', $pengeluaran2b);
+            $arr2b = explode("+", $kata2b);
+            $total2b = 0;
+            foreach ($arr2b as $val2b) {
+                $total2b += intval($val2b);
+            }
+        }
+        // Persentase
+        if (empty($total2a) || empty($total2b)) {
+            $data['pengeluaranindexpersen'] = '0';
+            $data['colorpengeluaranindex'] = 'danger';
+            $data['iconpengeluaranindex'] = 'mdi-minus';
+        } else {
+            $persentase = (($total2a - $total2b) / $total2b) * 100;
+            $persentaseraw = substr($persentase, 0, 5);
+            if ($persentaseraw < 0) {
+                $data['pengeluaranindexpersen'] = $persentaseraw;
+                $data['colorpengeluaranindex'] = 'danger';
+                $data['iconpengeluaranindex'] = 'mdi-arrow-bottom-right';
+            } else {
+                $data['pengeluaranindexpersen'] = '+' . $persentaseraw;
+                $data['colorpengeluaranindex'] = 'success';
+                $data['iconpengeluaranindex'] = 'mdi-arrow-top-right';
+            }
         }
         return $data;
     }

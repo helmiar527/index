@@ -28,9 +28,10 @@ class CatatanKeuanganPengeluaranModel
     public function getAllPengeluaranIndex($data)
     {
         $tanggal = $data['tanggal'];
-        $query = "SELECT * FROM " . $this->table . " WHERE username = :username AND tanggal LIKE :tanggal";
+        $query = "SELECT * FROM " . $this->table . " WHERE username = :username AND status = :status AND tanggal LIKE :tanggal";
         $this->db->query($query);
         $this->db->bind('username', $data['username']);
+        $this->db->bind('status', $data['status']);
         $this->db->bind('tanggal', "%$tanggal%");
         return $this->db->resultSet();
     }
@@ -52,11 +53,12 @@ class CatatanKeuanganPengeluaranModel
 
     public function changePengeluaran($data)
     {
-        $query = "UPDATE " . $this->table . " SET hari = :hari, tanggal = :tanggal, pengeluaran = :pengeluaran, nominal = :nominal, status = :status WHERE id = :id AND username = :username";
+        $query = "UPDATE " . $this->table . " SET hari = :hari, tanggal = :tanggal, pengeluaran = :pengeluaran, jumlah = :jumlah, nominal = :nominal, status = :status WHERE id = :id AND username = :username";
         $this->db->query($query);
         $this->db->bind('hari', $data['hari']);
         $this->db->bind('tanggal', $data['tanggal']);
         $this->db->bind('pengeluaran', $data['pengeluaran']);
+        $this->db->bind('jumlah', $data['jumlah']);
         $this->db->bind('nominal', $data['nominal']);
         $this->db->bind('status', $data['status']);
         $this->db->bind('id', $data['id']);

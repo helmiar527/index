@@ -32,7 +32,7 @@ class Dashboard extends controller
     $this->view('hcb/index/dashboard/utility/js/jsindex');
     $this->view('index/all/coming');
     $this->view('hcb/body');
-    var_dump($data['persentase1a']);
+    // var_dump($data['persentase1a']);
     // echo (date('m-Y'));
   }
 

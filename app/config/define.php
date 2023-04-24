@@ -2,6 +2,7 @@
 require_once 'config.php';
 
 // URL
+define('ROOT', $rootdoc);
 define('ROOTURL', $protocol . $host);
 define('BASEURL', $protocol . $host . $path);
 define('USERURL', $protocol . $host . $path . $rootuser);
