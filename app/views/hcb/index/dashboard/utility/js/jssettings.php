@@ -7,3 +7,4 @@
 <script type="text/javascript" src="<?= JSCORONA2; ?>"></script>
 <script type="text/javascript" src="<?= JSCORONA5; ?>"></script>
 <script type="text/javascript" src="<?= JSCORONA4; ?>"></script>
+<script type="text/javascript" src="<?= JSPROFILESETTING; ?>"></script>

@@ -63,4 +63,15 @@ class CatatanKeuanganTabunganModel
     $this->db->bind('status', "%$searching%");
     return $this->db->resultSet();
   }
+  
+  public function getAllTabunganIndex($data)
+    {
+        $tanggal = $data['tanggal'];
+        $query = "SELECT * FROM " . $this->table . " WHERE username = :username AND status = :status AND tanggal LIKE :tanggal";
+        $this->db->query($query);
+        $this->db->bind('username', $data['username']);
+        $this->db->bind('status', $data['status']);
+        $this->db->bind('tanggal', "%$tanggal%");
+        return $this->db->resultSet();
+    }
 }

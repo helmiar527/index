@@ -19,8 +19,7 @@ class App
       $this->controller = $url[0];
       unset($url[0]);
     } else {
-      $this->controller = 'err';
-      unset($url[0]);
+      $this->controller = 'Error404';
     }
 
     // New controller

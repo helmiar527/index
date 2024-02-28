@@ -10,12 +10,12 @@ class Logout extends Controller
         header('Set-Cookie: user-login=; expires=' . gmdate('D, d M Y H:i:s \G\M\T', time() - (7 * 24 * 60 * 60)) . '; path=/');
         session_destroy();
         $_SESSION['status'] = null;
-        header('Location: ' . BASEURL . '/login');
+        header('Location: ' . BASEURL . '/Login');
       }
     } else {
       session_destroy();
       $_SESSION['status'] = null;
-      header('Location: ' . BASEURL . '/login');
+      header('Location: ' . BASEURL . '/Login');
     }
   }
 }

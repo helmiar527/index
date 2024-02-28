@@ -1,10 +1,12 @@
 <div>
+  <!-- Profile -->
   <h1>Profile Public</h1>
   <hr class="bg-white">
   <div class="row">
-    <?php Flasher::flash(); ?>
+    <div class="notif-alert">
+    </div>
     <div class="col-8">
-      <form action="<?= BASEURL; ?>/dashboard/profilUpdate" method="post">
+      <form name="formProfile" method="post">
         <div class="mb-3">
           <label class="form-label">Nama</label>
           <input type="text" class="form-control" name="name" value="<?= $data['nama']; ?>">
@@ -20,45 +22,21 @@
           </div>
         </div>
         <div class="mb-3">
-          <label class="form-label">Email</label>
-          <div class="row">
-            <div class="col-9">
-              <input type="text" class="form-control <?= $data['text-dark']; ?>" name="email" value="<?= $data['email']; ?>" <?= $data['readonly']; ?>>
-            </div>
-            <div class="col-3">
-              <button type="button" class="btn btn-md <?= $data['color']; ?> btn-icon-text" data-bs-toggle="modal" data-bs-target="#comingModal">Verifikasi
-                <?= $data['icon']; ?>
-              </button>
-            </div>
-          </div>
-          <div class="form-text text-light">
-            Email hanya dapat di ganti 1 kali, pastikan email aktif agar dapat di verifikasi.
-          </div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">No Telfone</label>
-          <div class="row">
-            <div class="col-9">
-              <input type="text" class="form-control" name="number" value="<?= $data['number']; ?>">
-            </div>
-            <div class="col-3">
-              <button type="button" class="btn btn-md <?= $data['color']; ?> btn-icon-text" data-bs-toggle="modal" data-bs-target="#comingModal">Verifikasi
-                <?= $data['icon']; ?>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="mb-3">
           <label class="form-label">Ranks</label>
           <input type="text" class="form-control text-dark" value="<?= $data['role']; ?>" readonly>
           <div class="form-text text-light">
             Verifikasi email dan no telfone untuk mendapatkan rank yang lebih tinggi dan dapatkan akses yang lebih luas.
           </div>
         </div>
-        <button type="submit" class="btn btn-lg btn-primary">Update profile</button>
+        <button type="submit" class="btn btn-lg btn-primary" id="submitButtonProfile">Update Profile</button>
+        <button type="button" class="btn btn-primary btn-lg d-none" id="loadButtonProfile" disabled>
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Loading...
+        </button>
       </form>
     </div>
-    <div class="col-4">
+    <!-- Foto Profile -->
+    <div class="col-4 mt-5">
       <div class="h5">
         Picture Profile
       </div>
@@ -67,17 +45,21 @@
           <div class="mt-3">
             <img src="<?= $data['profile'] ?>" class="img-thumbnail" alt="pictureProfile">
           </div>
-          <form class="mt-3" action="<?= BASEURL; ?>/dashboard/pictureProfilUpdate" method="post" enctype="multipart/form-data">
+          <form class="mt-3" name="formPicture" method="post" enctype="multipart/form-data">
             <div class="d-flex justify-content-center">
               <?= $data['deletepro']; ?>
             </div>
             <div class="row mt-3">
               <div class="col-6 col-sm-6">
-                <input class="form-control" type="file" name="file" required>
+                <input class="form-control form-control-lg" type="file" name="file" required>
               </div>
               <div class="col-6 col-sm-6 d-flex justify-content-end">
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateProfilModal">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateProfilModal" id="submitButtonPicture">
                   Upload
+                </button>
+                <button type="button" class="btn btn-primary d-none" id="loadButtonPicture" disabled>
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Loading...
                 </button>
                 <div class="modal fade" id="updateProfilModal" tabindex="-1" aria-labelledby="updateProfilLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
@@ -116,7 +98,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-        <a href="<?= BASEURL; ?>/dashboard/deleteFotoProfil"><button type="button" class="btn btn-danger">Iya</button></a>
+        <button type="button" class="btn btn-danger" id="delPicture">Iya</button>
       </div>
     </div>
   </div>

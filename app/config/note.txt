@@ -4,7 +4,15 @@ Update
 2. Fix BUG
 3. New Page Admin
 4. Management keuangan
+5. Pembenahan code dan bug
 
 Catatan
 
 1. Ubah konfigurasi di .env
+
+Catatan pribadi
+1. Merapikan code dan check apakah ada debug atau tidak
+2. merubah url
+3. merapikan folder
+4. cek apakah bagian api sudah ada proteksi apa belum
+5. kalau bisa bagian bagian yang perlu sendiri di sendirikan

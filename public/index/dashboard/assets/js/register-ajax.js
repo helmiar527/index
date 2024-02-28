@@ -5,7 +5,7 @@ $(function () {
   const scriptURL =
     window.location.origin + window.location.pathname + "/register";
   const alerttURL =
-    window.location.origin + window.location.pathname + "/alertpass";
+    window.location.origin + window.location.pathname + "/alertPass";
 
   $(form).submit((e) => {
     if (form.checkValidity()) {

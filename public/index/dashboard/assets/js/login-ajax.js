@@ -3,9 +3,9 @@ $(function () {
   const btnSend = $("#submitButton");
   const btnLoad = $("#loadButton");
   const cekCookietURL =
-    window.location.origin + window.location.pathname + "/cekcookie";
+    window.location.origin + window.location.pathname + "/cekCookie";
   const cekAccURL =
-    window.location.origin + window.location.pathname + "/cekacc";
+    window.location.origin + window.location.pathname + "/cekAcc";
   const loginURL = window.location.origin + window.location.pathname + "/login";
 
   $(form).submit((e) => {

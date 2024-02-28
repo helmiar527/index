@@ -6,7 +6,7 @@ class Login extends Controller
   {
     if (!isset($_SESSION['status']) || $_SESSION['status'] !== "logged") {
     } else {
-      header('Location: ' . BASEURL . '/dashboard');
+      header('Location: ' . BASEURL . '/Dashboard');
       exit;
     }
   }
@@ -22,11 +22,11 @@ class Login extends Controller
         $_SESSION['username'] = $row1['username'];
         $_SESSION['email'] = $row1['email'];
         $_SESSION['status'] = 'logged';
-        header('Location: ' . BASEURL . '/dashboard');
+        header('Location: ' . BASEURL . '/Dashboard');
         exit;
       }
     } else {
-      $data = $this->process('IndexProcess')->login();
+      $data = $this->process('LoginProcess')->index();
       $this->view('hcb/head', $data);
       $this->view('hcb/index/login/utility/css/css');
       $this->view('hcb/center');

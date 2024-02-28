@@ -6,18 +6,18 @@ class Register extends Controller
   {
     if (!isset($_SESSION['status']) || $_SESSION['status'] !== "logged") {
       if (isset($_COOKIE['user-login'])) {
-        header('Location: ' . BASEURL . '/login');
+        header('Location: ' . BASEURL . '/Login');
         exit;
       }
     } else {
-      header('Location: ' . BASEURL . '/dashboard');
+      header('Location: ' . BASEURL . '/Dashboard');
       exit;
     }
   }
 
   public function index()
   {
-    $data = $this->process('IndexProcess')->register();
+    $data = $this->process('RegisterProcess')->index();
     $this->view('hcb/head', $data);
     $this->view('hcb/index/login/utility/css/css');
     $this->view('hcb/center');
@@ -42,7 +42,7 @@ class Register extends Controller
           $_POST['role'] = 'User';
           $_POST['isChange'] = '0';
           if ($this->model('AccModel')->addAccUser($_POST) > 0) {
-            Flasher::setFlash('success', 'Akun ', 'berhasil didaftarkan! ', 'silahkan <a href="' . BASEURL . '/login">login</a>.');
+            Flasher::setFlash('success', 'Akun ', 'berhasil didaftarkan! ', 'silahkan <a href="' . BASEURL . '/Login">login</a>.');
             http_response_code(200);
             echo (Flasher::flash());
           } else {
@@ -51,7 +51,7 @@ class Register extends Controller
             echo (Flasher::flash());
           }
         } else {
-          if ($row['unameUser'] == $_POST['uname'] || $row['emailUser'] == $_POST['email']) {
+          if ($row['username'] == $_POST['username'] || $row['email'] == $_POST['email']) {
             Flasher::setFlash('warning', 'Username/Email ', 'Tidak tersedia/pernah digunakan! ', 'gunakan Username/Email yang lain.');
             http_response_code(402);
             echo (Flasher::flash());
@@ -59,20 +59,14 @@ class Register extends Controller
         }
       }
     } else {
-      Flasher::setFlash('warning', 'Data yang dikirimkan ', 'Tidak lengkap/terjadi kesalahan di user! ', 'silahkan isi data dengan benar.');
       http_response_code(400);
-      echo (Flasher::flash());
+      $this->api(json_encode(array('You not access this api'), JSON_PRETTY_PRINT));
     }
   }
 
   public function alertPass()
   {
     Flasher::setFlash('warning', 'Password dan RetypePassword ', 'Tidak sama! ', 'silahkan cek dengan benar.');
-    echo (Flasher::flash());
-  }
-
-  public function flasherAlert()
-  {
     echo (Flasher::flash());
   }
 }

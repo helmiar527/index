@@ -1,0 +1,109 @@
+
+        // Pengeluaran
+        // Total bulan ini
+        $_POST['tanggal'] = date('Y-m');
+        $_POST['status'] = 1;
+        $row2a = $this->model('CatatanKeuanganPengeluaranModel')->getAllPengeluaranIndex($_POST);
+        foreach ($row2a as &$item) {
+            $item['total'] = $item['jumlah'] * $item['nominal'];
+        }
+        unset($item);
+        if ($row2a == NULL) {
+            $data['pengeluaranindex'] = '0';
+        } else {
+            foreach ($row2a as $row2a) {
+                $pengeluaran2a[] = $row2a["total"];
+            }
+            $kata2a = implode('+', $pengeluaran2a);
+            $arr2a = explode("+", $kata2a);
+            $total2a = 0;
+            foreach ($arr2a as $val2a) {
+                $total2a += intval($val2a);
+            }
+            $data['pengeluaranindex'] = number_format($total2a, 0, ',', '.');
+        }
+        // Total bulan kemarin
+        $_POST['tanggal'] = date("Y-m", strtotime("-1 month", strtotime(date('Y-m'))));
+        $_POST['status'] = 1;
+        $row2b = $this->model('CatatanKeuanganPengeluaranModel')->getAllPengeluaranIndex($_POST);
+        if ($row2b == !NULL) {
+            foreach ($row2b as $row2b) {
+                $pengeluaran2b[] = $row2b["nominal"];
+            }
+            $kata2b = implode('+', $pengeluaran2b);
+            $arr2b = explode("+", $kata2b);
+            $total2b = 0;
+            foreach ($arr2b as $val2b) {
+                $total2b += intval($val2b);
+            }
+        }
+        // Persentase
+        if (empty($total2a) || empty($total2b)) {
+            $data['pengeluaranindexpersen'] = '0';
+            $data['colorpengeluaranindex'] = 'warning';
+            $data['iconpengeluaranindex'] = 'mdi-minus';
+        } else {
+            $persentase = (($total2a - $total2b) / $total2b) * 100;
+            $persentaseraw = substr($persentase, 0, 5);
+            if ($persentaseraw < 0) {
+                $data['pengeluaranindexpersen'] = $persentaseraw;
+                $data['colorpengeluaranindex'] = 'danger';
+                $data['iconpengeluaranindex'] = 'mdi-arrow-bottom-right';
+            } else {
+                $data['pengeluaranindexpersen'] = '+' . $persentaseraw;
+                $data['colorpengeluaranindex'] = 'success';
+                $data['iconpengeluaranindex'] = 'mdi-arrow-top-right';
+            }
+        }
+        // Tabungan
+        // Total bulan ini
+        $_POST['tanggal'] = date('Y-m');
+        $_POST['status'] = 1;
+        $row3a = $this->model('CatatanKeuanganTabunganModel')->getAllTabunganIndex($_POST);
+        if ($row3a == NULL) {
+            $data['tabunganindex'] = '0';
+        } else {
+            foreach ($row3a as $row3a) {
+                $tabungan3a[] = $row3a["nominal"];
+            }
+            $kata3a = implode('+', $tabungan3a);
+            $arr3a = explode("+", $kata3a);
+            $total3a = 0;
+            foreach ($arr3a as $val3a) {
+                $total3a += intval($val3a);
+            }
+            $data['tabunganindex'] = number_format($total3a, 0, ',', '.');
+        }
+        // Total bulan kemarin
+        $_POST['tanggal'] = date("Y-m", strtotime("-1 month", strtotime(date('Y-m'))));
+        $_POST['status'] = 1;
+        $row3b = $this->model('CatatanKeuanganTabunganModel')->getAllTabunganIndex($_POST);
+        if ($row3b == !NULL) {
+            foreach ($row3b as $row3b) {
+                $tabungan3b[] = $row3b["nominal"];
+            }
+            $kata3b = implode('+', $tabungan3b);
+            $arr3b = explode("+", $kata3b);
+            $total3b = 0;
+            foreach ($arr3b as $val3b) {
+                $total3b += intval($val3b);
+            }
+        }
+        // Persentase
+        if (empty($total3a) || empty($total3b)) {
+            $data['tabunganindexpersen'] = '0';
+            $data['colortabunganindex'] = 'warning';
+            $data['icontabunganindex'] = 'mdi-minus';
+        } else {
+            $persentase = (($total3a - $total3b) / $total3b) * 100;
+            $persentaseraw = substr($persentase, 0, 5);
+            if ($persentaseraw < 0) {
+                $data['tabunganindexpersen'] = $persentaseraw;
+                $data['colortabunganindex'] = 'danger';
+                $data['icontabunganindex'] = 'mdi-arrow-bottom-right';
+            } else {
+                $data['tabunganindexpersen'] = '+' . $persentaseraw;
+                $data['colortabunganindex'] = 'success';
+                $data['icontabunganindex'] = 'mdi-arrow-top-right';
+            }
+            }

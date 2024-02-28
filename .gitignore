@@ -1,3 +1,5 @@
 .env
 app/controllers/Random.php
 app/controllers/Test.php
+app/controllers/Test2.php
+app/controllers/Out.php

@@ -42,7 +42,7 @@ class Index extends Controller
     if ($_POST == !NULL) {
       if (empty($_POST['time']) || empty($_POST['date']) || empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message'])) {
         Flasher::setFlash('warning', 'Data yang dikirm ', 'tidak lengkap/tidak sesuai! ', 'silahkan masukkan data dengan benar.');
-        http_response_code(400);
+        http_response_code(200);
         echo (Flasher::flash());
       } else {
         if ($this->model('ContactModel')->insertContact($_POST) > 0) {
@@ -51,14 +51,14 @@ class Index extends Controller
           echo (Flasher::flash());
         } else {
           Flasher::setFlash('danger', 'Pesan ', 'gagal terkirim! ', 'Maaf, silahkan coba lagi beberapa saat.');
-          http_response_code(503);
+          http_response_code(200);
           echo (Flasher::flash());
         }
       }
     } else {
-      Flasher::setFlash('warning', 'Data yang dikirm ', 'tidak lengkap/tidak sesuai! ', 'silahkan masukkan data dengan benar.');
       http_response_code(400);
-      echo (Flasher::flash());
+      $this->api(json_encode(array('You not access this api'), JSON_PRETTY_PRINT));
+      exit;
     }
   }
 }

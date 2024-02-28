@@ -74,4 +74,13 @@ class CatatanKeuanganPemasukkanModel
     $this->db->bind('tanggal', "%$tanggal%");
     return $this->db->resultSet();
   }
+  
+  public function getBulan($data)
+  {
+    $query = "SELECT * FROM " . $this->table . " WHERE username = :username AND status = :status";
+    $this->db->query($query);
+    $this->db->bind('username', $data['username']);
+    $this->db->bind('status', $data['status']);
+    return $this->db->resultSet();
+  }
 }

@@ -55,9 +55,9 @@ class AccModel
     return $this->db->rowCount();
   }
 
-  public function addProfileUser($data)
+  public function updateProfileUser($data)
   {
-    $query = "UPDATE " . $this->table . " SET fileName = :filen, fileSize = :files WHERE unameUser = :uname";
+    $query = "UPDATE " . $this->table . " SET fileName = :filen, fileSize = :files WHERE username = :uname";
     $this->db->query($query);
     $this->db->bind('filen', $data['fileName']);
     $this->db->bind('files', $data['fileSize']);
@@ -66,15 +66,24 @@ class AccModel
     return $this->db->rowCount();
   }
 
-  public function updateAccUser($data)
+  public function updateAccProfileUser($data)
   {
-    $query = "UPDATE " . $this->table . " SET nameUser = :name, emailUser = :email, numberUser = :number, changeEmailUser = :changeEmail WHERE unameUser = :uname";
+    $query = "UPDATE " . $this->table . " SET name = :name WHERE username = :uname";
     $this->db->query($query);
     $this->db->bind('name', $data['name']);
+    $this->db->bind('uname', $data['username']);
+    $this->db->execute();
+    return $this->db->rowCount();
+  }
+
+  public function updateAccAccountUser($data)
+  {
+    $query = "UPDATE " . $this->table . " SET email = :email, number = :number, changeEmail = :changeEmail WHERE username = :uname";
+    $this->db->query($query);
     $this->db->bind('email', $data['email']);
     $this->db->bind('number', $data['number']);
     $this->db->bind('changeEmail', $data['changeEmail']);
-    $this->db->bind('uname', $data['unameUser']);
+    $this->db->bind('uname', $data['username']);
     $this->db->execute();
     return $this->db->rowCount();
   }

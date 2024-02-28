@@ -59,7 +59,7 @@ class DashboardProcess extends Controller
         // Persentase
         if (empty($total1a) || empty($total1b)) {
             $data['pemasukkanindexpersen'] = '0';
-            $data['colorpemasukkanindex'] = 'danger';
+            $data['colorpemasukkanindex'] = 'warning';
             $data['iconpemasukkanindex'] = 'mdi-minus';
         } else {
             $persentase = (($total1a - $total1b) / $total1b) * 100;
@@ -72,62 +72,6 @@ class DashboardProcess extends Controller
                 $data['pemasukkanindexpersen'] = '+' . $persentaseraw;
                 $data['colorpemasukkanindex'] = 'success';
                 $data['iconpemasukkanindex'] = 'mdi-arrow-top-right';
-            }
-        }
-        // Pengeluaran
-        // Total bulan ini
-        $_POST['tanggal'] = date('Y-m');
-        $_POST['status'] = 1;
-        $row2a = $this->model('CatatanKeuanganPengeluaranModel')->getAllPengeluaranIndex($_POST);
-        foreach ($row2a as &$item) {
-            $item['total'] = $item['jumlah'] * $item['nominal'];
-        }
-        unset($item);
-        if ($row2a == NULL) {
-            $data['pengeluaranindex'] = '0';
-        } else {
-            foreach ($row2a as $row2a) {
-                $pengeluaran2a[] = $row2a["total"];
-            }
-            $kata2a = implode('+', $pengeluaran2a);
-            $arr2a = explode("+", $kata2a);
-            $total2a = 0;
-            foreach ($arr2a as $val2a) {
-                $total2a += intval($val2a);
-            }
-            $data['pengeluaranindex'] = number_format($total2a, 0, ',', '.');
-        }
-        // Total bulan kemarin
-        $_POST['tanggal'] = date("Y-m", strtotime("-1 month", strtotime(date('Y-m'))));
-        $_POST['status'] = 1;
-        $row2b = $this->model('CatatanKeuanganPengeluaranModel')->getAllPengeluaranIndex($_POST);
-        if ($row2b == !NULL) {
-            foreach ($row2b as $row2b) {
-                $pengeluaran2b[] = $row2b["nominal"];
-            }
-            $kata2b = implode('+', $pengeluaran2b);
-            $arr2b = explode("+", $kata2b);
-            $total2b = 0;
-            foreach ($arr2b as $val2b) {
-                $total2b += intval($val2b);
-            }
-        }
-        // Persentase
-        if (empty($total2a) || empty($total2b)) {
-            $data['pengeluaranindexpersen'] = '0';
-            $data['colorpengeluaranindex'] = 'danger';
-            $data['iconpengeluaranindex'] = 'mdi-minus';
-        } else {
-            $persentase = (($total2a - $total2b) / $total2b) * 100;
-            $persentaseraw = substr($persentase, 0, 5);
-            if ($persentaseraw < 0) {
-                $data['pengeluaranindexpersen'] = $persentaseraw;
-                $data['colorpengeluaranindex'] = 'danger';
-                $data['iconpengeluaranindex'] = 'mdi-arrow-bottom-right';
-            } else {
-                $data['pengeluaranindexpersen'] = '+' . $persentaseraw;
-                $data['colorpengeluaranindex'] = 'success';
-                $data['iconpengeluaranindex'] = 'mdi-arrow-top-right';
             }
         }
         return $data;
@@ -365,10 +309,23 @@ class DashboardProcess extends Controller
         }
 
         if ($row['fileName'] == !NULL) {
-            $data['deletepro'] = '<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProfilModal">Delete Foto Profile</button>';
+            $data['deletepro'] = '
+            <button type="button" class="btn btn-danger" id="submitButtonPictureDel" data-bs-toggle="modal" data-bs-target="#deleteProfilModal">Delete Foto Profile</button>
+            <button type="button" class="btn btn-danger d-none" id="loadButtonPictureDel" disabled>
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Loading...
+                </button>
+            ';
         } else {
             $data['deletepro'] = '';
         }
+        return $data;
+    }
+
+    public function fileProfile()
+    {
+        $row = $this->model('AccModel')->updateAcc($_SESSION);
+        $data['fileName'] = $row['fileName'];
         return $data;
     }
 }

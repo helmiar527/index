@@ -69,7 +69,7 @@ $jscorona8 = USERURL . $dashboard . $vendor . '/jvectormap/js/jquery-jvectormap.
 $jscorona9 = USERURL . $dashboard . $vendor . '/jvectormap/js/jquery-jvectormap-world-mill-en.js';
 $jscorona10 = USERURL . $dashboard . $vendor . '/owl-carousel-2/js/owl.carousel.min.js';
 $jscorona11 = USERURL . $dashboard . $js . '/dashboard.js';
-$jscorona12 = USERURL . $dashboard . $vendor . '/select2/select2.min.js';
+$jscorona12 = USERURL . $dashboard . $vendor . '/select2/js/select2.min.js';
 $jscorona13 = USERURL . $dashboard . $vendor . '/typeahead.js/typeahead.bundle.min.js';
 $jscorona14 = USERURL . $dashboard . $js . '/file-upload.js';
 $jscorona15 = USERURL . $dashboard . $js . '/typeahead.js';
@@ -80,13 +80,14 @@ $jsanimatedregister = USERURL . $dashboard . $js . '/animated-register.js';
 $jsvalidationlogin = USERURL . $dashboard . $js . '/validation-login.js';
 $jsloginajax = USERURL . $dashboard . $js . '/login-ajax.js';
 $jsanimatedlogin = USERURL . $dashboard . $js . '/animated-login.js';
+$jsprofilesetting = USERURL . $dashboard . $js . '/profile-setting.js';
 
 
 // Link img
-$dashboard1 = USERURL . $index . $prodash . '/register.png';
-$dashboard2 = USERURL . $index . $prodash . '/login.png';
-$dashboard3 = USERURL . $index . $prodash . '/dashboard.png';
-$dashboard4 = USERURL . $index . $prodash . '/setting.png';
+$dashboard1 = USERURL . $index . $prodash . '/register.PNG';
+$dashboard2 = USERURL . $index . $prodash . '/login.PNG';
+$dashboard3 = USERURL . $index . $prodash . '/dashboard.PNG';
+$dashboard4 = USERURL . $index . $prodash . '/setting.PNG';
 // $noProfile = USERURL . $index . '/no-profile.png';
 
 
@@ -147,6 +148,7 @@ define('JSANIMATEDREGISTER', $jsanimatedregister);
 define('JSVALIDATIONLOGIN', $jsvalidationlogin);
 define('JSLOGINAJAX', $jsloginajax);
 define('JSANIMATEDLOGIN', $jsanimatedlogin);
+define('JSPROFILESETTING', $jsprofilesetting);
 
 
 // Define img

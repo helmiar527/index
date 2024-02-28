@@ -1,8 +1,9 @@
 <?php
 
-class Err extends controller
+class Error404 extends Controller
 {
-  public function index() {
+  public function index()
+  {
     header('HTTP/1.1 404');
     $data = $this->process('ErrProcess')->index404();
     $this->view('hcb/head', $data);
