@@ -23,14 +23,14 @@
                   A password is required.
                 </div>
               </div>
-              <div class="form-group d-flex align-items-center justify-content-between">
+              <!-- <div class="form-group d-flex align-items-center justify-content-between">
                 <div class="form-check">
                   <label id="remember-label" class="form-check-label">
                     <input type="checkbox" class="form-check-input" name="remember" id="remember"> Remember me
                   </label>
                 </div>
                 <a href="#" class="forgot-pass" data-bs-toggle="modal" data-bs-target="#comingModal" id="forgot-pass">Forgot password</a>
-              </div>
+              </div> -->
               <div class="text-center">
                 <button type="submit" class="btn btn-primary btn-block enter-btn" id="submitButton">Login</button>
                 <button type="button" class="btn btn-primary btn-block enter-btn d-none" id="loadButton" disabled>
