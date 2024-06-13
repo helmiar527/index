@@ -8,10 +8,10 @@
                     <button type="button" class="btn btn-primary btn-icon-text mb-3" data-bs-toggle="modal" data-bs-target="#tambahModal"><i class="mdi mdi-plus btn-icon-prepend"></i> Tambah Tabungan </button>
                 </div>
                 <div class="col d-flex justify-content-end">
-                    <a href="<?= BASEURL; ?>/Dashboard/catatanTabungan"><button type="button" class="btn btn-warning btn-icon-text mb-3"><i class="mdi mdi-reload btn-icon-prepend"></i> Refresh </button></a>
+                    <a href="<?= BASEURL; ?>/dashboard/catatanTabungan"><button type="button" class="btn btn-warning btn-icon-text mb-3"><i class="mdi mdi-reload btn-icon-prepend"></i> Refresh </button></a>
                 </div>
             </div>
-            <form action="<?= BASEURL; ?>/Dashboard/catatanTabungan" method="post">
+            <form action="<?= BASEURL; ?>/dashboard/catatanTabungan" method="post">
                 <div class="row">
                     <div class="col">
                         <div class="form-group">

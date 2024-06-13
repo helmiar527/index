@@ -9,13 +9,6 @@ $prodash = '/assets/project/dashboard';
 $dashboard = '/index/dashboard';
 $mdiv = '/assets/vendors/mdi';
 $vendor = '/assets/vendors';
-// $img = '/assets/img';
-// $img1 = '/assets/images';
-// $rootindex = '/index/home';
-// $rootlogin = '/index/login';
-// $full = '/portfolio/fullsize';
-// $thumb = '/portfolio/thumbnails';
-
 
 // Icon
 $icon = USERURL . $index . '/assets/Profile.png';
@@ -81,6 +74,8 @@ $jsvalidationlogin = USERURL . $dashboard . $js . '/validation-login.js';
 $jsloginajax = USERURL . $dashboard . $js . '/login-ajax.js';
 $jsanimatedlogin = USERURL . $dashboard . $js . '/animated-login.js';
 $jsprofilesetting = USERURL . $dashboard . $js . '/profile-setting.js';
+$jsformvalidation = USERURL . $dashboard . $js . '/validation-form.js';
+$jspemasukkanajax = USERURL . $dashboard . $js . '/pemasukkan-ajax.js';
 
 
 // Link img
@@ -149,6 +144,8 @@ define('JSVALIDATIONLOGIN', $jsvalidationlogin);
 define('JSLOGINAJAX', $jsloginajax);
 define('JSANIMATEDLOGIN', $jsanimatedlogin);
 define('JSPROFILESETTING', $jsprofilesetting);
+define('JSFORMVALIDATION', $jsformvalidation);
+define('JSPEMASUKKANAJAX', $jspemasukkanajax);
 
 
 // Define img

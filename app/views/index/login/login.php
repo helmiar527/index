@@ -6,7 +6,7 @@
           <div class="card-body px-5 py-5">
             <h3 class="card-title text-left mb-3">Login</h3>
             <div class="notif-alert">
-              <?php Flasher::flash(); ?>
+              <?= Flasher::flash(); ?>
             </div>
             <form class="needs-validation" name="loginform" method="post" novalidate>
               <div class="form-group">
@@ -39,7 +39,7 @@
                 </button>
               </div>
               <p class="sign-up">
-                Don't have an Account?<a href="<?= BASEURL; ?>/Register"> Sign Up</a>
+                Don't have an Account?<a href="<?= BASEURL; ?>/register"> Sign Up</a>
               </p>
             </form>
           </div>

@@ -1,7 +1,7 @@
 $(function() {
   const form = document.forms["sendtoadmin"];
   const scriptURL =
-    window.location.origin + window.location.pathname + "Index/inContact";
+    window.location.origin + window.location.pathname + "index/inContact";
   const btnLoad = $("#loadButton");
   const btnSend = $("#submitButton");
   const timeInput = document.getElementById('time');

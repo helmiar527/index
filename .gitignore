@@ -3,3 +3,5 @@ app/controllers/Random.php
 app/controllers/Test.php
 app/controllers/Test2.php
 app/controllers/Out.php
+app/views/test.php
+app/views/test2.php

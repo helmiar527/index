@@ -1,9 +1,9 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-start fixed-top">
-    <a class="sidebar-brand brand-logo" href="<?= BASEURL; ?>/Dashboard">
+    <a class="sidebar-brand brand-logo" href="<?= BASEURL; ?>/dashboard">
       <span class="text-light">HELMIAR527</span>
     </a>
-    <a class="sidebar-brand brand-logo-mini" href="<?= BASEURL; ?>/Dashboard">
+    <a class="sidebar-brand brand-logo-mini" href="<?= BASEURL; ?>/dashboard">
       <img src="<?= ICON; ?>" alt="logo">
     </a>
   </div>
@@ -22,7 +22,7 @@
         </div>
         <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
         <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
-          <a href="<?= BASEURL; ?>/Dashboard/profileSetting" class="dropdown-item preview-item">
+          <a href="<?= BASEURL; ?>/dashboard/profileSetting" class="dropdown-item preview-item">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-dark rounded-circle">
                 <i class="mdi mdi-settings text-primary"></i>
@@ -61,7 +61,7 @@
       <span class="nav-link">Navigation</span>
     </li>
     <li class="nav-item menu-items">
-      <a class="nav-link" href="<?= BASEURL; ?>/Dashboard">
+      <a class="nav-link" href="<?= BASEURL; ?>/dashboard">
         <span class="menu-icon">
           <i class="mdi mdi-speedometer"></i>
         </span>
@@ -86,9 +86,9 @@
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/Dashboard/catatanPemasukkan">Pemasukkan</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/Dashboard/catatanPengeluaran">Pengeluaran</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/Dashboard/catatanTabungan">Tabungan</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/dashboard/catatanPemasukkan">Pemasukkan</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/dashboard/catatanPengeluaran">Pengeluaran</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/dashboard/catatanTabungan">Tabungan</a></li>
         </ul>
       </div>
     </li>

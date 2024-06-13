@@ -66,7 +66,7 @@
                 </button>
               </div>
               <p class="sign-up text-center" id="link-login">
-                Already have an Account?<a href="<?= BASEURL; ?>/Login"> Sign In</a>
+                Already have an Account?<a href="<?= BASEURL; ?>/login"> Sign In</a>
               </p>
               <p class="terms" id="terms">
                 By creating an account you are accepting our<a href="#" data-bs-toggle="modal" data-bs-target="#comingModal"> Terms & Conditions</a>

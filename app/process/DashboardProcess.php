@@ -6,8 +6,6 @@ class DashboardProcess extends Controller
     {
         $row = $this->model('AccModel')->updateAcc($_SESSION);
         $data['title'] = 'Dashboard';
-        $data['years1'] = '2022';
-        $data['years'] = date('Y');
         $data['nama'] = $row['name'];
         $data['username'] = $row['username'];
         $data['email'] = $row['email'];
@@ -24,94 +22,92 @@ class DashboardProcess extends Controller
 
         // Pemasukkan
         // Total bulan ini
-        $_POST['tanggal'] = date('Y-m');
-        $_POST['status'] = 1;
-        $row1a = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkanIndex($_POST);
-        if ($row1a == NULL) {
-            $data['pemasukkanindex'] = '0';
-        } else {
-            foreach ($row1a as $row1a) {
-                $pemasukkan1a[] = $row1a["nominal"];
-            }
-            $kata1a = implode('+', $pemasukkan1a);
-            $arr1a = explode("+", $kata1a);
-            $total1a = 0;
-            foreach ($arr1a as $val1a) {
-                $total1a += intval($val1a);
-            }
-            $data['pemasukkanindex'] = number_format($total1a, 0, ',', '.');
-        }
+        // $_POST['tanggal'] = date('Y-m');
+        // $_POST['status'] = 1;
+        // $row1a = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkanIndex($_POST);
+        // if ($row1a == NULL) {
+        //     $data['pemasukkanindex'] = '0';
+        // } else {
+        //     foreach ($row1a as $row1a) {
+        //         $pemasukkan1a[] = $row1a["nominal"];
+        //     }
+        //     $kata1a = implode('+', $pemasukkan1a);
+        //     $arr1a = explode("+", $kata1a);
+        //     $total1a = 0;
+        //     foreach ($arr1a as $val1a) {
+        //         $total1a += intval($val1a);
+        //     }
+        //     $data['pemasukkanindex'] = number_format($total1a, 0, ',', '.');
+        // }
         // Total bulan kemarin
-        $_POST['tanggal'] = date("Y-m", strtotime("-1 month", strtotime(date('Y-m'))));
-        $_POST['status'] = 1;
-        $row1b = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkanIndex($_POST);
-        if ($row1b == !NULL) {
-            foreach ($row1b as $row1b) {
-                $pemasukkan1b[] = $row1b["nominal"];
-            }
-            $kata1b = implode('+', $pemasukkan1b);
-            $arr1b = explode("+", $kata1b);
-            $total1b = 0;
-            foreach ($arr1b as $val1b) {
-                $total1b += intval($val1b);
-            }
-        }
+        // $_POST['tanggal'] = date("Y-m", strtotime("-1 month", strtotime(date('Y-m'))));
+        // $_POST['status'] = 1;
+        // $row1b = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkanIndex($_POST);
+        // if ($row1b == !NULL) {
+        //     foreach ($row1b as $row1b) {
+        //         $pemasukkan1b[] = $row1b["nominal"];
+        //     }
+        //     $kata1b = implode('+', $pemasukkan1b);
+        //     $arr1b = explode("+", $kata1b);
+        //     $total1b = 0;
+        //     foreach ($arr1b as $val1b) {
+        //         $total1b += intval($val1b);
+        //     }
+        // }
         // Persentase
-        if (empty($total1a) || empty($total1b)) {
-            $data['pemasukkanindexpersen'] = '0';
-            $data['colorpemasukkanindex'] = 'warning';
-            $data['iconpemasukkanindex'] = 'mdi-minus';
-        } else {
-            $persentase = (($total1a - $total1b) / $total1b) * 100;
-            $persentaseraw = substr($persentase, 0, 5);
-            if ($persentaseraw < 0) {
-                $data['pemasukkanindexpersen'] = $persentaseraw;
-                $data['colorpemasukkanindex'] = 'danger';
-                $data['iconpemasukkanindex'] = 'mdi-arrow-bottom-right';
-            } else {
-                $data['pemasukkanindexpersen'] = '+' . $persentaseraw;
-                $data['colorpemasukkanindex'] = 'success';
-                $data['iconpemasukkanindex'] = 'mdi-arrow-top-right';
-            }
-        }
+        // if (empty($total1a) || empty($total1b)) {
+        //     $data['pemasukkanindexpersen'] = '0';
+        //     $data['colorpemasukkanindex'] = 'warning';
+        //     $data['iconpemasukkanindex'] = 'mdi-minus';
+        // } else {
+        //     $persentase = (($total1a - $total1b) / $total1b) * 100;
+        //     $persentaseraw = substr($persentase, 0, 5);
+        //     if ($persentaseraw < 0) {
+        //         $data['pemasukkanindexpersen'] = $persentaseraw;
+        //         $data['colorpemasukkanindex'] = 'danger';
+        //         $data['iconpemasukkanindex'] = 'mdi-arrow-bottom-right';
+        //     } else {
+        //         $data['pemasukkanindexpersen'] = '+' . $persentaseraw;
+        //         $data['colorpemasukkanindex'] = 'success';
+        //         $data['iconpemasukkanindex'] = 'mdi-arrow-top-right';
+        //     }
+        // }
         return $data;
     }
 
     public function catatanPemasukkan()
     {
         $row = $this->model('AccModel')->updateAcc($_SESSION);
-        if ($_POST == NULL) {
-            $data['title'] = 'Catatan Pemasukkan';
-            $data['select'] = 'selected';
-            $data['select1'] = '';
-            $data['select2'] = '';
-            $data['select3'] = '';
-        } else {
-            $data['title'] = 'Searching by ' . $_POST['searching'];
-            if ($_POST['urutan'] == 'tglbaru') {
-                $data['select'] = 'selected';
-                $data['select1'] = '';
-                $data['select2'] = '';
-                $data['select3'] = '';
-            } elseif ($_POST['urutan'] == 'tgllama') {
-                $data['select'] = '';
-                $data['select1'] = 'selected';
-                $data['select2'] = '';
-                $data['select3'] = '';
-            } elseif ($_POST['urutan'] == 'scon') {
-                $data['select'] = '';
-                $data['select1'] = '';
-                $data['select2'] = 'selected';
-                $data['select3'] = '';
-            } elseif ($_POST['urutan'] == 'suncon') {
-                $data['select'] = '';
-                $data['select1'] = '';
-                $data['select2'] = '';
-                $data['select3'] = 'selected';
-            }
-        }
-        $data['years1'] = '2022';
-        $data['years'] = date('Y');
+        $data['title'] = 'Catatan Pemasukkan';
+        // if ($_POST == NULL) {
+        //     $data['select'] = 'selected';
+        //     $data['select1'] = '';
+        //     $data['select2'] = '';
+        //     $data['select3'] = '';
+        // } else {
+        //     $data['title'] = 'Searching by ' . $_POST['searching'];
+        //     if ($_POST['urutan'] == 'tglbaru') {
+        //         $data['select'] = 'selected';
+        //         $data['select1'] = '';
+        //         $data['select2'] = '';
+        //         $data['select3'] = '';
+        //     } elseif ($_POST['urutan'] == 'tgllama') {
+        //         $data['select'] = '';
+        //         $data['select1'] = 'selected';
+        //         $data['select2'] = '';
+        //         $data['select3'] = '';
+        //     } elseif ($_POST['urutan'] == 'scon') {
+        //         $data['select'] = '';
+        //         $data['select1'] = '';
+        //         $data['select2'] = 'selected';
+        //         $data['select3'] = '';
+        //     } elseif ($_POST['urutan'] == 'suncon') {
+        //         $data['select'] = '';
+        //         $data['select1'] = '';
+        //         $data['select2'] = '';
+        //         $data['select3'] = 'selected';
+        //     }
+        // }
         $data['nama'] = $row['name'];
         $data['username'] = $row['username'];
         $data['email'] = $row['email'];
@@ -121,22 +117,22 @@ class DashboardProcess extends Controller
         } else {
             $data['profile'] = ROOTURL . '/datasource/profile/' . $row['fileName'];
         }
-        if ($_POST == NULL) {
-            $_POST['searching'] = '';
-            $_POST['urutan'] = 'ORDER BY tanggal DESC';
-        }
-        if ($_POST['urutan'] == 'tglbaru') {
-            $_POST['urutan'] = 'ORDER BY tanggal DESC';
-        } elseif ($_POST['urutan'] == 'tgllama') {
-            $_POST['urutan'] = 'ORDER BY tanggal ASC';
-        } elseif ($_POST['urutan'] == 'scon') {
-            $_POST['urutan'] = 'ORDER BY status ASC';
-        } elseif ($_POST['urutan'] == 'suncon') {
-            $_POST['urutan'] = 'ORDER BY status DESC';
-        }
-        $_POST['username'] = $_SESSION['username'];
-        $row1 = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkan($_POST);
-        $data['pemasukkan'] = $row1;
+        // if ($_POST == NULL) {
+        $_POST['searching'] = '';
+        //     $_POST['urutan'] = 'ORDER BY tanggal DESC';
+        // }
+        // if ($_POST['urutan'] == 'tglbaru') {
+        //     $_POST['urutan'] = 'ORDER BY tanggal DESC';
+        // } elseif ($_POST['urutan'] == 'tgllama') {
+        //     $_POST['urutan'] = 'ORDER BY tanggal ASC';
+        // } elseif ($_POST['urutan'] == 'scon') {
+        //     $_POST['urutan'] = 'ORDER BY status DESC';
+        // } elseif ($_POST['urutan'] == 'suncon') {
+        //     $_POST['urutan'] = 'ORDER BY status ASC';
+        // }
+        // $_POST['username'] = $_SESSION['username'];
+        // $row1 = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkan($_POST);
+        // $data['pemasukkan'] = $row1;
         return $data;
     }
 
@@ -173,8 +169,6 @@ class DashboardProcess extends Controller
                 $data['select3'] = 'selected';
             }
         }
-        $data['years1'] = '2022';
-        $data['years'] = date('Y');
         $data['nama'] = $row['name'];
         $data['username'] = $row['username'];
         $data['email'] = $row['email'];
@@ -236,8 +230,6 @@ class DashboardProcess extends Controller
                 $data['select3'] = 'selected';
             }
         }
-        $data['years1'] = '2022';
-        $data['years'] = date('Y');
         $data['nama'] = $row['name'];
         $data['username'] = $row['username'];
         $data['email'] = $row['email'];
@@ -270,8 +262,6 @@ class DashboardProcess extends Controller
     {
         $row = $this->model('AccModel')->updateAcc($_SESSION);
         $data['title'] = 'Settings';
-        $data['years1'] = '2022';
-        $data['years'] = date('Y');
         $data['nama'] = $row['name'];
         $data['username'] = $row['username'];
         $data['email'] = $row['email'];

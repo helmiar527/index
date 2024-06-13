@@ -3,25 +3,25 @@ $(function() {
     const btnSendProfile = $("#submitButtonProfile");
     const btnLoadProfile = $("#loadButtonProfile");
     const pathSegmentsProfile = window.location.pathname.split('/');
-    const desiredPathProfile = pathSegmentsProfile.slice(0, pathSegmentsProfile.indexOf('Dashboard') + 1).join('/');
+    const desiredPathProfile = pathSegmentsProfile.slice(0, pathSegmentsProfile.indexOf('dashboard') + 1).join('/');
     const scriptURLProfile = window.location.origin + desiredPathProfile + "/updateProfile";
     const formPicture = document.forms["formPicture"];
     const btnSendPicture = $("#submitButtonPicture");
     const btnLoadPicture = $("#loadButtonPicture");
     const pathSegmentsPicture = window.location.pathname.split('/');
-    const desiredPathPicture = pathSegmentsPicture.slice(0, pathSegmentsPicture.indexOf('Dashboard') + 1).join('/');
+    const desiredPathPicture = pathSegmentsPicture.slice(0, pathSegmentsPicture.indexOf('dashboard') + 1).join('/');
     const scriptURLPicture = window.location.origin + desiredPathPicture + "/pictureProfilUpdate";
     const btnSendPictureDel = $("#submitButtonPictureDel");
     const btnLoadPictureDel = $("#loadButtonPictureDel");
     const pathSegmentsPictureDel = window.location.pathname.split('/');
-    const desiredPathPictureDel = pathSegmentsPictureDel.slice(0, pathSegmentsPictureDel.indexOf('Dashboard') + 1).join('/');
+    const desiredPathPictureDel = pathSegmentsPictureDel.slice(0, pathSegmentsPictureDel.indexOf('dashboard') + 1).join('/');
     const scriptURLPictureDel = window.location.origin + desiredPathPictureDel + "/deleteFotoProfil";
     const formAccount = document.forms["formAccount"];
-        const btnSendAccount = $("#submitButtonAccount");
-        const btnLoadAccount = $("#loadButtonAccount");
-        const pathSegmentsAccount = window.location.pathname.split('/');
-        const desiredPathAccount = pathSegmentsAccount.slice(0, pathSegmentsAccount.indexOf('Dashboard') + 1).join('/');
-        const scriptURLAccount = window.location.origin + desiredPathAccount + "/accountProfileUpdate";
+    const btnSendAccount = $("#submitButtonAccount");
+    const btnLoadAccount = $("#loadButtonAccount");
+    const pathSegmentsAccount = window.location.pathname.split('/');
+    const desiredPathAccount = pathSegmentsAccount.slice(0, pathSegmentsAccount.indexOf('dashboard') + 1).join('/');
+    const scriptURLAccount = window.location.origin + desiredPathAccount + "/accountProfileUpdate";
     const timeOut = 3000;
 
     function clearAlert() {

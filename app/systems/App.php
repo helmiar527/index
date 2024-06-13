@@ -6,13 +6,17 @@ class App
   protected $method = index;
   protected $params = [];
 
-  public function __construct() {
+  public function __construct()
+  {
     $url = $this->parseURL();
 
     // Remove error
     if ($url == NULL) {
       $url = [$this->controller];
     }
+
+    // Change url first
+    $url[0] = ucfirst($url[0]);
 
     // Check controller
     if (file_exists('app/controllers/' . $url[0] . '.php')) {
@@ -44,7 +48,8 @@ class App
   }
 
   // Mengambil, filter, memecah url
-  public function parseURL() {
+  public function parseURL()
+  {
     if (isset($_GET['url'])) {
       $url = rtrim($_GET['url'], '/');
       $url = filter_var($url, FILTER_SANITIZE_URL);

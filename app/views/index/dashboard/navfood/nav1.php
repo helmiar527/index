@@ -22,7 +22,7 @@
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                     <h6 class="p-3 mb-0">Profile</h6>
                     <div class="dropdown-divider"></div>
-                    <a href="<?= BASEURL; ?>/Dashboard/settings" class="dropdown-item preview-item">
+                    <a href="<?= BASEURL; ?>/dashboard/settings" class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
                             <div class="preview-icon bg-dark rounded-circle">
                                 <i class="mdi mdi-settings text-success"></i>
@@ -63,7 +63,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a href="<?= BASEURL; ?>/Logout"><button type="button" class="btn btn-danger">Logout</button></a>
+                <a href="<?= BASEURL; ?>/logout"><button type="button" class="btn btn-danger">Logout</button></a>
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@ class Login extends Controller
   {
     if (!isset($_SESSION['status']) || $_SESSION['status'] !== "logged") {
     } else {
-      header('Location: ' . BASEURL . '/Dashboard');
+      header('Location: ' . BASEURL . '/dashboard');
       exit;
     }
   }
@@ -22,7 +22,7 @@ class Login extends Controller
         $_SESSION['username'] = $row1['username'];
         $_SESSION['email'] = $row1['email'];
         $_SESSION['status'] = 'logged';
-        header('Location: ' . BASEURL . '/Dashboard');
+        header('Location: ' . BASEURL . '/dashboard');
         exit;
       }
     } else {

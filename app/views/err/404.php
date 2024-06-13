@@ -8,7 +8,7 @@
                             <h1 class="display-1 mb-0">404</h1>
                         </div>
                         <div class="col-lg-6 error-page-divider text-lg-left pl-lg-4">
-                            <h2>SORRY!</h2>
+                            <h2>Not Found!</h2>
                             <h3 class="font-weight-light">Address / Resource yang anda tuju tidak ditemukan.</h3>
                         </div>
                     </div>
@@ -19,7 +19,9 @@
                     </div>
                     <div class="row mt-5">
                         <div class="col-12 mt-xl-2">
-                            <p class="text-white font-weight-medium text-center">Copyright &copy; <?= $data['years']; ?> All rights reserved.</p>
+                            <p class="text-white font-weight-medium text-center">Copyright &copy; <script>
+                                    document.write(new Date().getFullYear())
+                                </script> All rights reserved.</p>
                         </div>
                     </div>
                 </div>

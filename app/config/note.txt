@@ -1,10 +1,34 @@
-Update
+Belum Ada Lanjutan
 
-1. Rekonstruksi ulang folder
-2. Fix BUG
-3. New Page Admin
-4. Management keuangan
-5. Pembenahan code dan bug
+
+Sudah Selesai di Bagian Lanjutan
+
+
+Update Official Untuk Publish
+
+1. Perbaikan code url pada App (100%)
+2. Mengganti seluruh url pada huruf depan (100%)
+3. Merubah penambahan pemasukkan ke interaktif (100%)
+
+
+Update Dev Berubah
+
+15 Mar 2024
+1. Perbaikan pada app yang bagian error404
+2. Penambahan flasher di login page
+3. Perubahan cara penampilan tabel
+4. Pemisahan antara urutan dan serching
+5. Penambahan button load di urutan
+6. Penambahan button load di searching
+7. Penambahan button load di refresh
+8. Total sudah merubah pemasukkan menjadi interaktif
+
+13 Jun 2024
+1. Penambahan fungis hapus
+2. Penambahan fungsi edit
+3. Total sudah merubah pemasukkan menjadi interaktif 2.0 (Final)
+4. Pengecekan pada url dan sudah selesai (Final)
+
 
 Catatan
 

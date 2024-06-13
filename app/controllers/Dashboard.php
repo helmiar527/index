@@ -5,8 +5,8 @@ class Dashboard extends Controller
   public function __construct()
   {
     if (!isset($_SESSION['status']) || $_SESSION['status'] !== "logged") {
-      Flasher::setFlash('danger', 'Sesi login ', 'Tidak dapat ditemukan! ', 'Silahkan login.');
-      header('Location: ' . BASEURL . '/Login');
+      Flasher::setFlash('danger', 'Sesi login ', 'Telah habis! ', 'Silahkan login.');
+      header('Location: ' . BASEURL . '/login');
       exit;
     }
   }
@@ -85,50 +85,141 @@ class Dashboard extends Controller
     $this->view('hcb/index/dashboard/body/bodyclose2');
     $this->view('hcb/index/dashboard/body/bodyclose1');
     $this->view('hcb/index/dashboard/body/bodyclose');
-    $this->view('hcb/index/dashboard/utility/js/jsmkeuangan');
+    $this->view('hcb/index/dashboard/utility/js/jsmkeuanganpemasukkan');
     $this->view('index/all/coming');
     $this->view('hcb/body');
   }
 
+  public function getPemasukkan()
+  {
+    if ($_POST == !NULL) {
+      if (empty($_POST['urutan'])) {
+        http_response_code(400);
+        $this->api(json_encode(array('The data you entered is incomplete'), JSON_PRETTY_PRINT));
+        exit;
+      } else {
+        $data['username'] = $_SESSION['username'];
+        switch ($_POST['urutan']) {
+          case 'tglbaru':
+            $data['urutan'] = "ORDER BY tanggal DESC";
+            break;
+          case 'tgllama':
+            $data['urutan'] = "ORDER BY tanggal ASC";
+            break;
+          case 'scon':
+            $data['urutan'] = "ORDER BY status DESC";
+            break;
+          case 'suncon':
+            $data['urutan'] = "ORDER BY status ASC";
+            break;
+          default:
+            $data['urutan'] = "ORDER BY tanggal DESC";
+            break;
+        }
+        if (is_null($_POST['searching'])) {
+          $data['searching'] = "";
+        } else {
+          $data['searching'] = $_POST['searching'];
+        }
+        $row = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkan($data);
+        $json = json_encode($row);
+        echo ($json);
+      }
+    } else {
+      http_response_code(400);
+      $this->api(json_encode(array('You not access this api'), JSON_PRETTY_PRINT));
+      exit;
+    }
+  }
+
   public function tambahPemasukkan()
   {
-    $_POST['username'] = $_SESSION['username'];
-    if ($this->model('CatatanKeuanganPemasukkanModel')->insertPemasukkan($_POST) > 0) {
-      Flasher::setFlash('success', 'Pemasukkan ' . $_POST['pemasukkan'], ' Berhasil ditambahkan! ', '.');
-      header('Location: ' . BASEURL . '/Dashboard/catatanPemasukkan');
-      exit;
+    if ($_POST == !NULL) {
+      $_POST['username'] = $_SESSION['username'];
+      if (empty($_POST['tambahhari']) || empty($_POST['tambahtanggal']) || empty($_POST['tambahpemasukkan']) || empty($_POST['tambahnominal']) || empty($_POST['username'])) {
+        http_response_code(400);
+        $this->api(json_encode(array('The data you entered is incomplete'), JSON_PRETTY_PRINT));
+        exit;
+      } else {
+        if (isset($_POST['tambahstatus']) && is_numeric($_POST['tambahstatus'])) {
+          if ($this->model('CatatanKeuanganPemasukkanModel')->insertPemasukkan($_POST) > 0) {
+            Flasher::setFlash('success', 'Pemasukkan ' . $_POST['tambahpemasukkan'], ' Berhasil ditambahkan! ', '.');
+            http_response_code(200);
+            Flasher::flash();
+            exit;
+          } else {
+            Flasher::setFlash('danger', 'Pemasukkan ' . $_POST['tambahpemasukkan'], ' Gagal ditambahkan! ', '.');
+            http_response_code(200);
+            Flasher::flash();
+            exit;
+          }
+        } else {
+          http_response_code(400);
+          $this->api(json_encode(array('The data you entered is incomplete'), JSON_PRETTY_PRINT));
+          exit;
+        }
+      }
     } else {
-      Flasher::setFlash('danger', 'Pemasukkan ' . $_POST['pemasukkan'], ' Gagal ditambahkan! ', '.');
-      header('Location: ' . BASEURL . '/Dashboard/catatanPemasukkan');
+      http_response_code(400);
+      $this->api(json_encode(array('You not access this api'), JSON_PRETTY_PRINT));
       exit;
     }
   }
 
   public function ubahPemasukkan()
   {
-    $_POST['username'] = $_SESSION['username'];
-    if ($this->model('CatatanKeuanganPemasukkanModel')->changePemasukkan($_POST) > 0) {
-      Flasher::setFlash('success', 'Pemasukkan ' . $_POST['pemasukkan'], ' Berhasil diubah! ', '.');
-      header('Location: ' . BASEURL . '/Dashboard/catatanPemasukkan');
-      exit;
+    if ($_POST == !NULL) {
+      $json_first = array_key_first($_POST);
+      $array_data = json_decode($json_first, true);
+      $array_data['username'] = $_SESSION['username'];
+      if (empty($array_data['id']) || empty($array_data['hari']) || empty($array_data['tanggal']) || empty($array_data['pemasukkan']) || empty($array_data['nominal']) || empty($array_data['username'])) {
+        http_response_code(400);
+        $this->api(json_encode(array('The data you entered is incomplete'), JSON_PRETTY_PRINT));
+        exit;
+      } else {
+        if ($this->model('CatatanKeuanganPemasukkanModel')->changePemasukkan($array_data) > 0) {
+          Flasher::setFlash('success', 'Pemasukkan ' . $array_data['pemasukkan'], ' Berhasil diubah! ', '.');
+          http_response_code(200);
+          Flasher::flash();
+          exit;
+        } else {
+          Flasher::setFlash('warning', 'Pemasukkan ' . $array_data['pemasukkan'], ' Gagal diubah!, Data tetap sama', '.');
+          http_response_code(200);
+          Flasher::flash();
+          exit;
+        }
+      }
     } else {
-      Flasher::setFlash('danger', 'Pemasukkan ' . $_POST['pemasukkan'], ' Gagal diubah! ', '.');
-      header('Location: ' . BASEURL . '/Dashboard/catatanPemasukkan');
+      http_response_code(400);
+      $this->api(json_encode(array('You not access this api'), JSON_PRETTY_PRINT));
       exit;
     }
   }
 
-  public function deletePemasukkan($id = '', $pemasukkan = '')
+  public function deletePemasukkan()
   {
-    $data['id'] = $id;
-    $data['username'] = $_SESSION['username'];
-    if ($this->model('CatatanKeuanganPemasukkanModel')->deletePemasukkan($data) > 0) {
-      Flasher::setFlash('success', 'Pemasukkan ' . $pemasukkan, ' Berhasil dihapus! ', '.');
-      header('Location: ' . BASEURL . '/Dashboard/catatanPemasukkan');
-      exit;
+    if ($_POST == !NULL) {
+      $_POST['username'] = $_SESSION['username'];
+      if (empty($_POST['id']) || empty($_POST['name'])) {
+        http_response_code(400);
+        $this->api(json_encode(array('The data you entered is incomplete'), JSON_PRETTY_PRINT));
+        exit;
+      } else {
+        if ($this->model('CatatanKeuanganPemasukkanModel')->deletePemasukkan($_POST) > 0) {
+          Flasher::setFlash('success', 'Pemasukkan ' . $_POST['name'], ' Berhasil dihapus! ', '.');
+          http_response_code(200);
+          Flasher::flash();
+          exit;
+        } else {
+          Flasher::setFlash('danger', 'Pemasukkan ' . $_POST['name'], ' Gagal dihapus! ', '.');
+          http_response_code(200);
+          Flasher::flash();
+          exit;
+        }
+      }
     } else {
-      Flasher::setFlash('danger', 'Pemasukkan ' . $pemasukkan, ' Gagal dihapus! ', '.');
-      header('Location: ' . BASEURL . '/Dashboard/catatanPemasukkan');
+      http_response_code(400);
+      $this->api(json_encode(array('The data you entered is incomplete'), JSON_PRETTY_PRINT));
       exit;
     }
   }
