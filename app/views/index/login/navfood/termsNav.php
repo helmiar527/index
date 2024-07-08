@@ -1,5 +1,5 @@
 <nav class="sidebar">
-    <!-- <div class="sidebar-brand-wrapper d-lg-flex align-items-center justify-content-center fixed-top">
+  <!-- <div class="sidebar-brand-wrapper d-lg-flex align-items-center justify-content-center fixed-top">
         <a class="sidebar-brand brand-logo" href="#"><img src="<?= ICON; ?>" alt="logo"></a>
         <a class="sidebar-brand brand-logo-mini" href="#"><img src="<?= ICON; ?>" alt="logo"></a>
     </div>
@@ -13,12 +13,12 @@
             </a>
         </li>
     </ul> -->
-    <ul class="nav">
-        <li class="nav-item menu-items">
-            <div>coba</div>
-        </li>
-        <li class="nav-item menu-items">
-            <div>coba</div>
-        </li>
-    </ul>
+  <ul class="nav">
+    <li class="nav-item menu-items">
+      <div>coba</div>
+    </li>
+    <li class="nav-item menu-items">
+      <div>coba</div>
+    </li>
+  </ul>
 </nav>

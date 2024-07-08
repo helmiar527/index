@@ -20,7 +20,7 @@
         <div class="col">
           <div class="form-group">
             <label>Urutkan Berdasarkan</label>
-            <select class="js-example-basic-single form-select form-control" id="urutan" style="width:100%">
+            <select class="js-example-basic-single form-select form-control" id="submitButtonUrutan" style="width:100%">
               <option value="tglbaru" selected>Tanggal Terbaru</option>
               <option value="tgllama">Tanggal Terlama</option>
               <option value="scon">Status Confirm</option>
@@ -73,6 +73,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="tambahModalLabel">Tambahkan Pemasukkan</h1>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
       <div class="modal-body">
         <div class="col-12 grid-margin stretch-card">
@@ -117,9 +118,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

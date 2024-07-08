@@ -6,22 +6,14 @@ Sudah Selesai di Bagian Lanjutan
 
 Update Official Untuk Publish
 
-1. Perbaikan code url pada App (100%)
-2. Mengganti seluruh url pada huruf depan (100%)
-3. Merubah penambahan pemasukkan ke interaktif (100%)
+1. Merubah pengeluaran menjadi interaktif (100%)
 
+Selanjutnya
+
+
+2. Merubah Tabungan menjadi interaktif (0%)
 
 Update Dev Berubah
-
-15 Mar 2024
-1. Perbaikan pada app yang bagian error404
-2. Penambahan flasher di login page
-3. Perubahan cara penampilan tabel
-4. Pemisahan antara urutan dan serching
-5. Penambahan button load di urutan
-6. Penambahan button load di searching
-7. Penambahan button load di refresh
-8. Total sudah merubah pemasukkan menjadi interaktif
 
 13 Jun 2024
 1. Penambahan fungis hapus
@@ -29,14 +21,38 @@ Update Dev Berubah
 3. Total sudah merubah pemasukkan menjadi interaktif 2.0 (Final)
 4. Pengecekan pada url dan sudah selesai (Final)
 
+14 Jun 2024
+1. Perbaikan Variable pada js pemasukkan
+2. Perubahan cara kerja pada total di pengeluaran
+3. Perubahan tab pada semua file yang ada
 
-Catatan
+20 Jun 2024
+1. Perbaikan Variabel pada js pemasukkan
+2. Perubahan refresh ke interaktif
+3. Perbaikan variabel pada view catatan pemasukkan dan jsnya
+4. Perubahan pengambilan data pengeluaran ke interaktif
+5. Perubahan penambahan pengeluaran ke interaktif
+6. Perubahan urutan pengeluaran ke interaktif
+7. Perubahan search pengeluaran ke interaktif
+8. Perbaikan bug pada js pemasukkan
 
-1. Ubah konfigurasi di .env
+5 Jul 2024
+1. Perbaikan code pada js pemasukkan
+2. Perubahan hapus pengeluaran menjadi interaktif
+3. Perubahan edit pengeluaran menjadi interaktif
+4. Total sudah merubah pengeluaran menjadi interaktif (Final)
+5. Clear code
+
+
 
 Catatan pribadi
 1. Merapikan code dan check apakah ada debug atau tidak
-2. merubah url
+2. merubah url (100%)
 3. merapikan folder
 4. cek apakah bagian api sudah ada proteksi apa belum
 5. kalau bisa bagian bagian yang perlu sendiri di sendirikan
+6. Perubahan cara total pada pengeluaran
+7. Menambah tombol hari ini pada setiap halaman
+8. Penambahan fungsi refresh pada close button tambah di semua halaman keuangan
+9. Penambahan menu notifikasi untuk update fitur baru
+10. Penggabungan form tambah dan edit
