@@ -43,6 +43,15 @@ Update Dev Berubah
 4. Total sudah merubah pengeluaran menjadi interaktif (Final)
 5. Clear code
 
+12 Jul 2024
+1. Fix total pada database Publish
+2. Fix total yang tidak muncul di publish
+
+18 Jul 2024
+1. Fix total pada publish yang tidak ada nilainya
+2. Fix total yang tidak berubah saat di edit di pengeluaran
+3. Memindahkan code js dari php ke file js
+
 
 
 Catatan pribadi
@@ -51,7 +60,7 @@ Catatan pribadi
 3. merapikan folder
 4. cek apakah bagian api sudah ada proteksi apa belum
 5. kalau bisa bagian bagian yang perlu sendiri di sendirikan
-6. Perubahan cara total pada pengeluaran
+6. Perubahan cara total pada pengeluaran (100%)
 7. Menambah tombol hari ini pada setiap halaman
 8. Penambahan fungsi refresh pada close button tambah di semua halaman keuangan
 9. Penambahan menu notifikasi untuk update fitur baru

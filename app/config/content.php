@@ -76,6 +76,7 @@ $jsanimatedlogin = USERURL . $dashboard . $js . '/animated-login.js';
 $jsprofilesetting = USERURL . $dashboard . $js . '/profile-setting.js';
 $jsformvalidation = USERURL . $dashboard . $js . '/validation-form.js';
 $jspemasukkanajax = USERURL . $dashboard . $js . '/pemasukkan-ajax.js';
+$jspengeluaranajax = USERURL . $dashboard . $js . '/pengeluaran-ajax.js';
 
 
 // Link img
@@ -146,6 +147,7 @@ define('JSANIMATEDLOGIN', $jsanimatedlogin);
 define('JSPROFILESETTING', $jsprofilesetting);
 define('JSFORMVALIDATION', $jsformvalidation);
 define('JSPEMASUKKANAJAX', $jspemasukkanajax);
+define('JSPENGELUARANAJAX', $jspengeluaranajax);
 
 
 // Define img

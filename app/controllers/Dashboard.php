@@ -323,7 +323,7 @@ class Dashboard extends Controller
       $json_first = array_key_first($_POST);
       $array_data = json_decode($json_first, true);
       $array_data['username'] = $_SESSION['username'];
-      if (empty($array_data['id']) || empty($array_data['hari']) || empty($array_data['tanggal']) || empty($array_data['pengeluaran']) || empty($array_data['jumlah']) || empty($array_data['nominal']) || empty($array_data['username'])) {
+      if (empty($array_data['id']) || empty($array_data['hari']) || empty($array_data['tanggal']) || empty($array_data['pengeluaran']) || empty($array_data['jumlah']) || empty($array_data['nominal']) || empty($array_data['total']) || empty($array_data['username'])) {
         http_response_code(400);
         $this->api(json_encode(array('The data you entered is incomplete'), JSON_PRETTY_PRINT));
         exit;

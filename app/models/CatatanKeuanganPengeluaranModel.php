@@ -54,13 +54,14 @@ class CatatanKeuanganPengeluaranModel
 
   public function changePengeluaran($data)
   {
-    $query = "UPDATE " . $this->table . " SET hari = :hari, tanggal = :tanggal, pengeluaran = :pengeluaran, jumlah = :jumlah, nominal = :nominal, status = :status WHERE id = :id AND username = :username";
+    $query = "UPDATE " . $this->table . " SET hari = :hari, tanggal = :tanggal, pengeluaran = :pengeluaran, jumlah = :jumlah, nominal = :nominal, total = :total, status = :status WHERE id = :id AND username = :username";
     $this->db->query($query);
     $this->db->bind('hari', $data['hari']);
     $this->db->bind('tanggal', $data['tanggal']);
     $this->db->bind('pengeluaran', $data['pengeluaran']);
     $this->db->bind('jumlah', $data['jumlah']);
     $this->db->bind('nominal', $data['nominal']);
+    $this->db->bind('total', $data['total']);
     $this->db->bind('status', $data['status']);
     $this->db->bind('id', $data['id']);
     $this->db->bind('username', $data['username']);
