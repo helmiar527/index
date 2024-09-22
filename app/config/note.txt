@@ -7,11 +7,11 @@ Sudah Selesai di Bagian Lanjutan
 Update Official Untuk Publish
 
 1. Merubah pengeluaran menjadi interaktif (100%)
+2. Perbaikan bugs
 
 Selanjutnya
 
-
-2. Merubah Tabungan menjadi interaktif (0%)
+1. Merubah Tabungan menjadi interaktif (100%)
 
 Update Dev Berubah
 
@@ -51,6 +51,22 @@ Update Dev Berubah
 1. Fix total pada publish yang tidak ada nilainya
 2. Fix total yang tidak berubah saat di edit di pengeluaran
 3. Memindahkan code js dari php ke file js
+
+30 Jul 2024
+1. Merubah cara pengambilan data dan cara menampilkan data
+2. Penambahan beberapa file yang dibutuhkan
+
+4 Sep 2024
+1. Pengubahan cara urutan
+2. Pengubahan cara refresh
+
+23 Sep 2024
+1. Perbaikan fungsi tambah di Tabungan
+2. Pemindahan tombol close pada page penambahan tabungan
+3. Perbaikkan bug pada js pengeluaran
+4. Penambahan fungsi hapus di tabungan
+5. Penambahan fungsi edit di tabungan
+6. Total sudah merubah tabungan menjadi interaktif (Final)
 
 
 

@@ -227,7 +227,7 @@ $(function() {
       .fail((error) => {
         loadButton.addClass('d-none');
         failedButton.removeClass('d-none');
-        getPemasukkan(other);
+        getPengeluaran(other);
         $(".notif-alert-universal").html(error.responseText);
         setTimeout(clearAlertUniversal, timeOut);
       })

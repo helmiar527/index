@@ -110,36 +110,7 @@ class DashboardProcess extends Controller
     public function catatanTabungan()
     {
         $row = $this->model('AccModel')->updateAcc($_SESSION);
-        if ($_POST == NULL) {
-            $data['title'] = 'Catatan Tabungan';
-            $data['select'] = 'selected';
-            $data['select1'] = '';
-            $data['select2'] = '';
-            $data['select3'] = '';
-        } else {
-            $data['title'] = 'Searching by ' . $_POST['searching'];
-            if ($_POST['urutan'] == 'tglbaru') {
-                $data['select'] = 'selected';
-                $data['select1'] = '';
-                $data['select2'] = '';
-                $data['select3'] = '';
-            } elseif ($_POST['urutan'] == 'tgllama') {
-                $data['select'] = '';
-                $data['select1'] = 'selected';
-                $data['select2'] = '';
-                $data['select3'] = '';
-            } elseif ($_POST['urutan'] == 'scon') {
-                $data['select'] = '';
-                $data['select1'] = '';
-                $data['select2'] = 'selected';
-                $data['select3'] = '';
-            } elseif ($_POST['urutan'] == 'suncon') {
-                $data['select'] = '';
-                $data['select1'] = '';
-                $data['select2'] = '';
-                $data['select3'] = 'selected';
-            }
-        }
+        $data['title'] = 'Catatan Tabungan';
         $data['nama'] = $row['name'];
         $data['username'] = $row['username'];
         $data['email'] = $row['email'];
@@ -149,22 +120,6 @@ class DashboardProcess extends Controller
         } else {
             $data['profile'] = ROOTURL . '/datasource/profile/' . $row['fileName'];
         }
-        if ($_POST == NULL) {
-            $_POST['searching'] = '';
-            $_POST['urutan'] = 'ORDER BY tanggal DESC';
-        }
-        if ($_POST['urutan'] == 'tglbaru') {
-            $_POST['urutan'] = 'ORDER BY tanggal DESC';
-        } elseif ($_POST['urutan'] == 'tgllama') {
-            $_POST['urutan'] = 'ORDER BY tanggal ASC';
-        } elseif ($_POST['urutan'] == 'scon') {
-            $_POST['urutan'] = 'ORDER BY status ASC';
-        } elseif ($_POST['urutan'] == 'suncon') {
-            $_POST['urutan'] = 'ORDER BY status DESC';
-        }
-        $_POST['username'] = $_SESSION['username'];
-        $row1 = $this->model('CatatanKeuanganTabunganModel')->getAllTabungan($_POST);
-        $data['tabungan'] = $row1;
         return $data;
     }
 
