@@ -48,16 +48,6 @@ class CatatanKeuanganPemasukkanModel
     $this->db->execute();
     return $this->db->rowCount();
   }
-
-  // public function getAllPemasukkan($data)
-  // {
-  //   $urutan = $data['urutan'];
-  //   $query = "SELECT * FROM " . $this->table . " WHERE username = :username $urutan";
-  //   $this->db->query($query);
-  //   $this->db->bind('username', $data['username']);
-  //   return $this->db->resultSet();
-  // }
-
   public function getAllPemasukkan($data)
   {
     $searching = $data['searching'];
@@ -73,23 +63,23 @@ class CatatanKeuanganPemasukkanModel
     return $this->db->resultSet();
   }
 
-  // public function getAllPemasukkanIndex($data)
-  // {
-  //   $tanggal = $data['tanggal'];
-  //   $query = "SELECT * FROM " . $this->table . " WHERE username = :username AND status = :status AND tanggal LIKE :tanggal";
-  //   $this->db->query($query);
-  //   $this->db->bind('username', $data['username']);
-  //   $this->db->bind('status', $data['status']);
-  //   $this->db->bind('tanggal', "%$tanggal%");
-  //   return $this->db->resultSet();
-  // }
+  public function getBulanTahunPemasukkanIndex($data)
+  {
+    $query = "SELECT * FROM " . $this->table . " WHERE username = :username AND status = :status ORDER BY tanggal ASC";
+    $this->db->query($query);
+    $this->db->bind('username', $data['username']);
+    $this->db->bind('status', $data['status']);
+    return $this->db->resultSet();
+  }
 
-  // public function getBulan($data)
-  // {
-  //   $query = "SELECT * FROM " . $this->table . " WHERE username = :username AND status = :status";
-  //   $this->db->query($query);
-  //   $this->db->bind('username', $data['username']);
-  //   $this->db->bind('status', $data['status']);
-  //   return $this->db->resultSet();
-  // }
+  public function getAllPemasukkanIndex($data)
+  {
+    $query = "SELECT * FROM " . $this->table . " WHERE username = :username AND tanggal BETWEEN :tanggalAwal AND :tanggalAkhir AND status = :status ORDER BY tanggal ASC";
+    $this->db->query($query);
+    $this->db->bind('username', $data['username']);
+    $this->db->bind('tanggalAwal', $data['tanggalAwal']);
+    $this->db->bind('tanggalAkhir', $data['tanggalAkhir']);
+    $this->db->bind('status', $data['status']);
+    return $this->db->resultSet();
+  }
 }

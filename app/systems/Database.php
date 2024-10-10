@@ -2,6 +2,7 @@
 
 class Database
 {
+  // Register variable
   private $host = DB_HOST;
   private $user = DB_USER;
   private $pass = DB_PASS;
@@ -9,6 +10,7 @@ class Database
   private $dbh;
   private $stmt;
 
+  // Auto connect
   public function __construct()
   {
     $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->db_name;
@@ -22,6 +24,8 @@ class Database
       die($e->getMessage());
     }
   }
+
+  // Process query
   public function query($query)
   {
     $this->stmt = $this->dbh->prepare($query);

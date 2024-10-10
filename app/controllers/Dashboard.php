@@ -34,37 +34,232 @@ class Dashboard extends Controller
     $this->view('hcb/body');
   }
 
-  public function getBulanPemasukkan()
+  public function getBulanTahunPemasukkanIndex()
   {
-    $_POST['username'] = 'admin';
-    $_POST['status'] = '1';
-    $array = $this->model('CatatanKeuanganPemasukkanModel')->getBulan($_POST);
-    $bulan = array();
-    $tahun = array();
-    foreach ($array as $item) {
-      $tanggal = $item["tanggal"];
-      $bulan[] = date("F", strtotime($tanggal));
-      $tahun[] = date("Y", strtotime($tanggal));
+    $_POST['username'] = $_SESSION['username'];
+    if ($_POST == !NULL) {
+      if ($_POST['username'] === $_SESSION['username']) {
+        http_response_code(200);
+        $_POST['status'] = '1';
+        $array = $this->model('CatatanKeuanganPemasukkanModel')->getBulanTahunPemasukkanIndex($_POST);
+        $result = [];
+        foreach ($array as $item) {
+          $year = date('Y', strtotime($item['tanggal']));
+          $month = date('n', strtotime($item['tanggal'])); // Menggunakan 'n' untuk mendapatkan nomor bulan tanpa leading zero
+          if (!isset($result[$year])) {
+            $result[$year] = [];
+          }
+          if (!in_array($month, $result[$year])) {
+            $result[$year][] = (int)$month; // Mengkonversi ke integer
+          }
+        }
+
+        // Mengurutkan bulan dalam setiap tahun
+        foreach ($result as $year => $months) {
+          $sortedMonths = $months;
+          sort($sortedMonths);
+          $result[$year] = $sortedMonths;
+        }
+
+        echo (json_encode($result));
+      } else {
+        http_response_code(400);
+        $this->api(json_encode(array('The data you entered is incomplete'), JSON_PRETTY_PRINT));
+        exit;
+      }
+    } else {
+      http_response_code(400);
+      $this->api(json_encode(array('You not access this api'), JSON_PRETTY_PRINT));
+      exit;
     }
-    $jsonArray = json_encode($bulan);
-    echo ($jsonArray);
+  }
+  public function getBulanTahunPengeluaranIndex()
+  {
+    $_POST['username'] = $_SESSION['username'];
+    if ($_POST == !NULL) {
+      if ($_POST['username'] === $_SESSION['username']) {
+        http_response_code(200);
+        $_POST['status'] = '1';
+        $array = $this->model('CatatanKeuanganPengeluaranModel')->getBulanTahunPengeluaranIndex($_POST);
+        $result = [];
+        foreach ($array as $item) {
+          $year = date('Y', strtotime($item['tanggal']));
+          $month = date('n', strtotime($item['tanggal'])); // Menggunakan 'n' untuk mendapatkan nomor bulan tanpa leading zero
+          if (!isset($result[$year])) {
+            $result[$year] = [];
+          }
+          if (!in_array($month, $result[$year])) {
+            $result[$year][] = (int)$month; // Mengkonversi ke integer
+          }
+        }
+
+        // Mengurutkan bulan dalam setiap tahun
+        foreach ($result as $year => $months) {
+          $sortedMonths = $months;
+          sort($sortedMonths);
+          $result[$year] = $sortedMonths;
+        }
+
+        echo (json_encode($result));
+      } else {
+        http_response_code(400);
+        $this->api(json_encode(array('The data you entered is incomplete'), JSON_PRETTY_PRINT));
+        exit;
+      }
+    } else {
+      http_response_code(400);
+      $this->api(json_encode(array('You not access this api'), JSON_PRETTY_PRINT));
+      exit;
+    }
   }
 
-  public function getTahunPemasukkan()
+  public function getBulanTahunTabunganIndex()
   {
-    $_POST['username'] = 'admin';
-    $_POST['status'] = '1';
-    $array = $this->model('CatatanKeuanganPemasukkanModel')->getBulan($_POST);
-    $bulan = array();
-    $tahun = array();
-    foreach ($array as $item) {
-      $tanggal = $item["tanggal"];
-      $bulan[] = date("F", strtotime($tanggal));
-      $tahun[] = date("Y", strtotime($tanggal));
+    $_POST['username'] = $_SESSION['username'];
+    if ($_POST == !NULL) {
+      if ($_POST['username'] === $_SESSION['username']) {
+        $_POST['status'] = '1';
+        $array = $this->model('CatatanKeuanganTabunganModel')->getBulanTahunTabunganIndex($_POST);
+        $result = [];
+        foreach ($array as $item) {
+          $year = date('Y', strtotime($item['tanggal']));
+          $month = date('n', strtotime($item['tanggal'])); // Menggunakan 'n' untuk mendapatkan nomor bulan tanpa leading zero
+          if (!isset($result[$year])) {
+            $result[$year] = [];
+          }
+          if (!in_array($month, $result[$year])) {
+            $result[$year][] = (int)$month; // Mengkonversi ke integer
+          }
+        }
+
+        // Mengurutkan bulan dalam setiap tahun
+        foreach ($result as $year => $months) {
+          $sortedMonths = $months;
+          sort($sortedMonths);
+          $result[$year] = $sortedMonths;
+        }
+
+        echo (json_encode($result));
+      } else {
+        http_response_code(400);
+        $this->api(json_encode(array('The data you entered is incomplete'), JSON_PRETTY_PRINT));
+        exit;
+      }
+    } else {
+      http_response_code(400);
+      $this->api(json_encode(array('You not access this api'), JSON_PRETTY_PRINT));
+      exit;
     }
-    $array_unique = array_unique($tahun);
-    $jsonArray = json_encode($array_unique);
-    echo ($jsonArray);
+  }
+
+  public function getAllPemasukkanIndex()
+  {
+    if ($_POST == !NULL) {
+      if (empty($_POST['bulanpemasukkan']) || empty($_POST['tahunpemasukkan'])) {
+        http_response_code(400);
+        $this->api(json_encode(array('The data you entered is incomplete'), JSON_PRETTY_PRINT));
+        exit;
+      } else {
+        $_POST['username'] = $_SESSION['username'];
+        $_POST['status'] = '1';
+        $tahun = $_POST['tahunpemasukkan'];
+        $bulan = $_POST['bulanpemasukkan'];
+        $_POST['tanggalAwal'] = "$tahun-$bulan-01";
+        $_POST['tanggalAkhir'] = date("Y-m-t", strtotime($_POST['tanggalAwal']));
+        $array1 = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkanIndex($_POST);
+        $_POST['tanggalAwal'] = date("Y-m-01", strtotime("-1 month", strtotime($_POST['tanggalAwal'])));
+        $_POST['tanggalAkhir'] = date("Y-m-t", strtotime($_POST['tanggalAwal']));
+        $array2 = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkanIndex($_POST);
+        $totalNominal1 = 0;
+        foreach ($array1 as $item) {
+          $totalNominal1 += $item['nominal'];
+        }
+        $totalNominal2 = 0;
+        foreach ($array2 as $item) {
+          $totalNominal2 += $item['nominal'];
+        }
+        $data['totalini'] = $totalNominal1;
+        $data['totalsebelumnya'] = $totalNominal2;
+        echo (json_encode($data));
+      }
+    } else {
+      http_response_code(400);
+      $this->api(json_encode(array('You not access this api'), JSON_PRETTY_PRINT));
+      exit;
+    }
+  }
+
+  public function getAllPengeluaranIndex()
+  {
+    if ($_POST == !NULL) {
+      if (empty($_POST['bulanpengeluaran']) || empty($_POST['tahunpengeluaran'])) {
+        http_response_code(400);
+        $this->api(json_encode(array('The data you entered is incomplete'), JSON_PRETTY_PRINT));
+        exit;
+      } else {
+        $_POST['username'] = $_SESSION['username'];
+        $_POST['status'] = '1';
+        $tahun = $_POST['tahunpengeluaran'];
+        $bulan = $_POST['bulanpengeluaran'];
+        $_POST['tanggalAwal'] = "$tahun-$bulan-01";
+        $_POST['tanggalAkhir'] = date("Y-m-t", strtotime($_POST['tanggalAwal']));
+        $array1 = $this->model('CatatanKeuanganPengeluaranModel')->getAllPengeluaranIndex($_POST);
+        $_POST['tanggalAwal'] = date("Y-m-01", strtotime("-1 month", strtotime($_POST['tanggalAwal'])));
+        $_POST['tanggalAkhir'] = date("Y-m-t", strtotime($_POST['tanggalAwal']));
+        $array2 = $this->model('CatatanKeuanganPengeluaranModel')->getAllPengeluaranIndex($_POST);
+        $totalNominal1 = 0;
+        foreach ($array1 as $item) {
+          $totalNominal1 += $item['total'];
+        }
+        $totalNominal2 = 0;
+        foreach ($array2 as $item) {
+          $totalNominal2 += $item['total'];
+        }
+        $data['totalini'] = $totalNominal1;
+        $data['totalsebelumnya'] = $totalNominal2;
+        echo (json_encode($data));
+      }
+    } else {
+      http_response_code(400);
+      $this->api(json_encode(array('You not access this api'), JSON_PRETTY_PRINT));
+      exit;
+    }
+  }
+  public function getAllTabunganIndex()
+  {
+    if ($_POST == !NULL) {
+      if (empty($_POST['bulantabungan']) || empty($_POST['tahuntabungan'])) {
+        http_response_code(400);
+        $this->api(json_encode(array('The data you entered is incomplete'), JSON_PRETTY_PRINT));
+        exit;
+      } else {
+        $_POST['username'] = $_SESSION['username'];
+        $_POST['status'] = '1';
+        $tahun = $_POST['tahuntabungan'];
+        $bulan = $_POST['bulantabungan'];
+        $_POST['tanggalAwal'] = "$tahun-$bulan-01";
+        $_POST['tanggalAkhir'] = date("Y-m-t", strtotime($_POST['tanggalAwal']));
+        $array1 = $this->model('CatatanKeuanganTabunganModel')->getAllTabunganIndex($_POST);
+        $_POST['tanggalAwal'] = date("Y-m-01", strtotime("-1 month", strtotime($_POST['tanggalAwal'])));
+        $_POST['tanggalAkhir'] = date("Y-m-t", strtotime($_POST['tanggalAwal']));
+        $array2 = $this->model('CatatanKeuanganTabunganModel')->getAllTabunganIndex($_POST);
+        $totalNominal1 = 0;
+        foreach ($array1 as $item) {
+          $totalNominal1 += $item['nominal'];
+        }
+        $totalNominal2 = 0;
+        foreach ($array2 as $item) {
+          $totalNominal2 += $item['nominal'];
+        }
+        $data['totalini'] = $totalNominal1;
+        $data['totalsebelumnya'] = $totalNominal2;
+        echo (json_encode($data));
+      }
+    } else {
+      http_response_code(400);
+      $this->api(json_encode(array('You not access this api'), JSON_PRETTY_PRINT));
+      exit;
+    }
   }
 
   public function catatanPemasukkan()

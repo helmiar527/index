@@ -17,61 +17,6 @@ class DashboardProcess extends Controller
             $data['profile'] = ROOTURL . '/datasource/profile/' . $row['fileName'];
         }
 
-        // No Repeat
-        $_POST['username'] = $_SESSION['username'];
-
-        // Pemasukkan
-        // Total bulan ini
-        // $_POST['tanggal'] = date('Y-m');
-        // $_POST['status'] = 1;
-        // $row1a = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkanIndex($_POST);
-        // if ($row1a == NULL) {
-        //     $data['pemasukkanindex'] = '0';
-        // } else {
-        //     foreach ($row1a as $row1a) {
-        //         $pemasukkan1a[] = $row1a["nominal"];
-        //     }
-        //     $kata1a = implode('+', $pemasukkan1a);
-        //     $arr1a = explode("+", $kata1a);
-        //     $total1a = 0;
-        //     foreach ($arr1a as $val1a) {
-        //         $total1a += intval($val1a);
-        //     }
-        //     $data['pemasukkanindex'] = number_format($total1a, 0, ',', '.');
-        // }
-        // Total bulan kemarin
-        // $_POST['tanggal'] = date("Y-m", strtotime("-1 month", strtotime(date('Y-m'))));
-        // $_POST['status'] = 1;
-        // $row1b = $this->model('CatatanKeuanganPemasukkanModel')->getAllPemasukkanIndex($_POST);
-        // if ($row1b == !NULL) {
-        //     foreach ($row1b as $row1b) {
-        //         $pemasukkan1b[] = $row1b["nominal"];
-        //     }
-        //     $kata1b = implode('+', $pemasukkan1b);
-        //     $arr1b = explode("+", $kata1b);
-        //     $total1b = 0;
-        //     foreach ($arr1b as $val1b) {
-        //         $total1b += intval($val1b);
-        //     }
-        // }
-        // Persentase
-        // if (empty($total1a) || empty($total1b)) {
-        //     $data['pemasukkanindexpersen'] = '0';
-        //     $data['colorpemasukkanindex'] = 'warning';
-        //     $data['iconpemasukkanindex'] = 'mdi-minus';
-        // } else {
-        //     $persentase = (($total1a - $total1b) / $total1b) * 100;
-        //     $persentaseraw = substr($persentase, 0, 5);
-        //     if ($persentaseraw < 0) {
-        //         $data['pemasukkanindexpersen'] = $persentaseraw;
-        //         $data['colorpemasukkanindex'] = 'danger';
-        //         $data['iconpemasukkanindex'] = 'mdi-arrow-bottom-right';
-        //     } else {
-        //         $data['pemasukkanindexpersen'] = '+' . $persentaseraw;
-        //         $data['colorpemasukkanindex'] = 'success';
-        //         $data['iconpemasukkanindex'] = 'mdi-arrow-top-right';
-        //     }
-        // }
         return $data;
     }
 

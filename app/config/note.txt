@@ -68,6 +68,10 @@ Update Dev Berubah
 5. Penambahan fungsi edit di tabungan
 6. Total sudah merubah tabungan menjadi interaktif (Final)
 
+10 Okt 2024
+1. Penambahan info di index (FINAL)
+
+
 
 
 Catatan pribadi

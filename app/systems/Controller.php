@@ -2,23 +2,27 @@
 
 class Controller
 {
+  // Register process
   public function process($process)
   {
     require_once 'app/process/' . $process . '.php';
     return new $process;
   }
 
+  // Register view
   public function view($view, $data = [])
   {
     require_once 'app/views/' . $view . '.php';
   }
 
+  // Register model
   public function model($model)
   {
     require_once 'app/models/' . $model . '.php';
     return new $model;
   }
 
+  // Register api
   public function api($var, $exit = false)
   {
     echo '<pre>';
@@ -35,6 +39,7 @@ class Controller
     }
   }
 
+  // Register dd
   public function dd($var, $exit = false)
   {
     echo '<pre>';
